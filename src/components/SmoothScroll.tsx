@@ -54,6 +54,9 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
           const points = getSnapPoints();
           if (!points || points.length === 0) return value;
           
+          const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (scrollHeight <= 0) return value;
+          
           const closest = gsap.utils.snap(points, value);
           // Only snap if we are within 150px of a snap point to avoid unwanted jumps
           const threshold = 150 / scrollHeight; 
