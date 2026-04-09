@@ -1,1 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #140628;
+  --color-brand-card: #1C0C38;
+  --color-brand-purple: #7C3AED;
+  --color-brand-cyan: #22D3EE;
+  --color-brand-white: #ffffff;
+  --color-brand-soft: #F5F3FF;
+  
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Base styles */
+@layer base {
+  body {
+    @apply bg-brand-bg text-white font-sans antialiased;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-brand-white;
+  }
+}
+
+/* Utilities for gradients and shadows */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-purple to-brand-cyan;
+  }
+  
+  .bg-gradient-accent {
+    @apply bg-gradient-to-r from-brand-purple to-[#8b5cf6];
+  }
+
+  .bg-light-section {
+    @apply bg-brand-white text-brand-bg;
+  }
+
+  .bg-soft-section {
+    @apply bg-brand-soft text-brand-bg;
+  }
+
+  .shadow-premium {
+    box-shadow: 0 20px 40px rgba(101, 45, 232, 0.15);
+  }
+
+  .shadow-glow-purple {
+    box-shadow: 0 0 30px rgba(101, 45, 232, 0.4);
+  }
+}
+
+/* For the 12-column grid visual background */
+.bg-grid-pattern {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: calc(100% / 12) 100%;
+}
+
