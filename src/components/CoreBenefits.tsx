@@ -29,7 +29,7 @@ export default function CoreBenefits() {
     <section className="py-24 px-6 relative z-10 w-full">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 max-w-4xl text-neutral-900 leading-[0.9] italic">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter mb-8 max-w-4xl text-neutral-900 leading-[0.9] italic">
             Designed to empower early-stage <span className="text-gradient">disruptors.</span>
           </h2>
         </div>

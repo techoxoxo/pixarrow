@@ -11,9 +11,12 @@ export default function HomeClientWrapper({ children }: { children: React.ReactN
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    const isMobile = window.innerWidth < 768;
+    
     // 1. PINNED INTRO
     const pinningSections = gsap.utils.toArray(".pin-section");
     pinningSections.forEach((section: any, i: number) => {
+        if (isMobile) return; // Skip pinning on mobile
         if (i === pinningSections.length - 1 && pinningSections.length > 1) return;
 
         ScrollTrigger.create({
@@ -66,7 +69,7 @@ export default function HomeClientWrapper({ children }: { children: React.ReactN
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="bg-brand-bg relative overflow-x-hidden">
+    <div ref={containerRef} className="bg-brand-bg relative">
         {children}
     </div>
   );

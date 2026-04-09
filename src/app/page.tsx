@@ -17,9 +17,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function Home() {
   return (
     <HomeClientWrapper>
-      {/* Background Decor */}
-      <div className="bg-parallax absolute top-[10%] left-[10%] w-[600px] h-[600px] bg-brand-purple/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="bg-parallax absolute top-[60%] right-[10%] w-[800px] h-[800px] bg-brand-orange/5 blur-[150px] rounded-full pointer-events-none" />
+      {/* Background Decor - capped to avoid mobile overflow */}
+      <div className="bg-parallax absolute top-[10%] left-0 w-[min(600px,80vw)] h-[min(600px,80vw)] bg-brand-purple/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="bg-parallax absolute top-[60%] right-0 w-[min(800px,80vw)] h-[min(800px,80vw)] bg-brand-orange/5 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="relative z-10">
         
@@ -29,14 +29,14 @@ export default function Home() {
         </div>
         
         {/* TRANSITION */}
-        <div className="w-screen bg-brand-white py-24 relative z-40 border-t border-black/5">
+        <div className="w-full bg-brand-white py-24 relative z-40 border-t border-black/5">
             <div className="max-w-7xl mx-auto px-6">
                 <LogoCloud />
             </div>
         </div>
 
         {/* SLIDE: LIGHT THEME */}
-        <div className="pin-section z-30 h-screen overflow-hidden flex items-center justify-center bg-brand-soft relative">
+        <div className="pin-section z-30 min-h-screen py-20 md:py-0 md:h-screen md:overflow-hidden flex items-center justify-center bg-brand-soft relative">
             <CoreBenefits />
         </div>
 

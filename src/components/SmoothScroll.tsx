@@ -1,44 +1,49 @@
 "use client";
 
 import { useEffect, ReactNode } from "react";
-import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SmoothScroll({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
-
   useEffect(() => {
     // Register GSAP plugins
     gsap.registerPlugin(ScrollTrigger);
 
+    const isMobile = window.innerWidth < 768;
+
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: isMobile ? 1.0 : 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 2,
+      touchMultiplier: isMobile ? 1.5 : 2,
       infinite: false,
     });
 
-    lenis.on("scroll", ScrollTrigger.update);
+    lenis.on("scroll", () => {
+      ScrollTrigger.update();
+    });
 
     // Initial refresh to ensure correct layout measurements
-    ScrollTrigger.refresh();
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
 
     // Global Section Snapping
-    // We query elements inside a function or re-run on pathname change
+    // DISABLED on mobile to avoid "hard" scroll feel
     const getSnapPoints = () => {
-      const sections = gsap.utils.toArray<HTMLElement>("section, .snap-section");
+      if (isMobile) return null;
+      
+      const sections = gsap.utils.toArray<HTMLElement>(".snap-section");
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
       
       if (sections.length === 0 || scrollHeight <= 0) return null;
       
       return sections
-        .filter(sec => sec.offsetHeight > window.innerHeight * 0.5) // Only snap to substantial sections
+        .filter(sec => sec.offsetHeight > window.innerHeight * 0.3) 
         .map(sec => {
           const rect = sec.getBoundingClientRect();
           const absoluteTop = rect.top + window.scrollY;
@@ -46,10 +51,10 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
         });
     };
 
-    ScrollTrigger.create({
+    const mainST = ScrollTrigger.create({
       start: 0,
       end: "max",
-      snap: {
+      snap: isMobile ? undefined : {
         snapTo: (value) => {
           const points = getSnapPoints();
           if (!points || points.length === 0) return value;
@@ -58,17 +63,14 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
           if (scrollHeight <= 0) return value;
           
           const closest = gsap.utils.snap(points, value);
-          // Only snap if we are within 150px of a snap point to avoid unwanted jumps
-          const threshold = 150 / scrollHeight; 
-          if (Math.abs(closest - value) > threshold) {
-            return value; // Stay where we are
-          }
+          const threshold = 100 / scrollHeight; 
+          if (Math.abs(closest - value) > threshold) return value;
           
           return closest;
         },
-        duration: { min: 0.5, max: 1.2 },
-        delay: 0.6,
-        ease: "power3.inOut"
+        duration: { min: 0.4, max: 1.0 },
+        delay: 0.1,
+        ease: "power2.inOut"
       }
     });
 
@@ -83,9 +85,9 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
     return () => {
       lenis.destroy();
       gsap.ticker.remove(updateLenis);
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      mainST.kill();
     };
-  }, [pathname]);
+  }, []);
 
   return <>{children}</>;
 }
