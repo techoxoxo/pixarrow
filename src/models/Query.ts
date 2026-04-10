@@ -10,6 +10,9 @@ const QuerySchema = new Schema({
     required: [true, 'Email is required'],
     match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address'],
   },
+  phone: {
+    type: String,
+  },
   source: {
     type: String,
   },
