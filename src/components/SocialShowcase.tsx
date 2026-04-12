@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Globe } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const InstagramIcon = () => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
@@ -121,7 +122,13 @@ export default function SocialShowcase() {
               viewport={{ once: true }}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-brand-purple/10 border border-brand-purple/20 rounded-full flex items-center justify-center backdrop-blur-3xl z-10 shadow-glow-purple"
             >
-              <img src="/favicon.png" alt="P" className="w-20 h-20 opacity-80" />
+              <Image 
+                src="/favicon.png" 
+                alt="Pixarrow" 
+                width={80} 
+                height={80} 
+                className="opacity-80" 
+              />
               
               {/* Rotating Rings */}
               <div className="absolute inset-0 border border-white/5 rounded-full animate-[spin_10s_linear_infinite]" />

@@ -1,5 +1,6 @@
 import { caseStudies } from "@/data/caseStudies";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 export default function BentoGrid() {
@@ -29,7 +30,12 @@ export default function BentoGrid() {
               
               {/* Background Image */}
               <div className="absolute inset-0 z-0">
-                 <img src={project.image} alt={project.title} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000" />
+                 <Image 
+                    src={project.image} 
+                    alt={project.title} 
+                    fill
+                    className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000" 
+                 />
                  <div className="absolute inset-0 bg-gradient-to-t from-brand-bg/90 via-brand-bg/20 to-transparent" />
               </div>
 

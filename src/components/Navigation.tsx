@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -50,10 +51,14 @@ export default function Navigation() {
           }`}>
             
             <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center shrink-0 relative z-[1001]">
-              <img 
+              <Image 
                 src="/logo.png" 
                 alt="Pixarrow" 
+                width={120}
+                height={28}
                 className="h-5 md:h-7 w-auto object-contain" 
+                style={{ height: 'auto' }}
+                priority
               />
             </Link>
 

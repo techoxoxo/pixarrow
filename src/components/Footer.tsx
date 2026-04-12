@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -48,7 +49,13 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-white/5 text-sm text-white/30">
           <div className="flex flex-col md:flex-row items-center gap-8">
             <Link href="/" className="flex items-center gap-4 group">
-              <img src="/favicon.png" alt="P" className="h-8 w-8 transform group-hover:scale-110 transition-transform" />
+              <Image 
+                src="/favicon.png" 
+                alt="Pixarrow Logo" 
+                width={32} 
+                height={32} 
+                className="transform group-hover:scale-110 transition-transform" 
+              />
               <span className="font-bold text-white tracking-widest uppercase text-xs">Pixarrow</span>
             </Link>
             <div className="flex gap-6">
@@ -65,9 +72,17 @@ export default function Footer() {
               <Link href="https://www.behance.net/pixarrow" className="hover:text-brand-purple transition-colors">Behance</Link>
             </div>
             <div className="flex gap-6">
-              <Link href="mailto:hello@pixarrow.com" className="text-white hover:text-[#00F2FF] transition-colors font-medium">
-                hello@pixarrow.com
-              </Link>
+              <a 
+                href="#" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = `mailto:${'hello'}${'@'}${'pixarrow.com'}`;
+                }}
+                className="text-white hover:text-[#00F2FF] transition-colors font-medium flex items-center gap-2 group"
+              >
+                <Mail className="w-4 h-4 text-white/30 group-hover:text-[#00F2FF] transition-colors" />
+                <span>hello[at]pixarrow.com</span>
+              </a>
             </div>
           </div>
         </div>

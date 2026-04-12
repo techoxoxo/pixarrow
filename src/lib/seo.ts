@@ -1,24 +1,28 @@
-import dbConnect from "@/lib/mongodb";
+import dbConnect from "./mongodb";
 import SEO from "@/models/SEO";
 import { Metadata } from "next";
 
-export async function generateDynamicMetadata(pagePath: string): Promise<Metadata> {
+export async function generateDynamicMetadata(path: string): Promise<Metadata> {
   try {
     await dbConnect();
-    const seo = await SEO.findOne({ pagePath });
-
-    if (!seo) return {};
-
-    return {
-      title: seo.title,
-      description: seo.description,
-      keywords: seo.keywords ? seo.keywords.split(',').map((k: string) => k.trim()) : undefined,
-      openGraph: {
+    const seo = await SEO.findOne({ pagePath: path });
+    
+    if (seo) {
+      return {
         title: seo.title,
         description: seo.description,
-      }
-    };
+        keywords: seo.keywords,
+        openGraph: {
+          title: seo.title,
+          description: seo.description,
+          type: 'website',
+        }
+      };
+    }
   } catch (error) {
-    return {};
+    console.error(`SEO fetch failed for ${path}:`, error);
   }
+  
+  // Fallback to defaults (defined in layout or here)
+  return {};
 }

@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-export default async function CaseStudyPage({ params }: { params: { slug: string } }) {
+import Image from "next/image";
+
+export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const project = caseStudies.find((s) => s.slug === slug);
 
@@ -39,7 +41,12 @@ export default async function CaseStudyPage({ params }: { params: { slug: string
         </div>
         
         <div className="relative aspect-video w-full rounded-[2.5rem] overflow-hidden border border-white/10 mb-32">
-          <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+          <Image 
+            src={project.image} 
+            alt={project.title} 
+            fill
+            className="object-cover" 
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-bg/50 to-transparent" />
         </div>
 

@@ -7,6 +7,7 @@ import LogoCloud from "./LogoCloud";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import Image from "next/image";
 
 const tabs = [
   { 
@@ -71,10 +72,11 @@ export default function Hero() {
             <span className="text-[10px] font-bold tracking-widest text-white/70 uppercase whitespace-nowrap">Digital Engineering Excellence</span>
           </div>
 
-          <h1 ref={titleRef} className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-black tracking-[-0.03em] mb-4 leading-[1.05] overflow-hidden py-2">
+          <h1 className="sr-only">Pixarrow — High-Performance Digital Growth Agency, Web Design & Development for Startups</h1>
+          <h2 ref={titleRef} className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-black tracking-[-0.03em] mb-4 leading-[1.05] overflow-hidden py-2">
             <span className="inline-block">Make your product</span>{" "}
             <span className="inline-block text-gradient italic">impossible to ignore.</span>
-          </h1>
+          </h2>
 
           <p className="hero-para text-base text-white/70 mb-8 max-w-sm leading-snug font-sans">
             We design and build premium, high-converting websites and brand systems for startups that need to look enterprise-ready today.
@@ -115,10 +117,11 @@ export default function Hero() {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   className="absolute inset-0 flex items-center justify-center w-full h-full"
                 >
-                   <img 
+                   <Image 
                      src={activeTab.image} 
                      alt={activeTab.label} 
-                     className="w-full h-full object-cover select-none mix-blend-screen"
+                     fill
+                     className="object-cover select-none mix-blend-screen"
                      style={{
                        maskImage: "radial-gradient(ellipse at center, black 20%, transparent 75%)",
                        WebkitMaskImage: "radial-gradient(ellipse at center, black 20%, transparent 75%)"
