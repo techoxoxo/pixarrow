@@ -7,7 +7,10 @@ import { useEffect, useState } from "react";
 
 export default function BlogList({ blogs }: { blogs: any[] }) {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+    console.log("BlogList received blogs:", blogs);
+  }, [blogs]);
 
   if (blogs.length === 0) {
     return (
