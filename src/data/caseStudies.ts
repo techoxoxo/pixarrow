@@ -33,7 +33,7 @@ export const caseStudies = [
     description: "Australia’s leading asset finance brokerage and aggregator.",
     fullDescription: "AusLoan leverages its proprietary 'Zink' fintech platform to connect consumers and businesses with over 40 lenders. They specialize in fast, paperless loan approvals for automotive, marine, and business equipment finance.",
     category: "Fintech / Finance",
-    year: "2024",
+    year: "2025",
     image: "/Screenshot-2026-02-09-040716.png",
     stats: [
       { label: "Lender Panel", value: "40+" },
@@ -47,7 +47,7 @@ export const caseStudies = [
     description: "Premium professional hairdressing and barber tools.",
     fullDescription: "An Australian-owned e-commerce destination providing high-grade steel scissors and shears. The platform caters to professional stylists and barbers, offering precision-crafted tools from brands like Matsui and Yasaka with a focus on ergonomics and durability.",
     category: "E-commerce",
-    year: "2023",
+    year: "2025",
     image: "/scissor.png",
     stats: [
       { label: "Orders Shipped", value: "10,000+" },
@@ -55,6 +55,20 @@ export const caseStudies = [
       { label: "Customer Satisfaction", value: "99%" },
     ],
   },
+  {
+  slug: "punjab-newsline",
+  title: "Punjab Newsline",
+  description: "Punjab Newsline is a dynamic and independent media company dedicated to delivering accurate, timely, and impactful news from Punjab, India, and beyond.",
+  fullDescription: "Punjab Newsline is a dynamic and independent media company dedicated to delivering accurate, timely, and impactful news from Punjab, India, and beyond. Our mission is to inform, engage, and empower audiences through high-quality journalism, in-depth reporting, and a deep understanding of regional issues. We cover a wide spectrum of content, including politics, agriculture, culture, social issues, entertainment, and youth affairs, with a special focus on Punjabi perspectives. With a strong digital presence and a commitment to ethical reporting, Punjab Newsline serves as a trusted voice for Punjabi communities locally and globally.",
+  category: "Media & News",
+  year: "2026",
+    image: "/pnl.png",
+  stats: [
+    { label: "Platform", value: "Web App" },
+    { label: "Content", value: "News & Analysis" },
+    { label: "Audience", value: "Global" },
+  ],
+},
 {
   slug: "brisbane-taxation",
   title: "Brisbane Business and Taxation",
