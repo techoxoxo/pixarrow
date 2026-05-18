@@ -20,12 +20,15 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL('https://pixarrow.com'),
   title: {
-    default: "Pixarrow — High-Performance Digital Growth Agency",
-    template: "%s | Pixarrow"
+    default: "Pixarrow — Premium Digital Growth & Web Engineering Agency",
+    template: "%s | Pixarrow - Digital Growth Agency"
   },
-  description: "Pixarrow is a high-decibel digital growth unit that transforms startups into market leaders through premium engineering, strategic design, and high-conversion motion systems.",
-  keywords: ["digital growth agency", "ui ux design", "nextjs development", "motion design agency", "startup growth", "pixarrow", "high performance web"],
+  description: "Pixarrow is a digital growth agency transforming startups into market leaders with premium next.js engineering, UI/UX design, and motion systems.",
+  keywords: ["digital growth agency", "ui ux design", "nextjs development", "motion design agency", "startup growth", "pixarrow", "high performance web", "web engineering agency"],
   authors: [{ name: "Anuj Sharma" }, { name: "Ankit Rajput" }],
+  alternates: {
+    canonical: 'https://pixarrow.com',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -40,8 +43,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pixarrow — Digital Growth Excellence',
-    description: 'Engineering systems that scale startups at hyper-speed.',
+    title: 'Pixarrow — Premium Digital Growth & Web Engineering Agency',
+    description: 'Pixarrow is a digital growth agency transforming startups into market leaders with premium next.js engineering, UI/UX design, and motion systems.',
     images: ['/og-image.png'],
   },
   icons: {
@@ -79,20 +82,23 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "LocalBusiness",
               "name": "Pixarrow",
               "url": "https://pixarrow.com",
               "logo": "https://pixarrow.com/logo.png",
+              "image": "https://pixarrow.com/og-image.png",
               "sameAs": [
                 "https://twitter.com/pixarrow",
                 "https://linkedin.com/company/pixarrow",
                 "https://instagram.com/pixarrow"
               ],
-              "description": "High-performance digital growth agency specialzing in UI/UX, Motion Systems, and Next.js Engineering.",
+              "description": "High-performance digital growth agency specializing in UI/UX, Motion Systems, and Next.js Engineering.",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "IN"
-              }
+              },
+              "telephone": "+91-7973060924",
+              "priceRange": "$$$"
             })
           }}
         />

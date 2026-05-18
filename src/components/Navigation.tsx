@@ -56,8 +56,7 @@ export default function Navigation() {
                 alt="Pixarrow" 
                 width={120}
                 height={28}
-                className="h-5 md:h-7 w-auto object-contain" 
-                style={{ height: 'auto' }}
+                className="h-auto w-auto object-contain max-h-5 md:max-h-7" 
                 priority
               />
             </Link>

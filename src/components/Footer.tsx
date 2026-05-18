@@ -13,7 +13,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col items-center text-center space-y-8 mb-32">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -22,7 +22,7 @@ export default function Footer() {
           >
             Ready for <span className="text-gradient">lift-off</span>
           </motion.h2>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -32,7 +32,7 @@ export default function Footer() {
           >
             Let&apos;s have a 30-minute discovery call to see if there&apos;s an opportunity to collaborate and work towards your goals.
           </motion.p>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -49,12 +49,12 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-white/5 text-sm text-white/30">
           <div className="flex flex-col md:flex-row items-center gap-8">
             <Link href="/" className="flex items-center gap-4 group">
-              <Image 
-                src="/favicon.png" 
-                alt="Pixarrow Logo" 
-                width={32} 
-                height={32} 
-                className="transform group-hover:scale-110 transition-transform" 
+              <Image
+                src="/favicon.png"
+                alt="Pixarrow Logo"
+                width={32}
+                height={32}
+                className="transform group-hover:scale-110 transition-transform"
               />
               <span className="font-bold text-white tracking-widest uppercase text-xs">Pixarrow</span>
             </Link>
@@ -63,8 +63,12 @@ export default function Footer() {
               <Link href="/legal/terms" className="hover:text-white transition-colors">Terms of Service</Link>
             </div>
           </div>
-          
+
           <div className="flex gap-8 items-center">
+            <div className="flex flex-col gap-2 mr-8 text-right">
+              <span className="text-white/40">Mohali, Punjab, India, 160062</span>
+              <a href="tel:+917973060924" className="hover:text-[#00F2FF] transition-colors">+91-7973060924</a>
+            </div>
             <div className="flex gap-6 mr-8">
               <Link href="https://www.facebook.com/Pixarrow/" className="hover:text-brand-purple transition-colors">Facebook</Link>
               <Link href="https://www.linkedin.com/company/pixarrow1/" className="hover:text-brand-purple transition-colors">LinkedIn</Link>
@@ -72,8 +76,8 @@ export default function Footer() {
               <Link href="https://www.behance.net/pixarrow" className="hover:text-brand-purple transition-colors">Behance</Link>
             </div>
             <div className="flex gap-6">
-              <a 
-                href="#" 
+              <a
+                href="#"
                 onClick={(e) => {
                   e.preventDefault();
                   window.location.href = `mailto:${'hello'}${'@'}${'pixarrow.com'}`;
@@ -86,10 +90,10 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        
+
         <div className="mt-12 flex justify-between items-center text-[10px] font-black uppercase tracking-[0.3em] text-white/10">
-           <div>© {new Date().getFullYear()} PIXARROW STUDIO</div>
-           <div>SHIPPING AT THE SPEED OF LIGHT</div>
+          <div>© {new Date().getFullYear()} PIXARROW STUDIO</div>
+          <div>SHIPPING AT THE SPEED OF LIGHT</div>
         </div>
       </div>
     </footer>

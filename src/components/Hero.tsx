@@ -79,7 +79,7 @@ export default function Hero() {
           </h2>
 
           <p className="hero-para text-base text-white/70 mb-8 max-w-sm leading-snug font-sans">
-            We design and build premium, high-converting websites and brand systems for startups that need to look enterprise-ready today.
+            We design and build premium, high-converting websites and brand systems through expert UI/UX design, next.js engineering, and motion systems for startups that need to look enterprise-ready today.
           </p>
 
           <Link href="/book" className="hero-btn px-10 py-4 bg-brand-purple text-white font-bold text-[16px] rounded-full transition-all hover:scale-105 active:scale-95 mb-10 shadow-glow-purple flex items-center justify-center">
@@ -146,7 +146,7 @@ export default function Hero() {
                         : "text-white/40 hover:text-white hover:bg-white/5"
                     }`}
                   >
-                    <Icon className={`w-4 h-4 ${isActive ? "text-brand-purple" : "text-white/20"}`} style={{ strokeWidth: 2.5 }} />
+                    <Icon className={`w-4 h-4 ${isActive ? "text-brand-purple" : "text-white/20"}`} strokeWidth={2.5} />
                     <span className={isActive ? "text-brand-bg" : "text-white/40"}>{tab.label}</span>
                   </button>
                 );
