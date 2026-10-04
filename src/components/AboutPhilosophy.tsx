@@ -6,13 +6,13 @@ export default function AboutPhilosophy() {
   return (
     <section className="py-32 px-6 relative z-10 overflow-hidden">
        {/* Visual Accent */}
-       <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-400 opacity-20 blur-[60px] translate-x-1/2 -translate-y-1/2" />
+       <div className="absolute top-0 right-0 w-48 h-48 bg-brand-purple/20 blur-[80px] translate-x-1/2 -translate-y-1/2" />
        
        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-20 items-start">
           <div className="w-full md:w-1/2">
-             <h2 className="text-5xl md:text-6xl font-black tracking-tighter leading-tight relative">
+             <h2 className="text-5xl md:text-6xl font-black tracking-tighter leading-tight relative text-white italic">
                 Helping challenger brands look like <br/><span className="text-gradient">market leaders.</span>
-                <div className="absolute -top-10 -right-10 w-20 h-20 border-t-8 border-r-8 border-yellow-400 opacity-20" />
+                <div className="absolute -top-10 -right-10 w-20 h-20 border-t-8 border-r-8 border-brand-purple/20" />
              </h2>
           </div>
           

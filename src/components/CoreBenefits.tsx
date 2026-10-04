@@ -29,7 +29,7 @@ export default function CoreBenefits() {
     <section className="py-24 px-6 relative z-10 w-full">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
-          <h2 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter mb-8 max-w-4xl text-neutral-900 leading-[0.9] italic">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter mb-8 max-w-4xl text-white leading-[0.9] italic">
             Designed to empower early-stage <span className="text-gradient">disruptors.</span>
           </h2>
         </div>
@@ -42,13 +42,13 @@ export default function CoreBenefits() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className={`p-10 rounded-[3rem] border border-black/5 bg-white shadow-xl group hover:shadow-2xl transition-all duration-500 ${benefit.className}`}
+              className={`p-10 rounded-[3rem] border border-white/10 bg-white/[0.03] shadow-3xl backdrop-blur-xl group hover:border-brand-purple/40 hover:bg-white/[0.06] transition-all duration-500 ${benefit.className}`}
             >
-              <div className="w-16 h-16 rounded-[1.5rem] bg-brand-soft border border-black/5 flex items-center justify-center mb-10 group-hover:scale-110 transition-all duration-500 shadow-sm">
+              <div className="w-16 h-16 rounded-[1.5rem] bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center mb-10 group-hover:scale-110 transition-all duration-500 shadow-glow-purple/20">
                 {benefit.icon}
               </div>
-              <h3 className="text-3xl font-black mb-4 tracking-tighter text-neutral-900 leading-none italic">{benefit.title}</h3>
-              <p className="text-neutral-500 text-lg leading-relaxed font-medium">{benefit.description}</p>
+              <h3 className="text-3xl font-black mb-4 tracking-tighter text-white leading-none italic">{benefit.title}</h3>
+              <p className="text-white/60 text-lg leading-relaxed font-medium">{benefit.description}</p>
             </motion.div>
           ))}
         </div>

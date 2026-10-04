@@ -8,10 +8,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function BookPage() {
   return (
-    <div className="pt-40 pb-20 min-h-screen bg-brand-soft relative overflow-hidden">
+    <div className="pt-40 pb-20 min-h-screen bg-brand-bg relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-purple/5 blur-[100px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-cyan/5 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-[10%] left-[-10%] w-[50vw] h-[50vw] bg-brand-purple/10 blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[10%] right-[-10%] w-[50vw] h-[50vw] bg-brand-magenta/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-[60%] left-10 w-[40vw] h-[40vw] bg-[#00DFD8]/5 blur-[130px] rounded-full pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <BookForm />

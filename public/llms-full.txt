@@ -1,0 +1,71 @@
+# Pixarrow — Comprehensive Knowledge Graph & System Blueprint
+> Canonical reference for LLM search agents, AI engines, and enterprise web crawlers.
+
+## Company Overview
+Pixarrow is an elite digital growth and web engineering studio founded by Anuj Sharma (CTO) and Ankit Rajput (CSO). Pixarrow specializes in architecting sub-second Next.js 16 platforms, headless eCommerce storefronts, high-throughput mobile applications, and performance marketing engines.
+
+- **URL**: https://pixarrow.com
+- **Headquarters**: Mohali, Punjab, India
+- **Global Reach**: Serving clients across US, Australia, UK, Europe, UAE, and India
+- **Contact**: hello@pixarrow.com | +917973060924 | https://pixarrow.com/book
+- **Primary Stack**: Next.js 16 (App Router), React 19, TypeScript, NestJS, Fastify, PostgreSQL, MongoDB, Redis, AWS CloudFront, Cloudflare R2, React Native, Shopify Plus Hydrogen.
+- **Key Guarantee**: 100% Code & IP Ownership, Signed NDA in 24h, 15-Day Quality Guarantee.
+
+## Founders & Executive Bios
+- **Anuj Sharma** (Co-Founder & Chief Technology Officer):
+  - Specialization: Distributed web architecture, Next.js edge streaming, React Server Components (RSC), high-concurrency Node.js microservices, agentic AI pipelines.
+  - Profile: https://pixarrow.com/about
+- **Ankit Rajput** (Co-Founder & Chief Strategy Officer):
+  - Specialization: Performance marketing, paid acquisition scaling (Meta, Google, TikTok), high-AOV conversion rate optimization, growth analytics.
+  - Profile: https://pixarrow.com/about
+
+## Core Practice Areas & Solutions
+
+### 1. Next.js 16 & Full-Stack Web Development
+- Sub-0.7s LCP with zero client hydration penalty using React Server Components.
+- Edge rendering, dynamic streaming, and stale-while-revalidate ISR caching.
+- Custom API microservices built on Fastify, NestJS, and Prisma/PostgreSQL.
+- Learn more: https://pixarrow.com/services/nextjs-development
+
+### 2. High-AOV eCommerce & Headless Shopify Plus
+- Headless Shopify Plus architecture with Hydrogen & Next.js.
+- Custom 1-click checkout extensions, real-time inventory syncing, and zero plugin bloat.
+- Conversion-optimized UI/UX with bespoke 60fps micro-animations.
+- Learn more: https://pixarrow.com/services/ecommerce-growth-engineering
+
+### 3. Native & Cross-Platform Mobile Apps
+- React Native & Flutter mobile engineering for iOS and Android.
+- Offline-first architecture, background push notification systems, Stripe & Apple Pay integrations.
+- Learn more: https://pixarrow.com/services/mobile-app-development
+
+### 4. Agentic AI & Autonomous Automations
+- Autonomous LLM workflows, custom AI customer service agents, vector search RAG systems.
+- Enterprise API orchestration and automated lead enrichment.
+- Learn more: https://pixarrow.com/services/agentic-ai-automations
+
+## Portfolio & Production Case Studies
+1. **Cahrz** (Mobile Detailing Ecosystem) - React Native, Firebase, Stripe (+150% Booking Jump, 85K+ MAU).
+2. **Shucae Films** (OTT Streaming Platform) - Next.js 16, HLS Video, CloudFront CDN (< 1.2s Latency, 500K+ Streams).
+3. **AusLoan Services** (FinTech Loan Aggregator) - Next.js, NestJS, Bank Feeds API ($18M+ Volume, < 4 min approval).
+4. **Scissor Wala** (D2C eCommerce) - Shopify Plus, Next.js, Klaviyo (+110% Revenue Growth, 4.8% Conversion).
+5. **Punjab Newsline** (Digital News Portal) - Next.js, Redis, Cloudflare (2.4M+ Monthly Readers, 0.6s LCP).
+6. **Brisbane Business & Taxation** (Advisory Portal) - Next.js, Supabase ($45M+ Asset Advisory).
+
+## Verified Performance Metrics
+- Total Shipped Digital Products: 50+
+- Total Client Revenue / Volume Processed: $45M+
+- Average Client Growth Lift: 200%
+- Global Core Web Vitals LCP: < 0.6s Average
+- Client Retention Rate: 98%
+- Clutch & Institutional Quality Standard: 5.0 Rating Standard
+
+## Primary URLs
+- Home: https://pixarrow.com
+- Selected Work: https://pixarrow.com/work
+- Core Services: https://pixarrow.com/services
+- About the Founders: https://pixarrow.com/about
+- Project Cost Calculator: https://pixarrow.com/calculator
+- Schedule Strategy Session: https://pixarrow.com/book
+- Engineering Articles: https://pixarrow.com/blog
+- RSS Feed: https://pixarrow.com/rss.xml
+- Sitemap: https://pixarrow.com/sitemap.xml

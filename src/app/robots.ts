@@ -1,4 +1,4 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,14 +6,47 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin/', '/private/'],
+        disallow: ['/admin', '/admin/*', '/private', '/api/admin/*'],
       },
       {
-        userAgent: ['GPTBot', 'ChatGPT-User', 'ClaudeBot', 'PerplexityBot', 'Google-Extended', 'OAI-SearchBot', 'anthropic-ai'],
-        allow: ['/', '/llms.txt'],
-        disallow: ['/admin/', '/private/'],
-      }
+        userAgent: [
+          // OpenAI / ChatGPT Search
+          'GPTBot',
+          'ChatGPT-User',
+          'OAI-SearchBot',
+          // Anthropic / Claude
+          'ClaudeBot',
+          'Claude-Web',
+          'anthropic-ai',
+          // Perplexity AI
+          'PerplexityBot',
+          // Google AI & Search
+          'Google-Extended',
+          'Googlebot',
+          'Googlebot-Image',
+          'Googlebot-News',
+          // Microsoft Bing & Copilot
+          'Bingbot',
+          'msnbot',
+          // Apple Intelligence
+          'Applebot',
+          'Applebot-Extended',
+          // Others
+          'Amazonbot',
+          'cohere-ai',
+          'DuckDuckBot',
+          'Yandex',
+          'Baiduspider',
+          'facebookexternalhit',
+          'Twitterbot',
+          'LinkedInBot',
+        ],
+        allow: ['/', '/llms.txt', '/llms-full.txt', '/sitemap.xml', '/rss.xml'],
+        disallow: ['/admin', '/admin/*', '/private', '/api/admin/*'],
+      },
     ],
     sitemap: 'https://pixarrow.com/sitemap.xml',
-  }
+    host: 'https://pixarrow.com',
+  };
 }
+

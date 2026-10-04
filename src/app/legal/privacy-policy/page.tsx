@@ -1,3 +1,10 @@
+import { generateDynamicMetadata } from "@/lib/seo";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return await generateDynamicMetadata("/legal/privacy-policy");
+}
+
 export default function PrivacyPage() {
   return (
     <div className="pt-40 pb-20 min-h-screen">

@@ -2,12 +2,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-bg: #140628;
-  --color-brand-card: #1C0C38;
-  --color-brand-purple: #7C3AED;
-  --color-brand-cyan: #22D3EE;
+  --color-brand-bg: #050011;
+  --color-brand-card: #0e0524;
+  --color-brand-purple: #7c3aed;
+  --color-brand-cyan: #22d3ee;
+  --color-brand-magenta: #ff007a;
   --color-brand-white: #ffffff;
-  --color-brand-soft: #F5F3FF;
+  --color-brand-soft: #f5f3ff;
   
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;

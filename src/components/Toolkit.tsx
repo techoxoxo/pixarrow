@@ -36,7 +36,10 @@ const stack = [
 
 export default function Toolkit() {
   return (
-    <section className="pixarrow-stack-section -mx-6 md:-mx-20 lg:-mx-32 bg-[#f7f7f7] py-20 lg:py-40 flex justify-center overflow-hidden">
+    <section className="pixarrow-stack-section -mx-6 md:-mx-20 lg:-mx-32 bg-transparent py-10 lg:py-20 flex justify-center overflow-hidden relative">
+      {/* Background Soft Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-brand-purple/10 blur-[150px] rounded-full pointer-events-none" />
+
       <style jsx>{`
         .hive {
           display: flex;
@@ -64,13 +67,17 @@ export default function Toolkit() {
         .cell:hover {
           transform: scale(1.07);
           z-index: 10;
-          filter: drop-shadow(0 8px 22px rgba(0,0,0,.35));
+          filter: drop-shadow(0 0 25px rgba(124,58,237,0.45));
         }
         .cell::before {
           content: '';
           position: absolute;
           inset: 0;
-          background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 156 180'%3E%3Cpolygon points='78,1 155,41 155,139 78,179 1,139 1,41' fill='white' stroke='%23e0e0e0' stroke-width='2'/%3E%3C/svg%3E") no-repeat center/100% 100%;
+          background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 156 180'%3E%3Cpolygon points='78,1 155,41 155,139 78,179 1,139 1,41' fill='%230e0524' stroke='rgba(255,255,255,0.08)' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat center/100% 100%;
+          transition: background .22s ease;
+        }
+        .cell:hover::before {
+          background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 156 180'%3E%3Cpolygon points='78,1 155,41 155,139 78,179 1,139 1,41' fill='%23170a38' stroke='rgba(124,58,237,0.5)' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat center/100% 100%;
         }
         .cell-content {
           position: absolute;
@@ -86,14 +93,20 @@ export default function Toolkit() {
           width: 48px;
           height: 48px;
           object-fit: contain;
+          filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
         }
         .label {
           font-size: 11.5px;
           font-weight: 700;
-          color: #2a2a2a;
+          color: #ffffff;
+          opacity: 0.8;
           text-align: center;
           line-height: 1.3;
           font-family: 'DM Sans', sans-serif;
+        }
+        .cell:hover .label {
+          opacity: 1;
+          color: #A855F7;
         }
         @media (max-width: 1024px) {
            .hive {
@@ -118,10 +131,12 @@ export default function Toolkit() {
         }
       `}</style>
       
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center relative z-10">
         <div className="text-center mb-16">
-           <h2 className="text-4xl md:text-5xl font-black text-[#111] tracking-tighter mb-4">Our Technology Stack</h2>
-           <p className="text-black/40 font-bold tracking-widest uppercase text-[10px]">Built for Scale & Performance</p>
+           <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-4 italic">
+             Our Technology <span className="text-gradient">Stack</span>
+           </h2>
+           <p className="text-white/40 font-bold tracking-widest uppercase text-[10px]">Built for Scale &amp; Performance</p>
         </div>
 
         <div className="hive">

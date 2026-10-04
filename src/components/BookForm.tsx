@@ -5,7 +5,7 @@ import { Clock, Video, Calendar, ArrowRight, ArrowLeft, CheckCircle2 } from "luc
 import { useState } from "react";
 
 const inputCls =
-  "w-full px-5 py-3.5 bg-brand-soft/50 border border-black/10 rounded-2xl outline-none text-brand-bg placeholder:text-brand-bg/40 focus:border-brand-purple/50 transition-colors text-sm";
+  "w-full px-5 py-3.5 bg-white/[0.04] border border-white/10 rounded-2xl outline-none text-white placeholder:text-white/30 focus:border-brand-purple/70 focus:bg-white/[0.07] focus:ring-1 focus:ring-brand-purple/40 transition-all text-sm";
 
 export default function BookForm() {
   const [step, setStep] = useState(1);
@@ -89,17 +89,17 @@ export default function BookForm() {
         animate={{ opacity: 1, scale: 1 }}
         className="max-w-md w-full mx-auto px-6 relative z-10 text-center"
       >
-        <div className="bg-white border border-black/5 rounded-[3rem] p-12 shadow-premium">
-          <div className="w-20 h-20 bg-brand-purple/10 rounded-full flex items-center justify-center mx-auto mb-8">
-            <CheckCircle2 className="w-10 h-10 text-brand-purple" />
+        <div className="bg-[#0c051a]/90 border border-white/10 rounded-[3rem] p-12 shadow-3xl backdrop-blur-2xl">
+          <div className="w-20 h-20 bg-brand-purple/20 border border-brand-purple/40 rounded-full flex items-center justify-center mx-auto mb-8 shadow-glow-purple">
+            <CheckCircle2 className="w-10 h-10 text-[#A855F7]" />
           </div>
-          <h2 className="text-3xl font-black mb-4 text-brand-bg">Booking Confirmed!</h2>
-          <p className="text-brand-bg/50 mb-8">
+          <h2 className="text-3xl font-black mb-4 text-white">Booking Confirmed!</h2>
+          <p className="text-white/50 mb-8">
             We&apos;ve shared your details with our team. Expect a confirmation shortly!
           </p>
           <button
             onClick={() => (window.location.href = "/")}
-            className="w-full py-4 bg-brand-purple text-white rounded-full font-bold shadow-glow-purple transition-transform hover:scale-105"
+            className="w-full py-4 bg-brand-purple hover:bg-brand-purple/90 text-white rounded-full font-bold shadow-glow-purple transition-transform hover:scale-105"
           >
             Back to Home
           </button>
@@ -109,14 +109,14 @@ export default function BookForm() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 bg-white border border-black/5 rounded-[3rem] overflow-hidden shadow-premium min-h-[680px]">
+    <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 bg-[#0c051a]/80 border border-white/10 rounded-[3rem] overflow-hidden shadow-3xl min-h-[680px] backdrop-blur-2xl">
       {/* Left Info Column */}
-      <div className="lg:col-span-2 p-10 bg-brand-bg/5 border-b lg:border-b-0 lg:border-r border-black/5 flex flex-col">
+      <div className="lg:col-span-2 p-10 bg-[#080214]/60 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col">
         <div className="flex-1">
           {step === 2 && (
             <button
               onClick={() => setStep(1)}
-              className="p-3 rounded-full bg-white border border-black/5 text-brand-bg/50 hover:text-brand-purple transition-all mb-8 shadow-sm"
+              className="p-3 rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition-all mb-8 shadow-sm cursor-pointer"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
@@ -125,33 +125,35 @@ export default function BookForm() {
             <img
               src="/6g38mfg1psrmy0cwpptrqn6c0m.png"
               alt="Anuj Sharma"
-              className="w-14 h-14 rounded-full border-2 border-brand-purple/20 object-cover"
+              className="w-14 h-14 rounded-full border-2 border-brand-purple/40 object-cover"
             />
             <div>
-              <div className="text-lg font-black text-brand-bg">Anuj Sharma</div>
-              <div className="text-xs font-bold tracking-widest text-brand-bg/40 uppercase">Pixarrow Studio</div>
+              <div className="text-lg font-black text-white">Anuj Sharma</div>
+              <div className="text-xs font-bold tracking-widest text-[#A855F7] uppercase">Pixarrow Studio</div>
             </div>
           </div>
-          <h1 className="text-3xl font-black tracking-tighter mb-5 leading-tight text-brand-bg">Discovery Call</h1>
+          <h1 className="text-3xl font-black tracking-tighter mb-5 leading-tight text-white">
+            Discovery <span className="text-gradient">Call</span>
+          </h1>
           <div className="space-y-3">
-            <div className="flex items-center gap-3 text-brand-bg/60">
-              <Clock className="w-5 h-5 text-brand-purple shrink-0" />
+            <div className="flex items-center gap-3 text-white/70">
+              <Clock className="w-5 h-5 text-[#A855F7] shrink-0" />
               <span className="font-medium">30 min</span>
             </div>
-            <div className="flex items-center gap-3 text-brand-bg/60">
-              <Video className="w-5 h-5 text-brand-purple shrink-0" />
+            <div className="flex items-center gap-3 text-white/70">
+              <Video className="w-5 h-5 text-[#A855F7] shrink-0" />
               <span className="font-medium">Google Meet / Zoom</span>
             </div>
           </div>
         </div>
         {/* Step indicator */}
         <div className="flex gap-2 pt-8">
-          <div className={`h-1 w-8 rounded-full transition-all duration-500 ${step === 1 ? "bg-brand-purple" : "bg-brand-purple/30"}`} />
-          <div className={`h-1 w-8 rounded-full transition-all duration-500 ${step === 2 ? "bg-brand-purple" : "bg-brand-purple/20"}`} />
+          <div className={`h-1 w-8 rounded-full transition-all duration-500 ${step === 1 ? "bg-brand-purple shadow-glow-purple" : "bg-white/10"}`} />
+          <div className={`h-1 w-8 rounded-full transition-all duration-500 ${step === 2 ? "bg-brand-purple shadow-glow-purple" : "bg-white/10"}`} />
         </div>
       </div>
 
-      {/* Right Content Column – stable height prevents layout collapse between steps */}
+      {/* Right Content Column */}
       <div className="lg:col-span-3 p-8 md:p-10 flex flex-col">
         <AnimatePresence mode="wait">
           {step === 1 ? (
@@ -162,21 +164,21 @@ export default function BookForm() {
               exit={{ opacity: 0, x: -20 }}
               className="flex-1 flex flex-col"
             >
-              <h2 className="text-2xl font-black mb-5 text-brand-bg">Select a Date &amp; Time</h2>
+              <h2 className="text-2xl font-black mb-5 text-white">Select a Date &amp; Time</h2>
               <div className="flex flex-col md:flex-row gap-6 flex-1">
                 <div className="flex-1">
-                  <p className="text-xs font-bold text-brand-bg/40 uppercase tracking-widest mb-3">April 2026</p>
-                  <div className="grid grid-cols-7 gap-1">
+                  <p className="text-xs font-bold text-white/40 uppercase tracking-widest mb-3">April 2026</p>
+                  <div className="grid grid-cols-7 gap-1.5">
                     {days.map((d) => (
                       <div
                         key={d}
                         onClick={() => d >= currentDay && setSelectedDate(d)}
                         className={`aspect-square flex items-center justify-center rounded-xl text-sm font-bold transition-all cursor-pointer ${
                           selectedDate === d
-                            ? "bg-brand-purple text-white shadow-glow-purple"
+                            ? "bg-brand-purple text-white shadow-glow-purple scale-105"
                             : d < currentDay
-                            ? "text-brand-bg/10 cursor-not-allowed"
-                            : "hover:bg-brand-soft text-brand-bg"
+                            ? "text-white/10 cursor-not-allowed"
+                            : "hover:bg-white/10 text-white/80 border border-transparent hover:border-white/10"
                         }`}
                       >
                         {d}
@@ -185,18 +187,18 @@ export default function BookForm() {
                   </div>
                 </div>
                 <div className="w-full md:w-40 flex flex-col gap-2">
-                  <p className="text-xs font-bold text-brand-bg/40 uppercase tracking-widest mb-1">Time Slot</p>
+                  <p className="text-xs font-bold text-white/40 uppercase tracking-widest mb-1">Time Slot</p>
                   {times.map((t) => (
                     <button
                       key={t}
                       disabled={isTimeInPast(t)}
                       onClick={() => setSelectedTime(t)}
-                      className={`w-full py-3 rounded-xl border font-bold text-sm text-center transition-all ${
+                      className={`w-full py-3 rounded-xl border font-bold text-sm text-center transition-all cursor-pointer ${
                         selectedTime === t
-                          ? "border-brand-purple bg-brand-purple text-white shadow-sm"
+                          ? "border-brand-purple bg-brand-purple text-white shadow-glow-purple"
                           : isTimeInPast(t)
-                          ? "border-black/5 bg-brand-bg/5 text-brand-bg/10 cursor-not-allowed"
-                          : "border-black/5 bg-brand-soft/50 text-brand-bg/50 hover:border-brand-purple/30 hover:text-brand-purple"
+                          ? "border-white/5 bg-white/[0.01] text-white/10 cursor-not-allowed"
+                          : "border-white/10 bg-white/[0.03] text-white/70 hover:border-brand-purple/50 hover:text-white hover:bg-white/[0.06]"
                       }`}
                     >
                       {t}
@@ -208,7 +210,7 @@ export default function BookForm() {
                 <button
                   disabled={!selectedDate || !selectedTime}
                   onClick={() => setStep(2)}
-                  className="flex items-center gap-3 px-8 py-4 bg-brand-purple text-white rounded-full font-bold shadow-premium transition-transform hover:scale-105 disabled:opacity-30"
+                  className="flex items-center gap-3 px-8 py-4 bg-brand-purple hover:bg-brand-purple/90 text-white rounded-full font-bold shadow-glow-purple transition-transform hover:scale-105 disabled:opacity-30 disabled:hover:scale-100 cursor-pointer"
                 >
                   Confirm Booking <ArrowRight className="w-5 h-5" />
                 </button>
@@ -222,10 +224,10 @@ export default function BookForm() {
               exit={{ opacity: 0, x: -20 }}
               className="flex-1 flex flex-col"
             >
-              <h2 className="text-2xl font-black mb-2 text-brand-bg">Enter Details</h2>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-purple/10 rounded-full mb-5 w-fit">
-                <Calendar className="w-4 h-4 text-brand-purple" />
-                <span className="text-sm font-bold text-brand-purple">
+              <h2 className="text-2xl font-black mb-2 text-white">Enter Details</h2>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-purple/15 border border-brand-purple/30 rounded-full mb-5 w-fit">
+                <Calendar className="w-4 h-4 text-[#A855F7]" />
+                <span className="text-sm font-bold text-[#A855F7]">
                   April {selectedDate} · {selectedTime}
                 </span>
               </div>
@@ -264,11 +266,11 @@ export default function BookForm() {
                 <select
                   value={formData.source}
                   onChange={(e) => setFormData({ ...formData, source: e.target.value })}
-                  className={`${inputCls} appearance-none`}
+                  className={`${inputCls} appearance-none cursor-pointer`}
                 >
-                  <option value="" disabled>How did you hear about us?</option>
+                  <option value="" disabled className="bg-[#0e0524] text-white">How did you hear about us?</option>
                   {sources.map((s) => (
-                    <option key={s} value={s}>{s}</option>
+                    <option key={s} value={s} className="bg-[#0e0524] text-white">{s}</option>
                   ))}
                 </select>
                 {formData.source === "Other" && (
@@ -293,7 +295,7 @@ export default function BookForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 bg-brand-purple text-white rounded-full font-black text-lg shadow-glow-purple transition-all flex items-center justify-center gap-3 mt-auto"
+                  className="w-full py-4 bg-brand-purple hover:bg-brand-purple/90 text-white rounded-full font-black text-lg shadow-glow-purple transition-all flex items-center justify-center gap-3 mt-auto cursor-pointer hover:scale-[1.02] active:scale-95 disabled:opacity-50"
                 >
                   {isSubmitting ? "Processing..." : "Schedule Discovery Call"}
                 </button>

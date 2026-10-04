@@ -3,6 +3,12 @@ import Timeline from "@/components/Timeline";
 import Methodology from "@/components/Methodology";
 import Comparison from "@/components/Comparison";
 import ReadyToLaunch from "@/components/ReadyToLaunch";
+import { generateDynamicMetadata } from "@/lib/seo";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return await generateDynamicMetadata("/process");
+}
 
 export default function ProcessPage() {
   return (

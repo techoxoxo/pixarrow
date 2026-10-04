@@ -1,18 +1,24 @@
 import { NextResponse } from 'next/server';
-import dbConnect from "@/lib/mongodb";
-import Blog from "@/models/Blog";
+import dbConnect from '@/lib/mongodb';
+import Blog from '@/models/Blog';
+import { pingIndexNow } from '@/lib/indexnow';
 
-export async function DELETE(
+export const dynamic = 'force-dynamic';
+
+export async function GET(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params;
     await dbConnect();
-    await Blog.findByIdAndDelete(id);
-    return NextResponse.json({ success: true, message: 'Blog deleted successfully' });
-  } catch (error) {
-    return NextResponse.json({ success: false, error: 'Failed to delete blog' }, { status: 500 });
+    const blog = await Blog.findById(id);
+    if (!blog) {
+      return NextResponse.json({ success: false, error: 'Blog not found' }, { status: 404 });
+    }
+    return NextResponse.json({ success: true, data: blog });
+  } catch (error: any) {
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
 
@@ -24,15 +30,54 @@ export async function PATCH(
     const { id } = await params;
     await dbConnect();
     const data = await request.json();
-    
-    // Update slug if title changed and slug not provided
-    if (data.title && !data.slug) {
-        data.slug = data.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+
+    const updatedBlog = await Blog.findByIdAndUpdate(
+      id,
+      { $set: data },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedBlog) {
+      return NextResponse.json({ success: false, error: 'Blog not found' }, { status: 404 });
     }
 
-    const blog = await Blog.findByIdAndUpdate(id, data, { new: true });
-    return NextResponse.json({ success: true, data: blog });
-  } catch (error) {
-    return NextResponse.json({ success: false, error: 'Failed to update blog' }, { status: 500 });
+    // Ping search engines on update
+    try {
+      await pingIndexNow(['/blog', `/blog/${updatedBlog.slug}`]);
+    } catch (err) {
+      console.error('IndexNow ping error on blog update:', err);
+    }
+
+    return NextResponse.json({ success: true, data: updatedBlog });
+  } catch (error: any) {
+    console.error('Blog update error:', error);
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  }
+}
+
+export async function DELETE(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { id } = await params;
+    await dbConnect();
+    const deletedBlog = await Blog.findByIdAndDelete(id);
+
+    if (!deletedBlog) {
+      return NextResponse.json({ success: false, error: 'Blog not found' }, { status: 404 });
+    }
+
+    // Ping search engines to refresh blog list
+    try {
+      await pingIndexNow(['/blog']);
+    } catch (err) {
+      console.error('IndexNow ping error on blog delete:', err);
+    }
+
+    return NextResponse.json({ success: true, message: 'Blog deleted successfully' });
+  } catch (error: any) {
+    console.error('Blog deletion error:', error);
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }

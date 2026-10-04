@@ -123,11 +123,11 @@ export default function SocialShowcase() {
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-brand-purple/10 border border-brand-purple/20 rounded-full flex items-center justify-center backdrop-blur-3xl z-10 shadow-glow-purple"
             >
               <Image 
-                src="/favicon.png" 
+                src="/logo-icon.png" 
                 alt="Pixarrow" 
                 width={80} 
                 height={80} 
-                className="opacity-80" 
+                className="opacity-90 object-contain drop-shadow-[0_0_15px_rgba(124,58,237,0.5)]" 
               />
               
               {/* Rotating Rings */}

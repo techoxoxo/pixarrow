@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from "@/lib/mongodb";
 import Blog from "@/models/Blog";
+import { pingIndexNow } from "@/lib/indexnow";
 
 export const dynamic = 'force-dynamic';
 
@@ -25,6 +26,16 @@ export async function POST(request: Request) {
     }
 
     const blog = await Blog.create(data);
+
+    // Instant Multi-Engine IndexNow Notification (Bing, Yahoo, Yandex)
+    if (blog.status === 'published') {
+      try {
+        await pingIndexNow(['/blog', `/blog/${blog.slug}`]);
+      } catch (err) {
+        console.error('IndexNow ping error on blog create:', err);
+      }
+    }
+
     return NextResponse.json({ success: true, data: blog });
   } catch (error) {
     console.error("Blog creation error:", error);

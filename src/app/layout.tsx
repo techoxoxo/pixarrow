@@ -48,11 +48,19 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
   icons: {
-    icon: "/favicon.png",
+    icon: [
+      { url: "/favicon.png" },
+      { url: "/logo-icon.png", sizes: "270x270" },
+    ],
+    shortcut: "/favicon.png",
+    apple: "/logo-icon.png",
   },
 };
 
 import Script from "next/script";
+
+import QuickInquiryDrawer from "@/components/QuickInquiryDrawer";
+import FloatingActions from "@/components/FloatingActions";
 
 export default function RootLayout({
   children,
@@ -82,23 +90,131 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "name": "Pixarrow",
-              "url": "https://pixarrow.com",
-              "logo": "https://pixarrow.com/logo.png",
-              "image": "https://pixarrow.com/og-image.png",
-              "sameAs": [
-                "https://twitter.com/pixarrow",
-                "https://linkedin.com/company/pixarrow",
-                "https://instagram.com/pixarrow"
-              ],
-              "description": "High-performance digital growth agency specializing in UI/UX, Motion Systems, and Next.js Engineering.",
-              "address": {
-                "@type": "PostalAddress",
-                "addressCountry": "IN"
-              },
-              "telephone": "+91-7973060924",
-              "priceRange": "$$$"
+              "@graph": [
+                {
+                  "@type": ["Organization", "ProfessionalService"],
+                  "@id": "https://pixarrow.com/#organization",
+                  "name": "Pixarrow",
+                  "alternateName": [
+                    "Pixarrow Agency",
+                    "Pixarrow Technologies",
+                    "Pixarrow Web Engineering",
+                    "Pixarrow Digital Growth"
+                  ],
+                  "url": "https://pixarrow.com",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "@id": "https://pixarrow.com/#logo",
+                    "url": "https://pixarrow.com/logo.png",
+                    "caption": "Pixarrow Logo"
+                  },
+                  "image": "https://pixarrow.com/og-image.png",
+                  "description": "Pixarrow is an elite digital growth and web engineering agency transforming ambitious startups and global enterprises with high-performance Next.js architectures, React Native mobile apps, agentic AI workflows, and cinematic motion design systems.",
+                  "telephone": "+917973060924",
+                  "email": "hello@pixarrow.com",
+                  "priceRange": "$$$",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Mohali",
+                    "addressRegion": "Punjab",
+                    "addressCountry": "IN"
+                  },
+                  "founders": [
+                    {
+                      "@type": "Person",
+                      "name": "Anuj Sharma",
+                      "jobTitle": "Co-Founder & Chief Technology Officer (CTO)",
+                      "url": "https://pixarrow.com/about",
+                      "sameAs": [
+                        "https://github.com/techoxoxo",
+                        "https://linkedin.com/in/anuj-sharma-pixarrow"
+                      ]
+                    },
+                    {
+                      "@type": "Person",
+                      "name": "Ankit Rajput",
+                      "jobTitle": "Co-Founder & Chief Strategy Officer (CSO)",
+                      "url": "https://pixarrow.com/about",
+                      "sameAs": [
+                        "https://linkedin.com/company/pixarrow"
+                      ]
+                    }
+                  ],
+                  "sameAs": [
+                    "https://twitter.com/pixarrow",
+                    "https://linkedin.com/company/pixarrow",
+                    "https://instagram.com/pixarrow",
+                    "https://github.com/pixarrow"
+                  ],
+                  "knowsAbout": [
+                    "Next.js 16 Web Engineering",
+                    "Full-Stack Web Architecture",
+                    "React Native Mobile Development",
+                    "Agentic AI & LLM Systems",
+                    "UI/UX Design Systems",
+                    "Shopify Plus & Headless Commerce",
+                    "Conversion Rate Optimization (CRO)",
+                    "Generative Engine Optimization (GEO)",
+                    "Performance Marketing & Paid Acquisition"
+                  ],
+                  "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Pixarrow Engineering & Growth Services",
+                    "itemListElement": [
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Full-Stack Web Engineering (Next.js)",
+                          "description": "Sub-second load times, dynamic SSR/ISR, and enterprise microservices built for extreme scale.",
+                          "url": "https://pixarrow.com/services/web-app-development"
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Mobile Application Development",
+                          "description": "Native and cross-platform iOS & Android mobile applications engineered with React Native.",
+                          "url": "https://pixarrow.com/services/mobile-app-development"
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "AI Integration & Agentic Systems",
+                          "description": "Custom LLM pipelines, autonomous agents, RAG architectures, and AI automations.",
+                          "url": "https://pixarrow.com/services/ai-integration"
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Conversion-First UI/UX & Motion Systems",
+                          "description": "Design systems engineered for maximum conversion, visual prestige, and user retention.",
+                          "url": "https://pixarrow.com/services/ui-ux-design"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://pixarrow.com/#website",
+                  "url": "https://pixarrow.com",
+                  "name": "Pixarrow",
+                  "publisher": {
+                    "@id": "https://pixarrow.com/#organization"
+                  },
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://pixarrow.com/work?search={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                  }
+                }
+              ]
             })
           }}
         />
@@ -110,6 +226,8 @@ export default function RootLayout({
           </SmoothScroll>
         </main>
         <Footer />
+        <QuickInquiryDrawer />
+        <FloatingActions />
       </body>
     </html>
   );
