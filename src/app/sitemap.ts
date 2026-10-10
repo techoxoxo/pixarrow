@@ -21,34 +21,34 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1.0,
     },
     {
+      url: `${baseUrl}/work`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.95,
+    },
+    {
       url: `${baseUrl}/hire-developers`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.95,
     },
     {
+      url: `${baseUrl}/services`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.90,
+    },
+    {
       url: `${baseUrl}/calculator`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.95,
+      priority: 0.90,
     },
     {
       url: `${baseUrl}/book`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/work`,
-      lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.85,
+      priority: 0.90,
     },
     {
       url: `${baseUrl}/blog`,
@@ -60,13 +60,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/process`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.80,
     },
   ];
 

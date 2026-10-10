@@ -2,34 +2,51 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, PhoneCall, ArrowRight } from "lucide-react";
+import { Plus, Minus, PhoneCall, ArrowRight, Sparkles, HelpCircle, ShieldCheck, Zap, Calculator } from "lucide-react";
 import Link from "next/link";
+
+const categories = ["All", "Architecture & Tech", "Sprints & Delivery", "Pricing & Retainer"];
 
 const faqs = [
   {
-    question: "What services does Pixarrow offer?",
-    answer: "We specialize in web and app development, conversion rate optimization (CRO), performance marketing (Meta/Google Ads), and social media management.",
+    category: "Architecture & Tech",
+    question: "What core tech stack does Pixarrow build with?",
+    answer: "We engineer primarily with Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4, Node.js/NestJS, Python (FastAPI/LangChain for AI), and PostgreSQL/MongoDB. For infrastructure, we leverage Vercel Edge, AWS, and Cloudflare CDN for sub-0.4s response times globally.",
   },
   {
-    question: "How long does a project take?",
-    answer: "Most standard projects take between 4 to 8 weeks. Larger platforms or custom web applications might require 8 to 12 weeks depending on complexity.",
+    category: "Sprints & Delivery",
+    question: "How long does a standard project sprint take to launch?",
+    answer: "Our standard full-stack platform sprint is completed in 4 to 6 weeks. Fast-track MVPs can launch in 2 to 3 weeks. We deploy continuous daily staging previews so you test features in real-time on live URLs.",
   },
   {
-    question: "Do you work with startups?",
-    answer: "Yes! We work extensively with early-stage, growing startups, helping them build premium brand systems and scale quickly.",
+    category: "Pricing & Retainer",
+    question: "How does your pricing and IP ownership structure work?",
+    answer: "We offer fixed-scope milestone sprints and dedicated monthly engineering pods ($3,500 – $4,500/mo per senior developer). 100% intellectual property, design source files, and Git repositories are transferred to you unconditionally.",
   },
   {
-    question: "How do you measure success?",
-    answer: "We track concrete metrics: client acquisition cost (CAC), return on ad spend (ROAS), conversion rate, page speed, and organic leads generated.",
+    category: "Architecture & Tech",
+    question: "Do you integrate custom AI models, RAG pipelines, and automated agents?",
+    answer: "Yes. We build production-ready AI solutions using OpenAI, Anthropic Claude, Gemini, LangChain, and vector databases (Pinecone, pgvector) to automate operations, conversational intelligence, and proprietary workflows.",
   },
   {
-    question: "What platforms do you advertise on?",
-    answer: "We specialize in Meta Ads (Facebook & Instagram), Google Search & Display Ads, TikTok Ads, and LinkedIn Ads.",
+    category: "Sprints & Delivery",
+    question: "What kind of communication and project transparency do you provide?",
+    answer: "You get a dedicated private Slack/Discord channel with direct access to your Lead Architect and developers. We provide weekly sprint demos, async Loom recordings, and clear milestone progress dashboards.",
+  },
+  {
+    category: "Pricing & Retainer",
+    question: "Is there a trial period or money-back guarantee?",
+    answer: "Yes. For our dedicated engineering pod and staff augmentation model, we offer a 15-day risk-free trial. If you are not 100% satisfied with code quality and velocity, you pay nothing.",
   },
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const filteredFaqs = selectedCategory === "All" 
+    ? faqs 
+    : faqs.filter(f => f.category === selectedCategory);
 
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -45,31 +62,78 @@ export default function FAQ() {
   };
 
   return (
-    <section className="py-24 px-6 relative z-10 w-full bg-brand-bg" id="faq">
+    <section className="py-24 px-6 relative z-10 w-full bg-brand-bg overflow-hidden" id="faq">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      {/* Background Soft Glow */}
+      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#7C3AED]/10 blur-[160px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto">
         
-        {/* Left Column: FAQ Accordion (7 Columns) */}
-        <div className="lg:col-span-7 flex flex-col items-start">
-          <h2 className="text-3xl md:text-4xl font-black tracking-tight text-white mb-10 text-left">
-            Got <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FF007A] to-[#7C3AED]">Questions?</span>
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#7C3AED]/10 border border-[#7C3AED]/30 text-[#A855F7] text-xs font-black uppercase tracking-widest mb-4">
+            <HelpCircle className="w-3.5 h-3.5 text-[#00DFD8]" />
+            <span>Clear Answers &amp; SLAs</span>
+          </div>
+
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-6">
+            Frequently Asked <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FF007A] via-[#7C3AED] to-[#00DFD8]">
+              Questions.
+            </span>
           </h2>
+
+          {/* Category Filter Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => {
+                  setSelectedCategory(cat);
+                  setOpenIndex(0);
+                }}
+                className={`px-5 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                  selectedCategory === cat
+                    ? "bg-[#7C3AED] text-white shadow-glow-purple"
+                    : "bg-white/5 text-white/60 hover:text-white hover:bg-white/10 border border-white/5"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Main 2-Column Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
-          <div className="w-full divide-y divide-white/5 border-t border-b border-white/5">
-            {faqs.map((faq, i) => {
+          {/* Left Column: FAQ Accordions (7 cols) */}
+          <div className="lg:col-span-7 flex flex-col gap-4">
+            {filteredFaqs.map((faq, i) => {
               const isOpen = openIndex === i;
               return (
-                <div key={i} className="overflow-hidden">
+                <div 
+                  key={faq.question} 
+                  className={`rounded-3xl border transition-all duration-300 overflow-hidden ${
+                    isOpen 
+                      ? "bg-[#110526]/80 border-[#7C3AED]/60 shadow-[0_10px_30px_rgba(124,58,237,0.2)]" 
+                      : "bg-white/[0.02] border-white/5 hover:border-white/15 hover:bg-white/[0.04]"
+                  }`}
+                >
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : i)}
-                    className="w-full py-5 text-left flex justify-between items-center gap-4 text-white hover:text-white/80 transition-colors"
+                    className="w-full p-6 text-left flex justify-between items-center gap-4 text-white cursor-pointer"
                   >
-                    <span className="text-base sm:text-lg font-black">{faq.question}</span>
-                    <span className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center shrink-0 border border-white/5 text-[#A855F7]">
-                      {isOpen ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
+                    <span className="text-base sm:text-lg font-black leading-snug">{faq.question}</span>
+                    <span className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 border transition-all ${
+                      isOpen 
+                        ? "bg-[#7C3AED] text-white border-[#7C3AED] shadow-glow-purple" 
+                        : "bg-white/5 text-white/50 border-white/10"
+                    }`}>
+                      {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                     </span>
                   </button>
                   
@@ -79,9 +143,9 @@ export default function FAQ() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
                       >
-                        <div className="pb-5 pr-8 text-sm sm:text-base text-white/50 leading-relaxed font-sans font-medium">
+                        <div className="px-6 pb-6 text-sm sm:text-base text-white/70 leading-relaxed font-sans border-t border-white/5 pt-4">
                           {faq.answer}
                         </div>
                       </motion.div>
@@ -91,66 +155,74 @@ export default function FAQ() {
               );
             })}
           </div>
-        </div>
 
-        {/* Right Column: CTA card (5 Columns) */}
-        <div className="lg:col-span-5 w-full">
-          <div className="bg-gradient-to-br from-[#100527] to-[#080214] border border-[#7C3AED]/20 rounded-[2.5rem] p-8 md:p-10 relative overflow-hidden flex flex-col justify-between min-h-[380px] shadow-lg group hover:border-[#7C3AED]/40 transition-all duration-300 text-left">
-            
-            {/* Ambient Background Grid & Chart */}
-            <div className="absolute right-4 bottom-4 w-44 h-44 z-0 pointer-events-none opacity-30 group-hover:opacity-50 transition-opacity duration-500">
-              {/* Rising Arrow stock graphic */}
-              <svg className="w-full h-full" viewBox="0 0 100 100" fill="none">
-                <defs>
-                  <linearGradient id="purpleGlow" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#7C3AED" stopOpacity="0.8" />
-                    <stop offset="100%" stopColor="#00DFD8" stopOpacity="0.8" />
-                  </linearGradient>
-                </defs>
-                {/* Stock chart bars */}
-                <rect x="10" y="70" width="8" height="15" rx="2" fill="#7C3AED" opacity="0.4" />
-                <rect x="25" y="60" width="8" height="25" rx="2" fill="#7C3AED" opacity="0.6" />
-                <rect x="40" y="45" width="8" height="40" rx="2" fill="#7C3AED" opacity="0.8" />
-                <rect x="55" y="30" width="8" height="55" rx="2" fill="#A855F7" />
-                <rect x="70" y="15" width="8" height="70" rx="2" fill="#00DFD8" className="drop-shadow-[0_0_8px_#00DFD8]" />
-                
-                {/* Arrow line */}
-                <path 
-                  d="M10 80 L35 60 L60 35 L85 10" 
-                  stroke="url(#purpleGlow)" 
-                  strokeWidth="3.5" 
-                  strokeLinecap="round" 
-                />
-                {/* Arrow Head */}
-                <polygon points="85,10 77,12 83,18" fill="#00DFD8" />
-              </svg>
+          {/* Right Column: Interactive Holographic Discovery CTA (5 cols) */}
+          <div className="lg:col-span-5 sticky top-28">
+            <div className="p-8 sm:p-10 rounded-[2.5rem] bg-gradient-to-b from-[#15072e] via-[#0b0217] to-[#04000b] border border-[#7C3AED]/40 shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-2xl relative overflow-hidden flex flex-col justify-between min-h-[460px]">
+              
+              {/* Background Glow */}
+              <div className="absolute top-0 right-0 w-48 h-48 bg-[#FF007A]/20 blur-3xl rounded-full pointer-events-none" />
+
+              <div className="relative z-10">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-black uppercase tracking-wider mb-6">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>Direct Partner Access</span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-black text-white mb-4 leading-tight">
+                  Have a specific vision or complex technical requirement?
+                </h3>
+                <p className="text-sm text-white/60 leading-relaxed mb-6 font-sans">
+                  Speak directly with our Lead Architect. We evaluate your tech stack, outline a custom sprint timeline, and provide a transparent estimate with zero sales pressure.
+                </p>
+
+                <div className="space-y-2 mb-8">
+                  <div className="flex items-center gap-2 text-xs text-white/80">
+                    <Zap className="w-3.5 h-3.5 text-[#00DFD8]" />
+                    <span>Free 30-min architectural consultation</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-white/80">
+                    <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
+                    <span>Strict 24-hour mutual NDA on request</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="space-y-3 relative z-10">
+                <Link 
+                  href="/book" 
+                  className="w-full py-4 px-6 bg-gradient-to-r from-[#7C3AED] to-[#FF007A] hover:opacity-95 text-white font-black text-sm rounded-2xl shadow-glow-purple flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-95"
+                >
+                  <span>Book Architecture Discovery Call</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <Link 
+                    href="/calculator" 
+                    className="py-3 px-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 transition-all"
+                  >
+                    <Calculator className="w-3.5 h-3.5 text-amber-300" />
+                    <span>Cost Calculator</span>
+                  </Link>
+                  <Link 
+                    href="tel:+917973060924" 
+                    className="py-3 px-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 transition-all"
+                  >
+                    <PhoneCall className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Call Direct</span>
+                  </Link>
+                </div>
+              </div>
+
             </div>
-
-            <div className="relative z-10">
-              <h3 className="text-2xl sm:text-3xl font-black text-white mb-4 leading-tight">
-                Ready to take your <br /> business to the next level?
-              </h3>
-              <p className="text-sm sm:text-base text-white/50 leading-relaxed mb-8 max-w-xs font-sans font-medium">
-                Let's create, launch & scale something amazing together.
-              </p>
-            </div>
-
-            {/* Action buttons inside CTA card */}
-            <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center relative z-10 w-full sm:w-auto mt-6">
-              <Link href="/book" className="px-5 py-2.5 bg-[#7C3AED] hover:bg-[#7C3AED]/90 text-white rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95 shadow-glow-purple flex items-center justify-center gap-1.5">
-                <span>Start a Project</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link href="tel:+917973060924" className="px-4 py-2 bg-white/5 border border-white/5 hover:border-white/10 text-white/70 hover:text-white rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-1.5">
-                <PhoneCall className="w-4 h-4" />
-                <span>Book a Call</span>
-              </Link>
-            </div>
-
           </div>
+
         </div>
 
       </div>
     </section>
   );
 }
+

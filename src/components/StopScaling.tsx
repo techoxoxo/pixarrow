@@ -1,132 +1,212 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, X, ArrowRight, Zap, ShieldCheck, Sparkles, TrendingUp, Cpu, Lock, Clock } from "lucide-react";
 import Link from "next/link";
 
-const listItems = [
-  "Advanced Targeting",
-  "High Converting Funnels",
-  "Creative Ad Strategies",
-  "Data-Driven Decisions",
+const comparisonMatrix = [
+  {
+    feature: "Core Architecture & Load Speed",
+    traditional: "Heavy WordPress / PHP (~4.2s LCP)",
+    pixarrow: "Next.js 16 Edge Streaming (0.6s LCP)",
+    pixarrowWin: true
+  },
+  {
+    feature: "Code & Intellectual Property",
+    traditional: "Vendor lock-in & proprietary restrictions",
+    pixarrow: "100% Full IP Transfer & Unlocked Repo",
+    pixarrowWin: true
+  },
+  {
+    feature: "Development Velocity",
+    traditional: "6 to 9 months slow waterfall cycles",
+    pixarrow: "3 to 6 weeks agile sprint launches",
+    pixarrowWin: true
+  },
+  {
+    feature: "AI & Workflow Integrations",
+    traditional: "Generic chatbots with high hallucination",
+    pixarrow: "Custom RAG pipelines & autonomous agents",
+    pixarrowWin: true
+  },
+  {
+    feature: "Direct Communication",
+    traditional: "Junior account managers as middlemen",
+    pixarrow: "Direct Slack channel with Lead Architect",
+    pixarrowWin: true
+  }
 ];
 
 export default function StopScaling() {
   return (
-    <section className="py-24 px-6 relative z-10 w-full bg-brand-bg overflow-hidden">
-      {/* Background soft glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-purple/5 blur-[120px] rounded-full pointer-events-none" />
+    <section className="py-16 sm:py-24 px-4 sm:px-6 relative z-10 w-full bg-[#050011] overflow-hidden">
+      {/* Background Glows */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[700px] h-[350px] sm:h-[700px] bg-gradient-to-tr from-[#7C3AED]/15 via-[#FF007A]/10 to-[#00DFD8]/10 blur-[160px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div className="max-w-7xl mx-auto">
         
-        {/* Left Column (4 Columns on desktop) */}
-        <div className="flex flex-col items-start lg:col-span-4">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-tight text-white mb-6">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FF007A]/10 border border-[#FF007A]/30 text-[#FF007A] text-xs font-black uppercase tracking-widest mb-4">
+            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+            <span>The Modern Growth Standard</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-[1.08] sm:leading-[1.05] mb-4 sm:mb-6">
             Stop Scrolling. <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FF007A] to-[#7C3AED]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FF007A] via-[#7C3AED] to-[#00DFD8]">
               Start Scaling.
             </span>
           </h2>
-          <p className="text-lg text-white/60 mb-8 max-w-sm leading-relaxed">
-            We build digital systems that attract, convert & scale your business.
+          <p className="text-sm sm:text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
+            Traditional agencies waste time and budget on bloated retainers. Here is why high-growth startups and market leaders partner with Pixarrow.
           </p>
-          <Link href="/book" className="px-6 py-3.5 bg-[#7C3AED] hover:bg-[#7C3AED]/90 text-white font-bold rounded-full transition-all hover:scale-105 active:scale-95 shadow-glow-purple flex items-center gap-2">
-            <span>Book a Free Strategy Call</span>
-            <ArrowRight className="w-5 h-5" />
+        </div>
+
+        {/* Comparison Matrix HUD Container */}
+        <div className="rounded-2xl sm:rounded-[2.5rem] bg-gradient-to-b from-[#110526]/90 to-[#080214]/95 border border-white/10 p-4 sm:p-8 lg:p-10 shadow-2xl backdrop-blur-2xl relative overflow-hidden mb-8 sm:mb-12">
+          
+          {/* DESKTOP HEADER (>= md) */}
+          <div className="hidden md:grid md:grid-cols-12 gap-6 pb-6 border-b border-white/10 text-xs font-black uppercase tracking-widest">
+            <div className="md:col-span-4 text-white/40 text-left">Deliverable &amp; Standard</div>
+            <div className="md:col-span-4 text-red-400/80 text-left flex items-center gap-1.5">
+              <X className="w-4 h-4 text-red-400" />
+              <span>Legacy Agency Model</span>
+            </div>
+            <div className="md:col-span-4 text-[#00DFD8] text-left flex items-center gap-1.5">
+              <Check className="w-4 h-4 text-[#00DFD8]" />
+              <span>The Pixarrow Engine</span>
+            </div>
+          </div>
+
+          {/* DESKTOP ROWS (>= md) */}
+          <div className="hidden md:block divide-y divide-white/5">
+            {comparisonMatrix.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: idx * 0.08 }}
+                className="grid grid-cols-12 gap-4 py-5 items-center text-left hover:bg-white/[0.015] transition-colors rounded-xl px-2"
+              >
+                <div className="col-span-4 font-bold text-sm text-white">
+                  {item.feature}
+                </div>
+
+                <div className="col-span-4 text-xs text-white/50 flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center shrink-0 text-red-400">
+                    <X className="w-3 h-3" />
+                  </span>
+                  <span>{item.traditional}</span>
+                </div>
+
+                <div className="col-span-4 text-xs font-bold text-white flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-[#00DFD8]/20 border border-[#00DFD8]/40 flex items-center justify-center shrink-0 text-[#00DFD8]">
+                    <Check className="w-3 h-3" />
+                  </span>
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-purple-200">
+                    {item.pixarrow}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* MOBILE CARDS (< md) */}
+          <div className="block md:hidden space-y-3">
+            {comparisonMatrix.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="p-4 rounded-xl bg-white/[0.03] border border-white/10 space-y-2.5 text-left"
+              >
+                <div className="text-xs font-black text-white uppercase tracking-wider">
+                  {item.feature}
+                </div>
+
+                {/* Pixarrow (Win) */}
+                <div className="p-2.5 rounded-lg bg-[#00DFD8]/10 border border-[#00DFD8]/20 flex items-start gap-2">
+                  <span className="w-4 h-4 rounded-full bg-[#00DFD8]/20 border border-[#00DFD8]/40 flex items-center justify-center shrink-0 text-[#00DFD8] mt-0.5">
+                    <Check className="w-2.5 h-2.5" />
+                  </span>
+                  <div>
+                    <span className="text-[10px] uppercase font-mono font-bold text-[#00DFD8] block">Pixarrow</span>
+                    <span className="text-xs font-bold text-white leading-tight">{item.pixarrow}</span>
+                  </div>
+                </div>
+
+                {/* Legacy */}
+                <div className="p-2 rounded-lg bg-red-500/5 border border-red-500/10 flex items-start gap-2">
+                  <span className="w-4 h-4 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center shrink-0 text-red-400 mt-0.5">
+                    <X className="w-2.5 h-2.5" />
+                  </span>
+                  <div>
+                    <span className="text-[10px] uppercase font-mono font-semibold text-red-400/80 block">Legacy Agency</span>
+                    <span className="text-xs text-white/50 leading-tight">{item.traditional}</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Bottom Highlights Strip */}
+          <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4">
+            <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/5 flex items-center gap-3 text-left">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#7C3AED]/20 border border-[#7C3AED]/30 flex items-center justify-center text-purple-400 shrink-0">
+                <Lock className="w-4 h-4 sm:w-5 sm:h-5" />
+              </div>
+              <div>
+                <div className="text-xs font-black text-white">100% IP Ownership</div>
+                <div className="text-[10px] text-white/50">Full code &amp; copyright transfer</div>
+              </div>
+            </div>
+
+            <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/5 flex items-center gap-3 text-left">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
+              </div>
+              <div>
+                <div className="text-xs font-black text-white">Signed 24h NDA</div>
+                <div className="text-[10px] text-white/50">Enterprise confidentiality</div>
+              </div>
+            </div>
+
+            <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/5 flex items-center gap-3 text-left">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+                <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
+              </div>
+              <div>
+                <div className="text-xs font-black text-white">Zero Downtime SLA</div>
+                <div className="text-[10px] text-white/50">99.99% serverless reliability</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Bar */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
+          <Link
+            href="/book"
+            className="w-full sm:w-auto text-center px-8 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#FF007A] text-white font-extrabold text-xs uppercase tracking-wider shadow-glow-purple hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2"
+          >
+            <span>Book Strategy Session</span>
+            <ArrowRight className="w-4 h-4" />
           </Link>
-        </div>
 
-        {/* Center Column: Futuristic Portal Mockup (5 Columns on desktop) */}
-        <div className="relative flex justify-center items-center lg:col-span-5 h-[350px] md:h-[400px]">
-          {/* Glowing concentric tunnel SVGs */}
-          <div className="absolute inset-0 z-0 flex items-center justify-center opacity-70">
-            <div className="w-[300px] h-[300px] rounded-full border border-dashed border-brand-purple/20 animate-[spin_40s_linear_infinite]" />
-            <div className="absolute w-[240px] h-[240px] rounded-full border border-[#FF007A]/25 animate-[spin_20s_linear_infinite_reverse]" />
-            <div className="absolute w-[180px] h-[180px] rounded-full border border-brand-cyan/20 animate-pulse" />
-            <div className="absolute w-[120px] h-[120px] rounded-full bg-brand-purple/10 blur-xl" />
-          </div>
-
-          {/* Central Silhouette & Hologram */}
-          <div className="relative z-10 w-full h-full flex items-center justify-center">
-            {/* Person silhouette (arms wide) outline SVG */}
-            <svg className="w-48 h-48 text-white/10 absolute bottom-4 drop-shadow-[0_0_15px_rgba(124,58,237,0.1)]" viewBox="0 0 100 100" fill="currentColor">
-              <path d="M50 20 c3 0 5-2 5-5 s-2-5-5-5 s-5 2-5 5 s2 5 5 5 Z M50 24 c-8 0-14 3-17 7 c-2 3-1 6 2 7 c2 1 5 0 6-2 c1-2 5-4 9-4 s8 2 9 4 c1 2 4 3 6 2 c3-1 4-4 2-7 c-3-4-9-7-17-7 Z" />
-              <path d="M50 30 c-1.5 0-3 .5-3 1.5 L43 55 c-.5 2 1 4 3 4 h8 c2 0 3.5-2 3-4 L53 31.5 c0-1-1.5-1.5-3-1.5 Z" />
-              <path d="M38 31 c-2-1-4 0-5 2 L22 45 c-1.5 2-.5 5 2 6 c2 1 5 0 6-2 l8-11 c1.5-2 .5-5-2-6 Z" />
-              <path d="M62 31 c2-1 4 0 5 2 l11 12 c1.5 2 .5 5-2 6 c-2 1-5 0-6-2 l-8-11 c-1.5-2-.5-5 2-6 Z" />
-            </svg>
-
-            {/* Glowing Holographic Dashboard Panels */}
-            
-            {/* Panel 1 (Top Left) */}
-            <motion.div 
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-10 left-6 md:left-12 bg-[#0e0524]/80 border border-[#7C3AED]/35 rounded-xl p-2 shadow-lg backdrop-blur-md w-32 text-left"
-            >
-              <div className="w-5 h-5 bg-brand-purple/20 rounded-md flex items-center justify-center text-[#A855F7] mb-1">
-                <span className="text-[10px] font-bold">★</span>
-              </div>
-              <span className="text-[10px] font-black text-white/50 block uppercase">Conversion</span>
-              <span className="text-xs font-black text-white">+28.4%</span>
-            </motion.div>
-
-            {/* Panel 2 (Top Right) */}
-            <motion.div 
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-16 right-4 md:right-10 bg-[#0e0524]/80 border border-[#FF007A]/35 rounded-xl p-2 shadow-lg backdrop-blur-md w-28 text-left"
-            >
-              <span className="text-[10px] font-black text-white/50 block uppercase">Ad Spend</span>
-              <span className="text-xs font-black text-white">$12.5K/mo</span>
-              <div className="h-1 bg-[#FF007A] rounded-full w-4/5 mt-1" />
-            </motion.div>
-
-            {/* Panel 3 (Bottom Left) */}
-            <motion.div 
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute bottom-16 left-2 md:left-6 bg-[#0e0524]/80 border border-brand-cyan/35 rounded-xl p-2 shadow-lg backdrop-blur-md w-28 text-left"
-            >
-              <span className="text-[10px] font-black text-white/50 block uppercase">ROI Rate</span>
-              <span className="text-xs font-black text-[#00DFD8]">4.8X Avg</span>
-            </motion.div>
-
-            {/* Panel 4 (Bottom Right) */}
-            <motion.div 
-              animate={{ y: [0, 6, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-12 right-6 md:right-12 bg-[#0e0524]/80 border border-white/10 rounded-xl p-2 shadow-lg backdrop-blur-md w-32 text-left"
-            >
-              <div className="h-5 w-full flex items-center justify-between">
-                <span className="text-[8px] font-black text-white/40">TRAFFIC</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              </div>
-              <span className="text-xs font-black text-white leading-none">850 active</span>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Right Column: Checklists (3 Columns on desktop) */}
-        <div className="flex flex-col gap-5 lg:col-span-3 items-start md:pl-8">
-          {listItems.map((text, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex items-center gap-3"
-            >
-              <div className="w-7 h-7 rounded-full bg-[#7C3AED]/20 border border-[#7C3AED]/35 flex items-center justify-center text-[#A855F7] shrink-0">
-                <Check className="w-4 h-4" strokeWidth={3} />
-              </div>
-              <span className="text-base font-bold text-white/80">{text}</span>
-            </motion.div>
-          ))}
+          <Link
+            href="/calculator"
+            className="w-full sm:w-auto text-center px-8 py-3.5 sm:py-4 rounded-full bg-white/5 hover:bg-white/10 text-white font-bold text-xs uppercase tracking-wider border border-white/10 transition-all flex items-center justify-center gap-2"
+          >
+            <Zap className="w-4 h-4 text-amber-300" />
+            <span>Interactive Estimator</span>
+          </Link>
         </div>
 
       </div>
     </section>
   );
 }
+
+

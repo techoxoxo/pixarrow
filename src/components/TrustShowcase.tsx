@@ -1,186 +1,160 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldCheck, Award, CheckCircle, Cpu, Cloud, Lock, Server } from "lucide-react";
+import { 
+  ShieldCheck, 
+  Zap, 
+  Users, 
+  FileCode2, 
+  Lock, 
+  Sparkles, 
+  CheckCircle2, 
+  ArrowRight,
+  Cloud,
+  Cpu,
+  Layers
+} from "lucide-react";
+import Link from "next/link";
+
+const partnershipGuarantees = [
+  {
+    icon: Users,
+    title: "Direct Senior Architect Access",
+    badge: "Zero Middlemen",
+    badgeColor: "text-cyan-400 bg-cyan-950/40 border-cyan-500/30",
+    desc: "Collaborate directly with our Lead Architect (Anuj) and senior engineers inside your private Slack or Discord. No account manager telephone games.",
+    metric: "Direct Slack Access",
+  },
+  {
+    icon: FileCode2,
+    title: "100% Complete IP & Source Sovereignty",
+    badge: "Unconditional Transfer",
+    badgeColor: "text-purple-300 bg-purple-950/40 border-purple-500/30",
+    desc: "Every line of TypeScript, React Server Component, and Figma design belongs entirely to you upon milestone delivery. Zero vendor lock-in.",
+    metric: "Full GitHub Handoff",
+  },
+  {
+    icon: Zap,
+    title: "Sub-Second Edge Performance SLA",
+    badge: "100/100 Core Web Vitals",
+    badgeColor: "text-emerald-400 bg-emerald-950/40 border-emerald-500/30",
+    desc: "Engineered with Next.js 16, optimized asset pipelining, and global edge CDN caching ensuring sub-0.6s Largest Contentful Paint worldwide.",
+    metric: "< 0.6s Global LCP",
+  },
+  {
+    icon: Lock,
+    title: "Mutual NDA Executed in 24 Hours",
+    badge: "Strict Confidentiality",
+    badgeColor: "text-amber-300 bg-amber-950/40 border-amber-500/30",
+    desc: "Your proprietary ideas, business logic, and code assets remain strictly confidential under bilateral enterprise non-disclosure agreements.",
+    metric: "24h NDA Turnaround",
+  },
+];
+
+const techPartners = [
+  { name: "Vercel Verified", sub: "Edge Runtime & Next.js" },
+  { name: "AWS Cloud", sub: "Serverless & Microservices" },
+  { name: "Cloudflare", sub: "Global Edge & Workers" },
+  { name: "Google Cloud", sub: "Vertex AI & Embeddings" },
+  { name: "Stripe Verified", sub: "Global Billing Architecture" },
+  { name: "Shopify Plus", sub: "Headless eCommerce" },
+];
 
 export default function TrustShowcase() {
-  /* 
-   * Commented out 3rd party review claims (Clutch / GoodFirms / DesignRush)
-   * 
-  const reviews = [
-    {
-      platform: "Clutch",
-      rating: "5.0",
-      reviewsCount: "38+ Reviews",
-      label: "Top App & Web Developers 2026",
-      tagColor: "from-red-500/20 to-orange-500/20",
-      borderColor: "border-orange-500/30",
-    },
-    {
-      platform: "GoodFirms",
-      rating: "4.9",
-      reviewsCount: "42+ Reviews",
-      label: "Top Digital Growth Agency",
-      tagColor: "from-blue-500/20 to-cyan-500/20",
-      borderColor: "border-cyan-500/30",
-    },
-    {
-      platform: "DesignRush",
-      rating: "5.0",
-      reviewsCount: "Accredited",
-      label: "Top Custom Software Agency",
-      tagColor: "from-purple-500/20 to-pink-500/20",
-      borderColor: "border-purple-500/30",
-    },
-    {
-      platform: "Google Reviews",
-      rating: "5.0",
-      reviewsCount: "Verified",
-      label: "100% Client Satisfaction",
-      tagColor: "from-emerald-500/20 to-teal-500/20",
-      borderColor: "border-emerald-500/30",
-    },
-  ];
-  */
-
-  const complianceBadges = [
-    {
-      icon: Lock,
-      title: "ISO 27001 Certified",
-      desc: "Information Security Practices",
-    },
-    {
-      icon: ShieldCheck,
-      title: "GDPR & CCPA",
-      desc: "Strict Data Privacy Protection",
-    },
-    {
-      icon: Server,
-      title: "SOC 2 Type II Ready",
-      desc: "Enterprise Cloud Infrastructure",
-    },
-    {
-      icon: Cpu,
-      title: "HIPAA Compliant",
-      desc: "Healthcare Grade Architecture",
-    },
-  ];
-
-  const partners = [
-    { name: "AWS Partner Network", sub: "Cloud Infrastructure" },
-    { name: "Vercel Verified", sub: "Edge Next.js Architecture" },
-    { name: "Google Cloud", sub: "AI & Vertex Integrations" },
-    { name: "Shopify Plus", sub: "Enterprise eCommerce" },
-    { name: "Stripe Verified", sub: "Global Payment Gateways" },
-  ];
-
   return (
-    <section className="relative py-16 px-6 bg-[#070114] border-y border-white/5 overflow-hidden">
-      {/* Subtle Glows */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#7C3AED]/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-[#FF007A]/10 blur-[120px] rounded-full pointer-events-none" />
+    <section className="relative py-16 sm:py-24 px-4 sm:px-6 bg-[#070114] border-y border-white/5 overflow-hidden">
+      {/* Ambient background glows */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-brand-purple/10 blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-brand-magenta/10 blur-[140px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto relative z-10">
+        
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#7C3AED]/10 border border-[#7C3AED]/30 text-[#A855F7] text-xs font-black uppercase tracking-widest mb-3">
-            <Award className="w-3.5 h-3.5 text-amber-300" />
-            <span>Institutional Trust & Engineering Accreditations</span>
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-[11px] font-bold uppercase tracking-wider mb-4">
+            <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
+            <span>The Pixarrow Partnership Standard</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight">
-            Engineered to Global Enterprise Standards
+
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
+            How We Protect, Deliver &amp; <br className="hidden sm:block" />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FF007A] via-[#7C3AED] to-[#00DFD8]">
+              Scale Your Digital Product.
+            </span>
           </h2>
-          <p className="text-sm sm:text-base text-white/60 max-w-2xl mx-auto mt-2">
-            Every line of code and cloud system is built following stringent international quality, information security, and performance protocols.
+
+          <p className="text-xs sm:text-base text-white/60 mt-3 leading-relaxed">
+            Transparent sprint commitments, zero fluff, and production codebases built to stand the test of extreme scale.
           </p>
         </div>
 
-        {/* 
-         * Commented out 3rd-party review grid
-         *
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          {reviews.map((rev, idx) => (
-            <motion.div
-              key={rev.platform}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.5 }}
-              whileHover={{ y: -4 }}
-              className={`relative p-5 rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.01] border ${rev.borderColor} backdrop-blur-xl shadow-lg flex flex-col justify-between`}
-            >
-              <div className="flex items-center justify-between mb-3">
-                <span className="font-black text-white text-base tracking-wide">{rev.platform}</span>
-                <span className="text-[10px] font-bold text-white/50 bg-white/5 px-2 py-0.5 rounded-full border border-white/5">
-                  {rev.reviewsCount}
-                </span>
-              </div>
-              <div className="flex items-center gap-1.5 mb-2">
-                <div className="flex items-center text-amber-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <span className="text-sm font-black text-white ml-1">{rev.rating}</span>
-                <span className="text-xs text-white/40">/ 5.0</span>
-              </div>
-              <p className="text-xs text-white/70 font-medium">{rev.label}</p>
-            </motion.div>
-          ))}
-        </div>
-        */}
+        {/* 4 Core Partnership Guarantees Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-12">
+          {partnershipGuarantees.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: idx * 0.08 }}
+                className="p-6 sm:p-7 rounded-3xl bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/10 hover:border-purple-500/40 transition-all flex flex-col justify-between group shadow-xl hover:-translate-y-1 duration-300"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:bg-brand-purple/20 group-hover:border-brand-purple/40 group-hover:text-purple-300 transition-colors">
+                      <Icon className="w-5 h-5" />
+                    </div>
 
-        {/* Compliance & Security Grid */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-white/[0.02] border border-white/10 backdrop-blur-2xl mb-10">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-white/10">
+                    <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold border ${item.badgeColor}`}>
+                      {item.badge}
+                    </span>
+                  </div>
+
+                  <h3 className="text-base sm:text-lg font-bold text-white leading-snug mb-2.5">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-xs text-white/60 leading-relaxed font-normal">
+                    {item.desc}
+                  </p>
+                </div>
+
+                <div className="pt-5 mt-5 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-cyan-300 font-semibold">
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    {item.metric}
+                  </span>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Verified Tech Ecosystem Strip */}
+        <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-purple-950/20 via-[#0a0518] to-cyan-950/20 border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-xl">
+          <div className="flex items-center gap-3 shrink-0 text-center md:text-left">
+            <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">
+              <Cloud className="w-4 h-4" />
+            </div>
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 flex items-center gap-1.5 mb-1">
-                <CheckCircle className="w-4 h-4" />
-                Information Security & Compliance
-              </span>
-              <h3 className="text-xl font-black text-white">Bank-Grade Confidentiality & Intellectual Property Protection</h3>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-bold">
-                100% IP & Code Guarantee
-              </span>
+              <div className="text-xs font-bold text-white uppercase tracking-wider">Production Infrastructure Stack</div>
+              <div className="text-[11px] text-white/40">Verified enterprise deployment &amp; payment pipelines</div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {complianceBadges.map((badge) => {
-              const Icon = badge.icon;
-              return (
-                <div key={badge.title} className="flex items-start gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-[#7C3AED]/10 border border-[#7C3AED]/30 flex items-center justify-center shrink-0 text-[#A855F7]">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-black text-white">{badge.title}</h4>
-                    <p className="text-xs text-white/50 mt-0.5">{badge.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Partner Ecosystem Ticker */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 py-4 px-6 rounded-2xl bg-white/[0.01] border border-white/5">
-          <div className="flex items-center gap-2 shrink-0">
-            <Cloud className="w-4 h-4 text-cyan-400" />
-            <span className="text-xs font-bold text-white/60 uppercase tracking-wider">Official Technology Stack Ecosystem</span>
-          </div>
-          <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-8 gap-y-3">
-            {partners.map((partner) => (
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-6 gap-y-2.5">
+            {techPartners.map((partner) => (
               <div key={partner.name} className="flex items-center gap-2 text-xs text-white/80 font-semibold">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#00DFD8]" />
                 <span>{partner.name}</span>
-                <span className="hidden sm:inline text-[10px] text-white/40 font-normal">({partner.sub})</span>
+                <span className="text-[10px] text-white/40 font-normal">({partner.sub})</span>
               </div>
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );

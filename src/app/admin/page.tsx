@@ -7,14 +7,14 @@ import {
   Edit3, X, Check, Loader2, ExternalLink, Mail, Phone, Calendar, 
   UploadCloud, Image as ImageIcon, Sparkles, Filter, Search, 
   RefreshCw, CheckCircle2, AlertCircle, Database, Copy, CheckCheck,
-  TrendingUp, Layers, Cloud, ShieldCheck, ArrowUpRight
+  TrendingUp, Layers, Cloud, ShieldCheck, ArrowUpRight, Award
 } from "lucide-react";
 import Image from "next/image";
 
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
-  const [activeTab, setActiveTab] = useState<"projects" | "blogs" | "seo" | "queries" | "r2">("projects");
+  const [activeTab, setActiveTab] = useState<"projects" | "partners" | "blogs" | "seo" | "queries" | "r2">("projects");
   const [authLoading, setAuthLoading] = useState(false);
   const [authError, setAuthError] = useState("");
 
@@ -190,12 +190,18 @@ export default function AdminPage() {
         </div>
 
         {/* Tab Navigation Navigation Pills */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5 sm:gap-3 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3 mb-8">
           <TabButton 
             active={activeTab === 'projects'} 
             onClick={() => setActiveTab('projects')}
             icon={<Layers className="w-4 h-4" />}
-            label="Projects & Case Studies"
+            label="Case Studies"
+          />
+          <TabButton 
+            active={activeTab === 'partners'} 
+            onClick={() => setActiveTab('partners')}
+            icon={<Award className="w-4 h-4" />}
+            label="Brand Logos"
           />
           <TabButton 
             active={activeTab === 'blogs'} 
@@ -207,25 +213,26 @@ export default function AdminPage() {
             active={activeTab === 'seo'} 
             onClick={() => setActiveTab('seo')}
             icon={<Globe className="w-4 h-4" />}
-            label="SEO & OpenGraph"
+            label="SEO"
           />
           <TabButton 
             active={activeTab === 'queries'} 
             onClick={() => setActiveTab('queries')}
             icon={<Mail className="w-4 h-4" />}
-            label="Inquiries & Leads"
+            label="Inquiries"
           />
           <TabButton 
             active={activeTab === 'r2'} 
             onClick={() => setActiveTab('r2')}
             icon={<Cloud className="w-4 h-4" />}
-            label="Cloudflare R2 Bucket"
+            label="Cloudflare R2"
           />
         </div>
 
         {/* Tab Content Container */}
         <div className="bg-[#0c051a]/85 rounded-[3rem] p-6 sm:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-white/10 min-h-[600px] backdrop-blur-2xl text-white">
           {activeTab === 'projects' && <ProjectsManager />}
+          {activeTab === 'partners' && <PartnersManager />}
           {activeTab === 'blogs' && <BlogsManager />}
           {activeTab === 'seo' && <SEOManager />}
           {activeTab === 'queries' && <QueriesManager />}
@@ -283,11 +290,16 @@ function ProjectsManager() {
       { label: "Active Users", value: "85K+ MAU" },
       { label: "App Store Rating", value: "4.9 ★" },
     ],
+    clientName: "",
     liveUrl: "",
+    metaTitle: "",
+    metaDescription: "",
+    keywords: [] as string[],
     status: "published",
   });
 
   const [techInput, setTechInput] = useState("");
+  const [keywordInput, setKeywordInput] = useState("");
 
   useEffect(() => {
     fetchProjects();
@@ -325,7 +337,11 @@ function ProjectsManager() {
           { label: "Global LCP", value: "0.6s" },
           { label: "Client Rating", value: "5.0 ★" },
         ],
+        clientName: proj.clientName || proj.title || "",
         liveUrl: proj.liveUrl || "",
+        metaTitle: proj.metaTitle || "",
+        metaDescription: proj.metaDescription || "",
+        keywords: proj.keywords || [],
         status: proj.status || "published",
       });
       setEditingId(proj._id);
@@ -347,12 +363,69 @@ function ProjectsManager() {
           { label: "Active Users", value: "85K+ MAU" },
           { label: "App Store Rating", value: "4.9 ★" },
         ],
+        clientName: "",
         liveUrl: "",
+        metaTitle: "",
+        metaDescription: "",
+        keywords: [],
         status: "published",
       });
       setEditingId(null);
     }
+    setKeywordInput("");
     setIsEditorOpen(true);
+  };
+
+  const handleAddKeyword = () => {
+    if (keywordInput.trim()) {
+      const kw = keywordInput.trim();
+      if (!formData.keywords.includes(kw)) {
+        setFormData(prev => ({
+          ...prev,
+          keywords: [...prev.keywords, kw]
+        }));
+      }
+      setKeywordInput("");
+    }
+  };
+
+  const handleRemoveKeyword = (index: number) => {
+    setFormData(prev => ({
+      ...prev,
+      keywords: prev.keywords.filter((_, i) => i !== index)
+    }));
+  };
+
+  const handleAutoGenerateSEO = () => {
+    const brand = formData.clientName || formData.title || "Brand";
+    const category = formData.category || "Engineering & Software";
+    const tech = formData.techStack && formData.techStack.length > 0 ? formData.techStack.slice(0, 3).join(", ") : "Next.js & Cloud Edge";
+    const highlight = formData.metricHighlight || "+120% Performance";
+
+    const generatedTitle = `${brand} Case Study | ${category} Architecture & Development — Pixarrow`;
+    const generatedDesc = `Explore how Pixarrow architected and engineered ${brand} (${category}). Built with ${tech}, sub-second latency, and achieving ${highlight}.`;
+    
+    const brandLower = brand.toLowerCase();
+    const autoKeywords = Array.from(new Set([
+      brandLower,
+      `${brandLower} website`,
+      `${brandLower} app`,
+      `${brandLower} case study`,
+      `${brandLower} software development`,
+      `${brandLower} tech stack`,
+      category.toLowerCase(),
+      ...formData.techStack.map(t => t.toLowerCase()),
+      "pixarrow case study",
+      "custom web engineering"
+    ]));
+
+    setFormData(prev => ({
+      ...prev,
+      clientName: prev.clientName || brand,
+      metaTitle: generatedTitle,
+      metaDescription: generatedDesc,
+      keywords: autoKeywords,
+    }));
   };
 
   const handleImageUpload = async (file: File) => {
@@ -370,7 +443,14 @@ function ProjectsManager() {
 
       if (json.success && json.url) {
         setFormData(prev => ({ ...prev, image: json.url }));
-        setStatusMessage(json.message || "Image uploaded!");
+        if (json.storage === "r2") {
+          setStatusMessage("Uploaded to Cloudflare R2 bucket!");
+        } else if (json.warning) {
+          setStatusMessage(json.warning);
+          alert(`Image saved locally. Note: ${json.warning}`);
+        } else {
+          setStatusMessage("Image saved to local storage.");
+        }
       } else {
         alert(json.error || "Image upload failed");
       }
@@ -510,14 +590,92 @@ function ProjectsManager() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="space-y-2">
               <label className="text-xs font-bold text-white/60 uppercase tracking-wider">Display Category *</label>
-              <input 
-                required
-                type="text" 
-                value={formData.category}
-                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                placeholder="e.g. Mobile App / Service"
-                className="w-full bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-3.5 text-sm font-bold text-white focus:border-[#7C3AED] outline-none"
-              />
+              <select 
+                value={[
+                  "Mobile App / Service",
+                  "MOBILE APP",
+                  "Next.js Web Application",
+                  "SaaS & Cloud Platform",
+                  "eCommerce",
+                  "E-COMMERCE",
+                  "Shopify Plus & Headless",
+                  "Fintech / Finance",
+                  "FINTECH",
+                  "Accounting & Financial Advisory",
+                  "Agentic AI & Automations",
+                  "AI & Machine Learning",
+                  "Media & Newsline",
+                  "MEDIA PORTAL",
+                  "Entertainment & Media",
+                  "VIDEO PRODUCTION",
+                  "E-GOVERNMENT",
+                  "Healthcare & HealthTech",
+                  "Enterprise Software Suite",
+                  "Custom Web Engineering",
+                ].includes(formData.category) ? formData.category : "__custom__"}
+                onChange={(e) => {
+                  if (e.target.value !== "__custom__") {
+                    setFormData({ ...formData, category: e.target.value });
+                  } else {
+                    setFormData({ ...formData, category: "" });
+                  }
+                }}
+                className="w-full bg-[#080214] border border-white/10 rounded-2xl px-5 py-3.5 text-sm font-bold text-white focus:border-[#7C3AED] outline-none"
+              >
+                <option value="Mobile App / Service">Mobile App / Service</option>
+                <option value="MOBILE APP">MOBILE APP</option>
+                <option value="Next.js Web Application">Next.js Web Application</option>
+                <option value="SaaS & Cloud Platform">SaaS & Cloud Platform</option>
+                <option value="eCommerce">eCommerce</option>
+                <option value="E-COMMERCE">E-COMMERCE</option>
+                <option value="Shopify Plus & Headless">Shopify Plus & Headless</option>
+                <option value="Fintech / Finance">Fintech / Finance</option>
+                <option value="FINTECH">FINTECH</option>
+                <option value="Accounting & Financial Advisory">Accounting & Financial Advisory</option>
+                <option value="Agentic AI & Automations">Agentic AI & Automations</option>
+                <option value="AI & Machine Learning">AI & Machine Learning</option>
+                <option value="Media & Newsline">Media & Newsline</option>
+                <option value="MEDIA PORTAL">MEDIA PORTAL</option>
+                <option value="Entertainment & Media">Entertainment & Media</option>
+                <option value="VIDEO PRODUCTION">VIDEO PRODUCTION</option>
+                <option value="E-GOVERNMENT">E-GOVERNMENT</option>
+                <option value="Healthcare & HealthTech">Healthcare & HealthTech</option>
+                <option value="Enterprise Software Suite">Enterprise Software Suite</option>
+                <option value="Custom Web Engineering">Custom Web Engineering</option>
+                <option value="__custom__">Custom / Other Category...</option>
+              </select>
+
+              {(![
+                "Mobile App / Service",
+                "MOBILE APP",
+                "Next.js Web Application",
+                "SaaS & Cloud Platform",
+                "eCommerce",
+                "E-COMMERCE",
+                "Shopify Plus & Headless",
+                "Fintech / Finance",
+                "FINTECH",
+                "Accounting & Financial Advisory",
+                "Agentic AI & Automations",
+                "AI & Machine Learning",
+                "Media & Newsline",
+                "MEDIA PORTAL",
+                "Entertainment & Media",
+                "VIDEO PRODUCTION",
+                "E-GOVERNMENT",
+                "Healthcare & HealthTech",
+                "Enterprise Software Suite",
+                "Custom Web Engineering",
+              ].includes(formData.category)) && (
+                <input 
+                  required
+                  type="text" 
+                  value={formData.category}
+                  onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                  placeholder="Type custom display category..."
+                  className="w-full mt-2 bg-white/[0.04] border border-[#7C3AED]/50 rounded-2xl px-5 py-2.5 text-sm font-bold text-cyan-300 focus:border-[#7C3AED] outline-none"
+                />
+              )}
             </div>
 
             <div className="space-y-2">
@@ -695,6 +853,152 @@ function ProjectsManager() {
             </div>
           </div>
 
+          {/* =========================================================================
+             GOOGLE SEARCH ENGINE OPTIMIZATION & BRAND ENTITY INDEXING
+             ========================================================================= */}
+          <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-purple-950/20 via-[#0a0518] to-cyan-950/20 border border-purple-500/30 space-y-6 shadow-2xl relative overflow-hidden">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-4">
+              <div>
+                <div className="flex items-center gap-2">
+                  <Globe className="w-5 h-5 text-cyan-400" />
+                  <h4 className="text-base font-black text-white">Google Search Visibility & Entity SEO</h4>
+                </div>
+                <p className="text-xs text-white/50 mt-1">
+                  Rank Pixarrow on Google when potential clients search for this brand, product, or live website.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={handleAutoGenerateSEO}
+                className="px-4 py-2.5 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all shadow-glow-purple cursor-pointer"
+              >
+                <Sparkles className="w-4 h-4 text-yellow-300" />
+                <span>Auto-Generate SEO</span>
+              </button>
+            </div>
+
+            {/* Live Google Search Result Preview */}
+            <div className="space-y-2">
+              <label className="text-[11px] font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                <Search className="w-3.5 h-3.5" />
+                Google SERP Snippet Preview
+              </label>
+              <div className="p-5 rounded-2xl bg-[#131314] border border-white/10 space-y-1.5 font-sans">
+                <div className="flex items-center gap-2 text-xs text-zinc-400 font-mono truncate">
+                  <span className="w-4 h-4 rounded-full bg-white/10 flex items-center justify-center text-[10px] text-white">P</span>
+                  <span className="text-zinc-300">pixarrow.com</span>
+                  <span className="text-zinc-500">› case-study › {formData.slug || "brand-slug"}</span>
+                </div>
+                <h5 className="text-base text-[#8ab4f8] font-medium leading-snug hover:underline cursor-pointer">
+                  {formData.metaTitle || (formData.title ? `${formData.title} Case Study | ${formData.category} Architecture & Development — Pixarrow` : "Project Case Study — Pixarrow")}
+                </h5>
+                <p className="text-xs text-zinc-400 leading-relaxed line-clamp-2">
+                  {formData.metaDescription || formData.description || "Comprehensive engineering breakdown, metrics, and architecture case study by Pixarrow."}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <label className="text-xs font-bold text-white/70 uppercase tracking-wider">Client Live Website URL</label>
+                  <span className="text-[10px] text-cyan-400 font-mono">Entity Link</span>
+                </div>
+                <input 
+                  type="url" 
+                  value={formData.liveUrl}
+                  onChange={(e) => setFormData({ ...formData, liveUrl: e.target.value })}
+                  placeholder="https://cahrz.com (or client domain)"
+                  className="w-full bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-3 text-sm font-mono text-cyan-300 focus:border-[#7C3AED] outline-none"
+                />
+                <p className="text-[10px] text-white/40">Creates Schema.org entity linking and a direct visit CTA on the case study.</p>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-white/70 uppercase tracking-wider">Client / Brand Name</label>
+                <input 
+                  type="text" 
+                  value={formData.clientName}
+                  onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
+                  placeholder="e.g. Cahrz"
+                  className="w-full bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-3 text-sm text-white focus:border-[#7C3AED] outline-none"
+                />
+                <p className="text-[10px] text-white/40">Client organization entity name indexed in Google Knowledge Graph.</p>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <label className="text-xs font-bold text-white/70 uppercase tracking-wider">SEO Meta Title (Google Search Title)</label>
+                <span className={`text-[10px] font-mono ${(formData.metaTitle?.length || 0) > 65 ? "text-amber-400" : "text-white/40"}`}>
+                  {formData.metaTitle?.length || 0} / 60-65 chars
+                </span>
+              </div>
+              <input 
+                type="text" 
+                value={formData.metaTitle}
+                onChange={(e) => setFormData({ ...formData, metaTitle: e.target.value })}
+                placeholder="e.g. Cahrz Case Study | On-Demand Vehicle Care App & Web Architecture — Pixarrow"
+                className="w-full bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-3 text-sm text-white focus:border-[#7C3AED] outline-none"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <label className="text-xs font-bold text-white/70 uppercase tracking-wider">SEO Meta Description (Google Search Snippet)</label>
+                <span className={`text-[10px] font-mono ${(formData.metaDescription?.length || 0) > 165 ? "text-amber-400" : "text-white/40"}`}>
+                  {formData.metaDescription?.length || 0} / 150-160 chars
+                </span>
+              </div>
+              <textarea 
+                rows={2}
+                value={formData.metaDescription}
+                onChange={(e) => setFormData({ ...formData, metaDescription: e.target.value })}
+                placeholder="e.g. Explore how Pixarrow engineered and scaled Cahrz with Next.js, sub-second latency, and +150% conversion lift..."
+                className="w-full bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-3 text-sm text-white focus:border-[#7C3AED] outline-none resize-none"
+              />
+            </div>
+
+            {/* Target Keywords */}
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <label className="text-xs font-bold text-white/70 uppercase tracking-wider">Target Search Keywords for Indexing</label>
+                <span className="text-[10px] text-white/40">{formData.keywords.length} keywords configured</span>
+              </div>
+              <div className="flex gap-2">
+                <input 
+                  type="text"
+                  value={keywordInput}
+                  onChange={(e) => setKeywordInput(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); handleAddKeyword(); } }}
+                  placeholder="Type target search term (e.g. 'cahrz website', 'cahrz app') and click Add"
+                  className="flex-1 bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-3 text-sm text-white focus:border-[#7C3AED] outline-none"
+                />
+                <button 
+                  type="button"
+                  onClick={handleAddKeyword}
+                  className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-2xl text-xs font-bold cursor-pointer"
+                >
+                  Add Keyword
+                </button>
+              </div>
+
+              {formData.keywords.length > 0 && (
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {formData.keywords.map((kw, i) => (
+                    <span key={i} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 text-xs font-medium">
+                      <span>{kw}</span>
+                      <button type="button" onClick={() => handleRemoveKeyword(i)} className="hover:text-red-400">
+                        <X className="w-3 h-3" />
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
           <div className="flex justify-end gap-4 pt-6 border-t border-white/10">
             <button 
               type="button"
@@ -836,7 +1140,650 @@ function ProjectsManager() {
 }
 
 /* =========================================================================
-   2. BLOGS & EDITORIAL FORGE
+   2. BRAND LOGOS & TRUSTED PARTNERS MANAGER (FULL SEO ENTITY ENGINE)
+   ========================================================================= */
+function PartnersManager() {
+  const [partners, setPartners] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [isEditorOpen, setIsEditorOpen] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [uploadingLogo, setUploadingLogo] = useState(false);
+  const [seeding, setSeeding] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");
+
+  const [formData, setFormData] = useState({
+    name: "",
+    logo: "",
+    isImage: false,
+    style: "font-sans font-bold text-white/70 text-xl md:text-2xl",
+    websiteUrl: "",
+    caseStudySlug: "",
+    industry: "Technology & Digital",
+    description: "",
+    order: 0,
+    status: "published",
+    seoKeywords: [] as string[],
+  });
+
+  const [keywordInput, setKeywordInput] = useState("");
+
+  useEffect(() => {
+    fetchPartners();
+  }, []);
+
+  const fetchPartners = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/admin/partners");
+      const json = await res.json();
+      if (json.success) setPartners(json.data);
+    } catch (e) {
+      console.error("Fetch partners error:", e);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleOpenEditor = (partner: any = null) => {
+    if (partner) {
+      setFormData({
+        name: partner.name || "",
+        logo: partner.logo || "",
+        isImage: partner.isImage || false,
+        style: partner.style || "font-sans font-bold text-white/70 text-xl md:text-2xl",
+        websiteUrl: partner.websiteUrl || "",
+        caseStudySlug: partner.caseStudySlug || "",
+        industry: partner.industry || "Technology & Digital",
+        description: partner.description || "",
+        order: partner.order || 0,
+        status: partner.status || "published",
+        seoKeywords: partner.seoKeywords || [],
+      });
+      setEditingId(partner._id);
+    } else {
+      setFormData({
+        name: "",
+        logo: "",
+        isImage: false,
+        style: "font-sans font-bold text-white/70 text-xl md:text-2xl",
+        websiteUrl: "",
+        caseStudySlug: "",
+        industry: "Technology & Digital",
+        description: "",
+        order: partners.length,
+        status: "published",
+        seoKeywords: [],
+      });
+      setEditingId(null);
+    }
+    setKeywordInput("");
+    setIsEditorOpen(true);
+  };
+
+  const handleLogoUpload = async (file: File) => {
+    setUploadingLogo(true);
+    setStatusMessage("");
+    try {
+      const data = new FormData();
+      data.append("file", file);
+
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: data,
+      });
+      const json = await res.json();
+
+      if (json.success && json.url) {
+        setFormData(prev => ({ ...prev, logo: json.url, isImage: true }));
+        if (json.storage === "r2") {
+          setStatusMessage("Logo uploaded to Cloudflare R2 bucket!");
+        } else {
+          setStatusMessage("Logo saved.");
+        }
+      } else {
+        alert(json.error || "Logo upload failed");
+      }
+    } catch (e: any) {
+      alert("Upload failed: " + e.message);
+    } finally {
+      setUploadingLogo(false);
+    }
+  };
+
+  const handleAddKeyword = () => {
+    if (keywordInput.trim()) {
+      const kw = keywordInput.trim();
+      if (!formData.seoKeywords.includes(kw)) {
+        setFormData(prev => ({
+          ...prev,
+          seoKeywords: [...prev.seoKeywords, kw]
+        }));
+      }
+      setKeywordInput("");
+    }
+  };
+
+  const handleRemoveKeyword = (index: number) => {
+    setFormData(prev => ({
+      ...prev,
+      seoKeywords: prev.seoKeywords.filter((_, i) => i !== index)
+    }));
+  };
+
+  const handleAutoGenerateSEO = () => {
+    const brand = formData.name.trim() || "Brand";
+    const ind = formData.industry || "Software & Technology";
+    const brandLower = brand.toLowerCase();
+    
+    const autoKeywords = Array.from(new Set([
+      brandLower,
+      `${brandLower} website`,
+      `${brandLower} app`,
+      `${brandLower} case study`,
+      `${brandLower} pixarrow client`,
+      `${ind.toLowerCase()}`,
+      "trusted brand partner"
+    ]));
+
+    setFormData(prev => ({
+      ...prev,
+      description: prev.description || `${brand} — Innovative ${ind} client engineered and accelerated by Pixarrow.`,
+      seoKeywords: autoKeywords,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSaving(true);
+    try {
+      const url = editingId ? `/api/admin/partners/${editingId}` : "/api/admin/partners";
+      const method = editingId ? "PATCH" : "POST";
+
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const json = await res.json();
+      if (json.success) {
+        setIsEditorOpen(false);
+        fetchPartners();
+      } else {
+        alert(json.error || "Failed to save partner");
+      }
+    } catch (e: any) {
+      alert("Save failed: " + e.message);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!confirm("Are you sure you want to delete this brand partner?")) return;
+    try {
+      const res = await fetch(`/api/admin/partners/${id}`, { method: "DELETE" });
+      const json = await res.json();
+      if (json.success) fetchPartners();
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleSeedDefaults = async () => {
+    setSeeding(true);
+    try {
+      const res = await fetch("/api/admin/partners/seed", { method: "POST" });
+      const json = await res.json();
+      if (json.success) {
+        alert(json.message);
+        fetchPartners();
+      }
+    } catch (e: any) {
+      alert("Seed failed: " + e.message);
+    } finally {
+      setSeeding(false);
+    }
+  };
+
+  const typographyStylePresets = [
+    { label: "Modern Sans Bold (e.g. Cahrz)", value: "font-sans font-bold text-white/70 text-xl md:text-2xl" },
+    { label: "Technical Mono Spaced (e.g. AUST GOV)", value: "font-mono font-bold tracking-wide text-white/50 text-sm md:text-base" },
+    { label: "High-End Serif Italic (e.g. LAY.)", value: "font-serif font-black tracking-tighter text-white/70 text-2xl md:text-3xl italic" },
+    { label: "Extrabold Wide Sans (e.g. KIT.)", value: "font-sans font-extrabold tracking-widest text-white/60 text-lg md:text-xl" },
+    { label: "Uppercase Heavy (e.g. TORQUE)", value: "font-sans font-bold tracking-tight text-white/70 text-lg md:text-xl uppercase" },
+    { label: "Medium Wide Caps (e.g. CORQUE)", value: "font-sans font-medium tracking-widest text-white/60 text-lg md:text-xl uppercase" },
+    { label: "Ultra Black Spaced (e.g. END.)", value: "font-sans font-black tracking-[0.2em] text-white/75 text-base md:text-lg" },
+  ];
+
+  if (isEditorOpen) {
+    return (
+      <div className="space-y-8 animate-in fade-in duration-300">
+        <div className="flex justify-between items-center border-b border-white/10 pb-6">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-black text-white">
+              {editingId ? "Edit Brand Partner" : "Add Brand Partner"}
+            </h2>
+            <p className="text-white/40 text-xs sm:text-sm">
+              Manage trusted brand showcase, entity linkings, and Google Knowledge Graph association.
+            </p>
+          </div>
+          <button 
+            onClick={() => setIsEditorOpen(false)}
+            className="p-3 bg-white/5 hover:bg-white/10 rounded-2xl text-white/70 hover:text-white transition-all cursor-pointer"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-white/60 uppercase tracking-wider">Brand / Client Name *</label>
+              <input 
+                required
+                type="text" 
+                value={formData.name}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setFormData(prev => ({
+                    ...prev, 
+                    name: val,
+                    logo: prev.isImage ? prev.logo : (prev.logo || val)
+                  }));
+                }}
+                placeholder="e.g. Cahrz, Lay, Australian Government"
+                className="w-full bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-3.5 text-sm font-bold text-white focus:border-[#7C3AED] outline-none"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-white/60 uppercase tracking-wider">Industry / Sector</label>
+              <input 
+                type="text" 
+                value={formData.industry}
+                onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
+                placeholder="e.g. Automotive & Mobility, FinTech, eCommerce"
+                className="w-full bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-3.5 text-sm font-bold text-cyan-300 focus:border-[#7C3AED] outline-none"
+              />
+            </div>
+          </div>
+
+          {/* Logo Format Toggle: Image (R2) vs Stylized Typography */}
+          <div className="p-6 rounded-3xl bg-white/[0.02] border border-white/10 space-y-4">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div>
+                <label className="text-xs font-bold text-white/80 uppercase tracking-wider flex items-center gap-2">
+                  <ImageIcon className="w-4 h-4 text-purple-400" />
+                  Logo Type & Visual Rendering *
+                </label>
+                <p className="text-[11px] text-white/40">Choose between an uploaded image or clean stylized typography logo.</p>
+              </div>
+
+              <div className="flex items-center gap-2 bg-white/5 p-1 rounded-2xl border border-white/10">
+                <button
+                  type="button"
+                  onClick={() => setFormData({ ...formData, isImage: false, logo: formData.logo && formData.logo.startsWith("http") ? formData.name : (formData.logo || formData.name) })}
+                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    !formData.isImage ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white" : "text-white/50 hover:text-white"
+                  }`}
+                >
+                  Stylized Typography
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFormData({ ...formData, isImage: true })}
+                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    formData.isImage ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white" : "text-white/50 hover:text-white"
+                  }`}
+                >
+                  Image Logo (R2)
+                </button>
+              </div>
+            </div>
+
+            {formData.isImage ? (
+              <div className="space-y-4 pt-2">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                  <span className="text-xs text-white/60 font-mono">Upload to Cloudflare R2 bucket:</span>
+                  <label className="px-5 py-2.5 bg-gradient-to-r from-[#7C3AED] to-[#FF007A] text-white rounded-xl text-xs font-bold cursor-pointer hover:scale-105 transition-all shadow-glow-purple flex items-center gap-2">
+                    {uploadingLogo ? <Loader2 className="w-4 h-4 animate-spin" /> : <UploadCloud className="w-4 h-4" />}
+                    <span>{uploadingLogo ? "Uploading..." : "Upload Logo to R2"}</span>
+                    <input 
+                      type="file" 
+                      accept="image/*" 
+                      className="hidden" 
+                      disabled={uploadingLogo}
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) handleLogoUpload(file);
+                      }}
+                    />
+                  </label>
+                </div>
+
+                <input 
+                  required
+                  type="text" 
+                  value={formData.logo}
+                  onChange={(e) => setFormData({ ...formData, logo: e.target.value })}
+                  placeholder="https://... image URL from R2 or CDN"
+                  className="w-full bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-3 text-sm font-mono text-cyan-300 focus:border-[#7C3AED] outline-none"
+                />
+
+                {formData.logo && (
+                  <div className="p-4 rounded-2xl bg-black/60 border border-white/10 inline-flex items-center justify-center">
+                    <img src={formData.logo} alt="Preview" className="h-10 max-w-[200px] object-contain" />
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="space-y-4 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-white/60 uppercase tracking-wider">Logo Text Display *</label>
+                    <input 
+                      required
+                      type="text" 
+                      value={formData.logo}
+                      onChange={(e) => setFormData({ ...formData, logo: e.target.value })}
+                      placeholder="e.g. CAHRZ, LAY., AUST GOV"
+                      className="w-full bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-3 text-sm font-bold text-white focus:border-[#7C3AED] outline-none"
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-white/60 uppercase tracking-wider">Preset Typography Style</label>
+                    <select
+                      value={formData.style}
+                      onChange={(e) => setFormData({ ...formData, style: e.target.value })}
+                      className="w-full bg-[#080214] border border-white/10 rounded-2xl px-5 py-3 text-xs font-bold text-purple-300 focus:border-[#7C3AED] outline-none"
+                    >
+                      {typographyStylePresets.map((preset, idx) => (
+                        <option key={idx} value={preset.value}>{preset.label}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Live Logo Visual Preview */}
+                <div className="p-6 rounded-2xl bg-[#080214] border border-white/10 flex flex-col items-center justify-center gap-2">
+                  <span className="text-[10px] uppercase font-bold text-white/40 tracking-widest">Live Logo Preview:</span>
+                  <div className={`${formData.style || "text-xl font-bold text-white/70"} select-none filter drop-shadow-[0_0_10px_rgba(255,255,255,0.05)]`}>
+                    {formData.logo || "LOGO PREVIEW"}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* =========================================================================
+             GOOGLE SEO ENTITY & KNOWLEDGE GRAPH ENGINE
+             ========================================================================= */}
+          <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-purple-950/20 via-[#0a0518] to-cyan-950/20 border border-purple-500/30 space-y-6 shadow-2xl">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-4">
+              <div>
+                <div className="flex items-center gap-2">
+                  <Globe className="w-5 h-5 text-cyan-400" />
+                  <h4 className="text-base font-black text-white">Google Knowledge Graph Entity SEO</h4>
+                </div>
+                <p className="text-xs text-white/50 mt-1">
+                  Connect this partner brand with Google Knowledge Graph entity links and case studies.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={handleAutoGenerateSEO}
+                className="px-4 py-2.5 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all shadow-glow-purple cursor-pointer"
+              >
+                <Sparkles className="w-4 h-4 text-yellow-300" />
+                <span>Auto-Generate SEO</span>
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-white/70 uppercase tracking-wider">Client Official Live URL (Entity Link)</label>
+                <input 
+                  type="url" 
+                  value={formData.websiteUrl}
+                  onChange={(e) => setFormData({ ...formData, websiteUrl: e.target.value })}
+                  placeholder="https://cahrz.com (or client domain)"
+                  className="w-full bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-3 text-sm font-mono text-cyan-300 focus:border-[#7C3AED] outline-none"
+                />
+                <p className="text-[10px] text-white/40">Creates Schema.org entity linking back to client's live web presence.</p>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-white/70 uppercase tracking-wider">Case Study Slug (Optional)</label>
+                <input 
+                  type="text" 
+                  value={formData.caseStudySlug}
+                  onChange={(e) => setFormData({ ...formData, caseStudySlug: e.target.value })}
+                  placeholder="e.g. cahrz, scissor-wala, ausloan"
+                  className="w-full bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-3 text-sm font-mono text-purple-300 focus:border-[#7C3AED] outline-none"
+                />
+                <p className="text-[10px] text-white/40">If provided, clicking the brand logo navigates to its full case study.</p>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-white/70 uppercase tracking-wider">Brand SEO Description / Knowledge Graph Summary</label>
+              <textarea 
+                rows={2}
+                value={formData.description}
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                placeholder="Brief 1-liner summary indexed by Google Knowledge Graph..."
+                className="w-full bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-3 text-sm text-white focus:border-[#7C3AED] outline-none resize-none"
+              />
+            </div>
+
+            {/* Target Keywords */}
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <label className="text-xs font-bold text-white/70 uppercase tracking-wider">Brand Target SEO Keywords</label>
+                <span className="text-[10px] text-white/40">{formData.seoKeywords.length} keywords configured</span>
+              </div>
+              <div className="flex gap-2">
+                <input 
+                  type="text"
+                  value={keywordInput}
+                  onChange={(e) => setKeywordInput(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); handleAddKeyword(); } }}
+                  placeholder="Type target term (e.g. 'cahrz app', 'lay fashion') and click Add"
+                  className="flex-1 bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-3 text-sm text-white focus:border-[#7C3AED] outline-none"
+                />
+                <button 
+                  type="button"
+                  onClick={handleAddKeyword}
+                  className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-2xl text-xs font-bold cursor-pointer"
+                >
+                  Add Keyword
+                </button>
+              </div>
+
+              {formData.seoKeywords.length > 0 && (
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {formData.seoKeywords.map((kw, i) => (
+                    <span key={i} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 text-xs font-medium">
+                      <span>{kw}</span>
+                      <button type="button" onClick={() => handleRemoveKeyword(i)} className="hover:text-red-400">
+                        <X className="w-3 h-3" />
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="flex justify-end gap-4 pt-6 border-t border-white/10">
+            <button 
+              type="button"
+              onClick={() => setIsEditorOpen(false)}
+              className="px-6 py-3.5 text-white/50 hover:text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
+            >
+              Cancel
+            </button>
+            <button 
+              disabled={saving}
+              type="submit"
+              className="px-8 py-3.5 bg-gradient-to-r from-[#7C3AED] to-[#FF007A] text-white rounded-2xl text-xs font-bold uppercase tracking-wider shadow-glow-purple hover:scale-105 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
+            >
+              {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+              <span>{editingId ? "Save Changes" : "Publish Brand Logo"}</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-8 animate-in fade-in duration-300">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-6">
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-black text-white">Trusted Brand Logos &amp; Partners</h2>
+          <p className="text-white/40 text-xs sm:text-sm">
+            Manage partner logos showcased on the homepage with full Google Knowledge Graph SEO entity schemas.
+          </p>
+        </div>
+        <div className="flex items-center gap-3">
+          <button 
+            onClick={handleSeedDefaults}
+            disabled={seeding}
+            className="flex items-center gap-2 px-4 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl text-xs font-bold text-white transition-all cursor-pointer disabled:opacity-50"
+            title="Seed initial 9 partner brands into MongoDB"
+          >
+            {seeding ? <Loader2 className="w-4 h-4 animate-spin" /> : <Database className="w-4 h-4 text-cyan-400" />}
+            <span>Seed 9 Core Brands</span>
+          </button>
+
+          <button 
+            onClick={() => handleOpenEditor()}
+            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#7C3AED] to-[#FF007A] text-white rounded-2xl text-xs font-bold uppercase tracking-wider shadow-glow-purple hover:scale-105 transition-all cursor-pointer"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Add Brand Logo</span>
+          </button>
+        </div>
+      </div>
+
+      {loading ? (
+        <div className="py-24 text-center text-white/40 flex flex-col items-center justify-center">
+          <Loader2 className="w-10 h-10 animate-spin text-purple-400 mb-4" />
+          <p className="font-bold text-sm">Fetching brand partners from MongoDB...</p>
+        </div>
+      ) : partners.length === 0 ? (
+        <div className="p-12 text-center border border-dashed border-white/10 rounded-3xl bg-white/[0.01]">
+          <Award className="w-12 h-12 text-white/20 mx-auto mb-4" />
+          <h3 className="text-lg font-bold text-white mb-2">No Dynamic Brand Partners in Database Yet</h3>
+          <p className="text-white/40 text-xs max-w-md mx-auto mb-6">
+            Click &quot;Seed 9 Core Brands&quot; to populate your database with existing logos or click &quot;Add Brand Logo&quot; to create a new one.
+          </p>
+          <button 
+            onClick={handleSeedDefaults}
+            className="px-6 py-3 bg-brand-purple text-white rounded-xl text-xs font-bold"
+          >
+            Seed Initial 9 Brand Partners
+          </button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {partners.map((partner) => (
+            <div 
+              key={partner._id || partner.name}
+              className="p-6 rounded-3xl bg-white/[0.02] border border-white/10 hover:border-brand-purple/40 transition-all flex flex-col justify-between group"
+            >
+              <div>
+                {/* Visual Brand Preview Box */}
+                <div className="h-24 w-full rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center p-4 mb-4">
+                  {partner.isImage ? (
+                    <img src={partner.logo} alt={partner.name} className="max-h-12 max-w-[180px] object-contain group-hover:scale-105 transition-transform" />
+                  ) : (
+                    <div className={`${partner.style || "text-lg font-bold text-white/70"} select-none group-hover:scale-105 transition-transform`}>
+                      {partner.logo}
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex justify-between items-start mb-2">
+                  <div>
+                    <h3 className="text-lg font-black text-white">{partner.name}</h3>
+                    <p className="text-xs text-cyan-400 font-medium">{partner.industry || "General Technology"}</p>
+                  </div>
+                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-[10px] font-bold text-emerald-400 border border-emerald-500/20">
+                    {partner.status || "published"}
+                  </span>
+                </div>
+
+                {partner.description && (
+                  <p className="text-xs text-white/60 line-clamp-2 mt-1 leading-relaxed">
+                    {partner.description}
+                  </p>
+                )}
+
+                {/* Entity Links Chips */}
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {partner.websiteUrl && (
+                    <a 
+                      href={partner.websiteUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-[10px] font-mono text-cyan-300 bg-cyan-950/40 border border-cyan-500/30 px-2 py-0.5 rounded-lg flex items-center gap-1 hover:underline truncate max-w-[180px]"
+                    >
+                      <ExternalLink className="w-2.5 h-2.5 shrink-0" />
+                      <span className="truncate">{partner.websiteUrl.replace(/^https?:\/\//, '')}</span>
+                    </a>
+                  )}
+
+                  {partner.caseStudySlug && (
+                    <a 
+                      href={`/case-study/${partner.caseStudySlug}`} 
+                      target="_blank" 
+                      className="text-[10px] font-mono text-purple-300 bg-purple-950/40 border border-purple-500/30 px-2 py-0.5 rounded-lg flex items-center gap-1 hover:underline"
+                    >
+                      <Sparkles className="w-2.5 h-2.5 shrink-0 text-yellow-300" />
+                      <span>/case-study/{partner.caseStudySlug}</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between pt-4 mt-4 border-t border-white/5">
+                <span className="text-[11px] text-white/40 font-mono">
+                  {partner.seoKeywords?.length || 0} SEO Keywords
+                </span>
+
+                <div className="flex items-center gap-2">
+                  <button 
+                    onClick={() => handleOpenEditor(partner)}
+                    className="p-2.5 bg-white/5 hover:bg-white/15 text-white/80 hover:text-white rounded-xl transition-all cursor-pointer"
+                    title="Edit Partner"
+                  >
+                    <Edit3 className="w-4 h-4" />
+                  </button>
+                  <button 
+                    onClick={() => handleDelete(partner._id)}
+                    className="p-2.5 bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-xl transition-all cursor-pointer"
+                    title="Delete Partner"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* =========================================================================
+   3. BLOGS & EDITORIAL FORGE
    ========================================================================= */
 function BlogsManager() {
   const [blogs, setBlogs] = useState<any[]>([]);
@@ -924,6 +1871,9 @@ function BlogsManager() {
 
       if (json.success && json.url) {
         setFormData(prev => ({ ...prev, image: json.url }));
+        if (json.warning) {
+          alert(`Image saved locally. Note: ${json.warning}`);
+        }
       } else {
         alert(json.error || "Upload failed");
       }
@@ -2006,7 +2956,14 @@ function R2StorageManager() {
 
       if (json.success && json.url) {
         setUploadedUrl(json.url);
-        setMessage(json.message || "File uploaded successfully!");
+        if (json.storage === "r2") {
+          setMessage("Uploaded to Cloudflare R2 bucket!");
+        } else if (json.warning) {
+          setMessage(json.warning);
+          alert(`File saved locally. Note: ${json.warning}`);
+        } else {
+          setMessage(json.message || "File uploaded locally.");
+        }
         setRecentUploads(prev => [json.url, ...prev.filter(u => u !== json.url)]);
       } else {
         alert(json.error || "Upload failed");

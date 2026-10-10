@@ -137,7 +137,7 @@ export default function Footer() {
             <h4 className="text-xs font-black text-white uppercase tracking-widest mb-6">Services</h4>
             <div className="flex flex-col gap-3.5 text-sm text-white/50 font-bold font-sans">
               <Link href="/services/nextjs-development" className="hover:text-[#A855F7] transition-colors">
-                Next.js & Web Apps
+                Web & SaaS Engineering
               </Link>
               <Link href="/services/mobile-app-development" className="hover:text-[#A855F7] transition-colors">
                 Mobile Engineering

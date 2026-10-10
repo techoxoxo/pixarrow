@@ -43,7 +43,11 @@ export async function PATCH(
 
     // Ping search engines on project update
     try {
-      await pingIndexNow(['/work', `/case-study/${updatedProject.slug}`]);
+      await pingIndexNow([
+        'https://pixarrow.com/work', 
+        `https://pixarrow.com/case-study/${updatedProject.slug}`,
+        'https://pixarrow.com'
+      ]);
     } catch (err) {
       console.error('IndexNow ping error on project update:', err);
     }
@@ -70,7 +74,7 @@ export async function DELETE(
 
     // Ping search engines to refresh portfolio list
     try {
-      await pingIndexNow(['/work']);
+      await pingIndexNow(['https://pixarrow.com/work', 'https://pixarrow.com']);
     } catch (err) {
       console.error('IndexNow ping error on project delete:', err);
     }

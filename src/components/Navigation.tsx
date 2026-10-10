@@ -7,6 +7,7 @@ import {
   Menu, 
   X, 
   ChevronDown, 
+  ChevronRight,
   Sparkles, 
   Globe, 
   Smartphone, 
@@ -17,14 +18,17 @@ import {
   ArrowRight,
   TrendingUp,
   Building2,
-  HeartPulse
+  HeartPulse,
+  PhoneCall,
+  MessageCircle,
+  FolderGit2
 } from "lucide-react";
 import Image from "next/image";
 
 const megaMenuServices = [
   {
-    name: "Next.js Web Engineering",
-    desc: "Ultra-fast headless web portals & enterprise SaaS",
+    name: "Web & SaaS Engineering",
+    desc: "Custom full-stack web platforms, portals & scalable SaaS",
     href: "/services/nextjs-development",
     icon: Globe,
     color: "text-blue-400 bg-blue-500/10 border-blue-500/20",
@@ -67,6 +71,8 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [mobileServicesAccordion, setMobileServicesAccordion] = useState(false);
+  const [mobileIndustriesAccordion, setMobileIndustriesAccordion] = useState(false);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -105,14 +111,15 @@ export default function Navigation() {
 
   return (
     <>
-      <header className="fixed top-0 inset-x-0 z-[1000] px-4 py-3 md:px-6 md:py-5 pointer-events-none">
+      <header className="fixed top-0 inset-x-0 z-[1000] px-3 py-2.5 sm:px-6 sm:py-5 pointer-events-none">
         <nav
-          className={`max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 h-12 md:h-16 rounded-full border pointer-events-auto transition-all duration-500 relative ${
+          className={`max-w-7xl mx-auto flex items-center justify-between px-3 sm:px-6 md:px-8 h-12 sm:h-14 md:h-16 rounded-full border pointer-events-auto transition-all duration-300 relative ${
             scrolled || mobileMenuOpen
-              ? "bg-brand-bg/95 backdrop-blur-2xl border-white/10 shadow-2xl"
-              : "bg-brand-bg/60 backdrop-blur-md border-white/5"
+              ? "bg-[#080214]/95 backdrop-blur-2xl border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
+              : "bg-[#080214]/75 backdrop-blur-md border-white/10"
           }`}
         >
+          {/* Brand Logo */}
           <Link
             href="/"
             onClick={() => {
@@ -124,9 +131,9 @@ export default function Navigation() {
             <Image
               src="/logo.png"
               alt="Pixarrow"
-              width={160}
-              height={32}
-              className="h-7 sm:h-8 w-auto object-contain"
+              width={140}
+              height={28}
+              className="h-6 sm:h-7 md:h-8 w-auto object-contain"
               priority
             />
           </Link>
@@ -151,7 +158,7 @@ export default function Navigation() {
                 onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
                 className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-white/70 hover:text-white transition-all rounded-full hover:bg-white/5 cursor-pointer"
               >
-                <span>Services & Sectors</span>
+                <span>Services &amp; Sectors</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-300 ${
                     servicesDropdownOpen ? "rotate-180 text-brand-purple" : ""
@@ -267,7 +274,7 @@ export default function Navigation() {
                           <span>Scope Estimator</span>
                         </div>
                         <p className="text-[10px] text-white/60 leading-snug mb-2">
-                          Instant budget & timeline estimate.
+                          Instant budget &amp; timeline estimate.
                         </p>
                         <span className="text-[10px] text-emerald-400 font-bold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                           <span>Calculate</span>
@@ -319,130 +326,244 @@ export default function Navigation() {
           </div>
 
           {/* Action CTAs */}
-          <div className="flex items-center gap-2 md:gap-3 shrink-0">
+          <div className="flex items-center gap-2 shrink-0">
             <Link
               href="/book"
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-gradient-to-r from-[#7C3AED] to-[#FF007A] hover:opacity-95 text-white rounded-full text-xs font-bold hover:scale-105 transition-transform shadow-glow-purple"
+              className="inline-flex items-center gap-1 px-3.5 py-1.5 sm:px-5 sm:py-2.5 bg-gradient-to-r from-[#7C3AED] to-[#FF007A] hover:opacity-95 text-white rounded-full text-[11px] sm:text-xs font-bold hover:scale-105 transition-transform shadow-glow-purple"
             >
               <span>Get Started</span>
-              <span className="text-[13px]">→</span>
+              <span className="text-[12px]">→</span>
             </Link>
 
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="flex lg:hidden w-10 h-10 items-center justify-center text-white relative z-[1001] transition-transform active:scale-90"
-              aria-label="Toggle menu"
+              className="flex lg:hidden w-9 h-9 sm:w-10 sm:h-10 items-center justify-center text-white bg-white/5 hover:bg-white/10 rounded-full border border-white/10 relative z-[1001] transition-transform active:scale-90 cursor-pointer"
+              aria-label="Toggle mobile menu"
             >
-              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </nav>
       </header>
 
-      {/* Mobile Navigation Menu */}
+      {/* Full-Screen Mobile Navigation Command Center */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[999] bg-brand-bg lg:hidden pt-28 px-8 pb-8 flex flex-col justify-between overflow-y-auto"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="fixed inset-0 z-[999] bg-[#070114]/98 backdrop-blur-3xl lg:hidden pt-18 sm:pt-20 px-4 sm:px-6 pb-6 pb-safe flex flex-col justify-between overflow-y-auto touch-scroll"
           >
-            <div className="flex flex-col gap-4">
+            {/* Top Close Header in Drawer */}
+            <div className="flex items-center justify-between pb-3 border-b border-white/10 mt-2">
               <Link
                 href="/"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-2xl font-black text-white hover:text-brand-purple transition-colors"
+                className="flex items-center gap-2"
               >
-                Home
+                <Image
+                  src="/logo.png"
+                  alt="Pixarrow"
+                  width={120}
+                  height={24}
+                  className="h-6 w-auto object-contain"
+                />
               </Link>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white cursor-pointer active:scale-90 transition-transform"
+                aria-label="Close menu"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Navigation Links Group */}
+            <div className="flex flex-col gap-2 mt-3">
+              
+              {/* Home */}
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-3 rounded-2xl bg-white/[0.02] hover:bg-white/[0.06] active:bg-white/[0.08] border border-white/5 text-base sm:text-lg font-black text-white flex items-center justify-between transition-all"
+              >
+                <span>Home</span>
+                <ChevronRight className="w-4 h-4 text-white/30" />
+              </Link>
+
+              {/* Hire Developers Highlight */}
               <Link
                 href="/hire-developers"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-2xl font-black text-emerald-400 hover:text-emerald-300 transition-colors flex items-center gap-2"
+                className="p-3.5 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 active:bg-emerald-500/30 border border-emerald-500/30 text-base sm:text-lg font-black text-emerald-300 flex items-center justify-between transition-all"
               >
-                <Users className="w-5 h-5" />
-                <span>Hire Dedicated Developers</span>
+                <div className="flex items-center gap-2.5">
+                  <Users className="w-5 h-5 text-emerald-400" />
+                  <span>Hire Dedicated Engineers</span>
+                </div>
+                <span className="text-[10px] font-black uppercase bg-emerald-500/20 px-2 py-0.5 rounded-md text-emerald-300">
+                  48h Pods
+                </span>
               </Link>
-              <Link
-                href="/services"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-2xl font-black text-white hover:text-brand-purple transition-colors"
-              >
-                Services
-              </Link>
-              <div className="pl-4 space-y-1.5 border-l border-white/10">
-                {megaMenuServices.map((svc) => (
-                  <Link
-                    key={svc.name}
-                    href={svc.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block text-xs font-semibold text-white/60 hover:text-white"
-                  >
-                    {svc.name}
-                  </Link>
-                ))}
+
+              {/* Services Accordion */}
+              <div className="rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => setMobileServicesAccordion(!mobileServicesAccordion)}
+                  className="w-full p-3.5 flex items-center justify-between text-base sm:text-lg font-black text-white cursor-pointer"
+                >
+                  <div className="flex items-center gap-2">
+                    <Globe className="w-5 h-5 text-purple-400" />
+                    <span>Capabilities &amp; Services</span>
+                  </div>
+                  <ChevronDown className={`w-4 h-4 text-white/50 transition-transform duration-300 ${mobileServicesAccordion ? "rotate-180 text-purple-400" : ""}`} />
+                </button>
+                {mobileServicesAccordion && (
+                  <div className="px-3 pb-3 space-y-1.5 border-t border-white/5 pt-2">
+                    {megaMenuServices.map((svc) => (
+                      <Link
+                        key={svc.name}
+                        href={svc.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block p-2 rounded-xl text-xs font-semibold text-white/70 hover:text-white bg-white/[0.02]"
+                      >
+                        {svc.name}
+                      </Link>
+                    ))}
+                    <Link
+                      href="/services"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block p-2 text-xs font-black text-[#00DFD8]"
+                    >
+                      View All 6 Capabilities →
+                    </Link>
+                  </div>
+                )}
               </div>
-              <div className="text-xs font-bold text-white/40 uppercase tracking-wider pt-2">
-                Industries
+
+              {/* Industries Accordion */}
+              <div className="rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => setMobileIndustriesAccordion(!mobileIndustriesAccordion)}
+                  className="w-full p-3.5 flex items-center justify-between text-base sm:text-lg font-black text-white cursor-pointer"
+                >
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="w-5 h-5 text-cyan-400" />
+                    <span>Industry Verticals</span>
+                  </div>
+                  <ChevronDown className={`w-4 h-4 text-white/50 transition-transform duration-300 ${mobileIndustriesAccordion ? "rotate-180 text-cyan-400" : ""}`} />
+                </button>
+                {mobileIndustriesAccordion && (
+                  <div className="px-3 pb-3 space-y-1.5 border-t border-white/5 pt-2">
+                    {industryLinks.map((ind) => (
+                      <Link
+                        key={ind.name}
+                        href={ind.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block p-2 rounded-xl text-xs font-semibold text-white/70 hover:text-white bg-white/[0.02]"
+                      >
+                        {ind.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
-              <div className="pl-4 space-y-1.5 border-l border-white/10">
-                {industryLinks.map((ind) => (
-                  <Link
-                    key={ind.name}
-                    href={ind.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block text-xs font-semibold text-emerald-300/80 hover:text-emerald-300"
-                  >
-                    {ind.name}
-                  </Link>
-                ))}
-              </div>
+
+              {/* Calculator Shortcut */}
               <Link
                 href="/calculator"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-2xl font-black text-amber-300 hover:text-amber-200 transition-colors flex items-center gap-2"
+                className="p-3.5 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 active:bg-amber-500/30 border border-amber-500/30 text-base sm:text-lg font-black text-amber-300 flex items-center justify-between transition-all"
               >
-                <Sparkles className="w-5 h-5" />
-                <span>Cost Estimator</span>
+                <div className="flex items-center gap-2.5">
+                  <Sparkles className="w-5 h-5 text-amber-300" />
+                  <span>Cost Estimator</span>
+                </div>
+                <span className="text-[10px] font-black uppercase bg-amber-500/20 px-2 py-0.5 rounded-md text-amber-300">
+                  Instant
+                </span>
               </Link>
+
+              {/* Work */}
               <Link
                 href="/work"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-2xl font-black text-white hover:text-brand-purple transition-colors"
+                className="p-3 rounded-2xl bg-white/[0.02] hover:bg-white/[0.06] active:bg-white/[0.08] border border-white/5 text-base sm:text-lg font-black text-white flex items-center justify-between transition-all"
               >
-                Our Work
+                <span>Portfolio &amp; Work</span>
+                <ChevronRight className="w-4 h-4 text-white/30" />
               </Link>
+
+              {/* Process */}
               <Link
-                href="/about"
+                href="/process"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-2xl font-black text-white hover:text-brand-purple transition-colors"
+                className="p-3 rounded-2xl bg-white/[0.02] hover:bg-white/[0.06] active:bg-white/[0.08] border border-white/5 text-base sm:text-lg font-black text-white flex items-center justify-between transition-all"
               >
-                About
+                <span>Our Process</span>
+                <ChevronRight className="w-4 h-4 text-white/30" />
               </Link>
-              <Link
-                href="/blog"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-2xl font-black text-white hover:text-brand-purple transition-colors"
-              >
-                Blog
-              </Link>
+
+              {/* About & Blog row */}
+              <div className="grid grid-cols-2 gap-2">
+                <Link
+                  href="/about"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-3 rounded-2xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/5 text-sm sm:text-base font-black text-white text-center"
+                >
+                  About Us
+                </Link>
+                <Link
+                  href="/blog"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-3 rounded-2xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/5 text-sm sm:text-base font-black text-white text-center"
+                >
+                  Insights &amp; Blog
+                </Link>
+              </div>
+
             </div>
 
-            <div className="pt-6 border-t border-white/10">
+            {/* Bottom Quick Contact Strip */}
+            <div className="pt-5 border-t border-white/10 space-y-2.5 mt-4">
               <Link
                 href="/book"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-4 bg-gradient-to-r from-[#7C3AED] to-[#FF007A] text-white rounded-full font-black text-base flex items-center justify-center shadow-glow-purple"
+                className="w-full py-3.5 sm:py-4 bg-gradient-to-r from-[#7C3AED] to-[#FF007A] text-white rounded-2xl font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-glow-purple active:scale-95 transition-transform"
               >
-                Start Your Project
+                <span>Book Architecture Strategy Call</span>
+                <ArrowRight className="w-4 h-4" />
               </Link>
+
+              <div className="grid grid-cols-2 gap-2">
+                <a
+                  href="https://wa.me/917973060924"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>WhatsApp</span>
+                </a>
+                <a
+                  href="tel:+917973060924"
+                  className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
+                >
+                  <PhoneCall className="w-4 h-4 text-[#00DFD8]" />
+                  <span>Direct Call</span>
+                </a>
+              </div>
             </div>
+
           </motion.div>
         )}
       </AnimatePresence>
     </>
   );
 }
+

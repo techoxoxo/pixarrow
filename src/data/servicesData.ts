@@ -15,21 +15,21 @@ export interface ServiceDetail {
 export const servicesData: Record<string, ServiceDetail> = {
   "nextjs-development": {
     slug: "nextjs-development",
-    title: "Next.js Web Application & SaaS Engineering",
-    subtitle: "Enterprise-grade web engineering engineered for sub-second speeds and ultra-high conversion.",
-    tagline: "Ultra-Fast Edge Architecture",
-    badge: "Next.js 16 • React 19 • Server Components",
-    heroDescription: "We engineer mission-critical Next.js web applications, portals, and SaaS platforms. Built with React Server Components, TypeScript, Fastify/NestJS backends, and global edge CDNs for peak Core Web Vitals and unmatched user retention.",
+    title: "Full-Stack Web & Custom SaaS Engineering",
+    subtitle: "Enterprise-grade web and cloud software engineered for sub-second speeds, scalability, and ultra-high conversion.",
+    tagline: "Scalable Full-Stack Architecture",
+    badge: "Full-Stack • Enterprise SaaS • Cloud Platforms",
+    heroDescription: "We engineer mission-critical web applications, SaaS platforms, and enterprise portals. Built with modern full-stack architectures (React, Next.js, Node.js, Python), high-speed APIs, and cloud infrastructure for peak Core Web Vitals and compounding user retention.",
     roiStats: [
       { label: "Core Web Vitals", value: "0.6s LCP", desc: "Sub-second global render speed" },
       { label: "Conversion Lift", value: "+185%", desc: "Average organic conversion increase" },
-      { label: "High-Load Uptime", value: "99.99%", desc: "Zero-downtime serverless architecture" },
-      { label: "Infrastructure ROI", value: "-60%", desc: "Reduced server & cloud computing bills" }
+      { label: "High-Load Uptime", value: "99.99%", desc: "Zero-downtime resilient architecture" },
+      { label: "Infrastructure ROI", value: "-60%", desc: "Optimized server & cloud computing costs" }
     ],
     deliverables: [
       {
-        title: "React Server Components & SSR",
-        desc: "Instant data streaming, zero client-side hydration delays, and dynamic metadata for #1 Google rankings.",
+        title: "Modern Reactive Frontends & High-Performance UI",
+        desc: "Instant data streaming, zero client hydration delays, and dynamic SEO metadata for #1 Google rankings.",
         iconName: "Globe"
       },
       {
@@ -39,7 +39,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       },
       {
         title: "Microservices & High-Speed APIs",
-        desc: "REST & GraphQL architectures powered by Node.js, NestJS, Python Fastify, and Redis caching.",
+        desc: "REST & GraphQL architectures powered by Node.js, Python, NestJS, and Redis caching.",
         iconName: "Cpu"
       },
       {
@@ -48,7 +48,7 @@ export const servicesData: Record<string, ServiceDetail> = {
         iconName: "ShieldCheck"
       }
     ],
-    techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Node.js", "NestJS", "PostgreSQL", "Supabase", "Redis", "AWS Lambda", "Vercel Edge"],
+    techStack: ["React", "Next.js", "TypeScript", "Node.js", "Python", "NestJS", "PostgreSQL", "Supabase", "Redis", "AWS Cloud", "Docker"],
     processSteps: [
       { step: "01", title: "Architecture & ERD Blueprint", desc: "Comprehensive database schema design, wireframing, and performance benchmarking." },
       { step: "02", title: "Agile Sprint Development", desc: "Two-week milestone sprints with weekly staging deployments and code reviews." },

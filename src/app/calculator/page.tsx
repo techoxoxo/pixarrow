@@ -146,50 +146,80 @@ export default function CalculatorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-brand-bg text-white pt-32 pb-24 px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[#070114] text-white pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 relative overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(calculatorJsonLd) }}
       />
       {/* Ambient Glows */}
-      <div className="absolute top-[10%] left-[-10%] w-[50vw] h-[50vw] bg-[#7C3AED]/10 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-[10%] right-[-10%] w-[50vw] h-[50vw] bg-[#00DFD8]/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-[10%] left-[-10%] w-[50vw] h-[50vw] bg-[#7C3AED]/15 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[10%] right-[-10%] w-[50vw] h-[50vw] bg-[#FF007A]/15 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-[50%] left-[20%] w-[40vw] h-[40vw] bg-[#00DFD8]/10 blur-[150px] rounded-full pointer-events-none" />
+
+      {/* Cyber Grid Lines */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-grid-pattern z-0" />
 
       <div className="max-w-5xl mx-auto relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#7C3AED]/10 border border-[#7C3AED]/30 text-[#A855F7] text-xs font-black uppercase tracking-widest mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-            <span>Interactive Project Estimator</span>
+        <div className="text-center mb-8 sm:mb-12 pt-2 sm:pt-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#7C3AED]/20 border border-[#7C3AED]/40 text-[#C084FC] text-xs font-black uppercase tracking-widest mb-4 sm:mb-6 shadow-[0_0_20px_rgba(124,58,237,0.3)] backdrop-blur-xl">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00DFD8] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00DFD8]" />
+            </span>
+            <span>Real-Time Scope &amp; Budget Engine</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-4">
-            Calculate Your Project Scope & Cost
+          
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.08] text-white mb-3 sm:mb-4">
+            Calculate Your Project <br className="hidden sm:inline" />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FF007A] via-[#7C3AED] to-[#00DFD8] drop-shadow-[0_0_40px_rgba(124,58,237,0.4)]">
+              Scope &amp; Investment.
+            </span>
           </h1>
-          <p className="text-base sm:text-lg text-white/60 max-w-2xl mx-auto">
-            Get an instant, transparent engineering budget estimate and receive a customized technical architecture roadmap within minutes.
+          
+          <p className="text-sm sm:text-base md:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed font-normal mb-6">
+            Get an instant, transparent engineering budget estimate and receive a customized technical architecture roadmap within 2 minutes.
           </p>
+
+          {/* Trust Guarantee Row */}
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-white/70 font-medium">
+            <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
+              <Check className="w-3.5 h-3.5" />
+              100% Free &amp; Transparent
+            </span>
+            <span className="text-white/20">•</span>
+            <span className="flex items-center gap-1.5 text-purple-300 font-semibold">
+              <Check className="w-3.5 h-3.5" />
+              Zero Obligation
+            </span>
+            <span className="text-white/20">•</span>
+            <span className="flex items-center gap-1.5 text-cyan-300 font-semibold">
+              <Check className="w-3.5 h-3.5" />
+              Instant Architecture Roadmap
+            </span>
+          </div>
         </div>
 
         {/* Progress Bar */}
-        <div className="mb-10 max-w-2xl mx-auto">
-          <div className="flex items-center justify-between text-xs font-bold text-white/50 mb-2">
-            <span>Step {step} of 4</span>
-            <span>{step === 1 ? "Platform" : step === 2 ? "Scope & Tier" : step === 3 ? "Key Features" : "Summary & Blueprint"}</span>
+        <div className="mb-8 sm:mb-10 max-w-2xl mx-auto">
+          <div className="flex items-center justify-between text-xs font-bold text-white/60 mb-2">
+            <span className="text-purple-300 uppercase tracking-wider font-mono">Step {step} of 4</span>
+            <span className="text-[#00DFD8] font-mono">{step === 1 ? "Platform Selection" : step === 2 ? "Scope & Architecture Tier" : step === 3 ? "Key Technical Features" : "Summary & Blueprint"}</span>
           </div>
-          <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/10">
+          <div className="h-2.5 w-full bg-white/5 rounded-full overflow-hidden border border-white/10 p-0.5 backdrop-blur-md">
             <div 
-              className="h-full bg-gradient-to-r from-[#7C3AED] via-[#FF007A] to-[#00DFD8] transition-all duration-500 rounded-full"
+              className="h-full bg-gradient-to-r from-[#7C3AED] via-[#FF007A] to-[#00DFD8] transition-all duration-500 rounded-full shadow-[0_0_15px_rgba(124,58,237,0.8)]"
               style={{ width: `${(step / 4) * 100}%` }}
             />
           </div>
         </div>
 
         {/* Calculator Main Container */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           
           {/* Left / Center: Interactive Steps */}
-          <div className="lg:col-span-8 p-6 sm:p-8 rounded-3xl bg-[#0c051a]/80 border border-white/10 backdrop-blur-2xl shadow-2xl">
+          <div className="lg:col-span-8 p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#0c051a]/80 border border-white/10 backdrop-blur-2xl shadow-2xl">
             <AnimatePresence mode="wait">
               
               {/* STEP 1: Platform Selection */}
@@ -464,7 +494,7 @@ export default function CalculatorPage() {
                               value={leadData.name}
                               onChange={(e) => setLeadData({ ...leadData, name: e.target.value })}
                               placeholder="Alex Mercer"
-                              className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-[#7C3AED]"
+                              className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-white/30 text-base sm:text-sm focus:outline-none focus:border-[#7C3AED]"
                             />
                           </div>
                           <div>
@@ -477,7 +507,7 @@ export default function CalculatorPage() {
                               value={leadData.email}
                               onChange={(e) => setLeadData({ ...leadData, email: e.target.value })}
                               placeholder="alex@company.com"
-                              className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-[#7C3AED]"
+                              className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-white/30 text-base sm:text-sm focus:outline-none focus:border-[#7C3AED]"
                             />
                           </div>
                         </div>
@@ -492,7 +522,7 @@ export default function CalculatorPage() {
                               value={leadData.phone}
                               onChange={(e) => setLeadData({ ...leadData, phone: e.target.value })}
                               placeholder="+1 (555) 000-0000"
-                              className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-[#7C3AED]"
+                              className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-white/30 text-base sm:text-sm focus:outline-none focus:border-[#7C3AED]"
                             />
                           </div>
                           <div>
@@ -504,7 +534,7 @@ export default function CalculatorPage() {
                               value={leadData.company}
                               onChange={(e) => setLeadData({ ...leadData, company: e.target.value })}
                               placeholder="Acme Tech Inc."
-                              className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-[#7C3AED]"
+                              className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-white/30 text-base sm:text-sm focus:outline-none focus:border-[#7C3AED]"
                             />
                           </div>
                         </div>
@@ -518,7 +548,7 @@ export default function CalculatorPage() {
                             value={leadData.notes}
                             onChange={(e) => setLeadData({ ...leadData, notes: e.target.value })}
                             placeholder="e.g. Planning Q3 launch, integrations with Stripe + Salesforce needed..."
-                            className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-[#7C3AED] resize-none"
+                            className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-white/30 text-base sm:text-sm focus:outline-none focus:border-[#7C3AED] resize-none"
                           />
                         </div>
 

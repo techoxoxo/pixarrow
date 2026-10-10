@@ -16,6 +16,11 @@
 - **Agentic AI & Custom Automations**: Autonomous LLM workflows, custom RAG vector search pipelines, and enterprise API integrations.
 - **Performance Marketing & Growth**: Multi-channel paid acquisition (Meta, Google, TikTok), tracking pixel architecture, and data attribution.
 
+## Who We Serve & Where
+- **Local**: Web development company and app development agency in Mohali (Phase 8) / Chandigarh IT Park, India.
+- **Global**: Custom software development agency for US startups, African businesses and enterprises worldwide; offshore mobile app development partner; hire remote full-stack developers from India.
+- **Specialties**: Next.js and NestJS development, MVP development for startups, React Native mobile apps, PostgreSQL database optimization, legacy system migration to Node.js, enterprise web application development.
+
 ## Selected Client Case Studies & Architecture
 - **Cahrz** (Mobile App / On-Demand Detailing): Connects vehicle owners with vetted detailing technicians. Built with React Native & Node.js (+150% Booking Jump, 85K+ MAU). https://pixarrow.com/case-study/cahrz
 - **Shucae Films** (OTT Video Streaming Architecture): Ultra-low-latency 4K global video streaming platform built with Next.js 16 & CloudFront CDN (< 1.2s Latency, 500K+ Streams). https://pixarrow.com/case-study/shucae-films

@@ -14,6 +14,7 @@ import { generateDynamicMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 import dbConnect from "@/lib/mongodb";
 import Project from "@/models/Project";
+import Partner from "@/models/Partner";
 
 export const dynamic = 'force-dynamic';
 
@@ -23,17 +24,28 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
   let dynamicProjects: any[] = [];
+  let dynamicPartners: any[] = [];
+
   try {
     await dbConnect();
-    const dbProjects = await Project.find({ status: 'published' })
-      .sort({ featured: -1, order: 1, createdAt: -1 })
-      .limit(8)
-      .lean();
+    const [dbProjects, dbPartners] = await Promise.all([
+      Project.find({ status: 'published' })
+        .sort({ featured: -1, order: 1, createdAt: -1 })
+        .limit(8)
+        .lean(),
+      Partner.find({ status: 'published' })
+        .sort({ order: 1, createdAt: -1 })
+        .lean()
+    ]);
+
     if (dbProjects && dbProjects.length > 0) {
       dynamicProjects = JSON.parse(JSON.stringify(dbProjects));
     }
+    if (dbPartners && dbPartners.length > 0) {
+      dynamicPartners = JSON.parse(JSON.stringify(dbPartners));
+    }
   } catch (err) {
-    console.error("Home page projects fetch note:", err);
+    console.error("Home page data fetch note:", err);
   }
 
   return (
@@ -52,7 +64,7 @@ export default async function Home() {
         
         {/* LOGO CLOUD */}
         <div className="relative z-30 border-t border-white/5">
-          <LogoCloud />
+          <LogoCloud initialPartners={dynamicPartners} />
         </div>
 
         {/* INSTITUTIONAL TRUST & ACCREDITATIONS */}

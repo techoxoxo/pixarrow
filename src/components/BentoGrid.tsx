@@ -5,23 +5,23 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function BentoGrid() {
   return (
-    <section className="py-32 px-6 relative z-10" id="work">
+    <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative z-10" id="work">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-20 text-center lg:text-left">
-          <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-6">
+        <div className="mb-12 sm:mb-20 text-center lg:text-left">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 sm:mb-6 leading-tight">
             Featured <span className="text-gradient">Work</span>
           </h2>
-          <p className="text-xl text-white/50 max-w-2xl font-sans">
+          <p className="text-base sm:text-xl text-white/50 max-w-2xl font-sans">
             A collection of premium websites built for bold startups. Scaling digital presence across various verticals.
           </p>
         </div>
 
-        <div className="grid grid-cols-12 gap-6">
+        <div className="grid grid-cols-12 gap-4 sm:gap-6">
           {caseStudies.map((project, i) => (
             <Link
               key={project.slug}
               href={`/case-study/${project.slug}`}
-              className={`backdrop-blur-md bg-white/[0.02] border border-white/10 rounded-[2.5rem] p-10 flex flex-col justify-end overflow-hidden group relative min-h-[450px] transition-all hover:border-brand-purple/50 ${
+              className={`backdrop-blur-md bg-white/[0.02] border border-white/10 rounded-2xl sm:rounded-[2.5rem] p-6 sm:p-8 md:p-10 flex flex-col justify-end overflow-hidden group relative min-h-[340px] sm:min-h-[450px] transition-all hover:border-brand-purple/50 ${
                 i % 4 === 0 || i % 4 === 3 ? "col-span-12 lg:col-span-8" : "col-span-12 lg:col-span-4"
               }`}
             >
@@ -39,17 +39,17 @@ export default function BentoGrid() {
                  <div className="absolute inset-0 bg-gradient-to-t from-brand-bg/90 via-brand-bg/20 to-transparent" />
               </div>
 
-              <div className="absolute top-10 right-10 w-14 h-14 rounded-[1.5rem] border border-white/10 flex items-center justify-center bg-white/5 group-hover:bg-brand-purple group-hover:text-white group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 z-10 backdrop-blur-3xl shadow-glow-purple/20">
-                 <ArrowUpRight className="w-7 h-7" />
+              <div className="absolute top-5 right-5 sm:top-10 sm:right-10 w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-[1.5rem] border border-white/10 flex items-center justify-center bg-white/5 group-hover:bg-brand-purple group-hover:text-white group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 z-10 backdrop-blur-3xl shadow-glow-purple/20">
+                 <ArrowUpRight className="w-5 h-5 sm:w-7 sm:h-7" />
               </div>
               
-              <div className="relative z-10 transform transition-all duration-500 group-hover:-translate-y-4">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="text-[10px] font-black tracking-[0.3em] text-brand-purple uppercase">{project.category}</div>
-                  <div className="h-px w-8 bg-brand-purple/30" />
+              <div className="relative z-10 transform transition-all duration-500 group-hover:-translate-y-2 sm:group-hover:-translate-y-4">
+                <div className="flex items-center gap-2.5 sm:gap-3 mb-2 sm:mb-4">
+                  <div className="text-[10px] font-black tracking-[0.25em] sm:tracking-[0.3em] text-brand-purple uppercase">{project.category}</div>
+                  <div className="h-px w-6 sm:w-8 bg-brand-purple/30" />
                 </div>
-                <h3 className="text-3xl md:text-5xl font-black tracking-tight mb-4 font-display leading-none">{project.title}</h3>
-                <p className="text-white/40 text-lg leading-relaxed max-w-md font-sans font-medium group-hover:text-white/70 transition-colors">{project.description}</p>
+                <h3 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight mb-2 sm:mb-4 font-display leading-tight">{project.title}</h3>
+                <p className="text-white/50 sm:text-white/40 text-sm sm:text-lg leading-relaxed max-w-md font-sans font-medium group-hover:text-white/70 transition-colors line-clamp-2 sm:line-clamp-none">{project.description}</p>
               </div>
             </Link>
           ))}

@@ -98,14 +98,17 @@ export default async function BlogPost({ params }: Props) {
   };
 
   return (
-    <article className="min-h-screen bg-brand-bg text-white pt-36 pb-24 px-6 relative overflow-hidden">
+    <article className="min-h-screen bg-[#070114] text-white pt-28 sm:pt-36 pb-24 px-4 sm:px-6 relative overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
       />
       {/* Background Radial Glows */}
-      <div className="absolute top-[10%] left-[-10%] w-[50vw] h-[50vw] bg-[#7C3AED]/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-[10%] left-[-10%] w-[50vw] h-[50vw] bg-[#7C3AED]/15 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute bottom-[20%] right-[-10%] w-[50vw] h-[50vw] bg-[#00DFD8]/10 blur-[150px] rounded-full pointer-events-none" />
+
+      {/* Cyber Grid Lines */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-grid-pattern z-0" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         

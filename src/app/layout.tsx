@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
+import { coreKeywords, localKeywords, nicheKeywords, geoKeywords } from "@/lib/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,11 +21,18 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL('https://pixarrow.com'),
   title: {
-    default: "Pixarrow — Premium Digital Growth & Web Engineering Agency",
+    default: "Custom Software Development Agency in Mohali, India | Pixarrow",
     template: "%s | Pixarrow - Digital Growth Agency"
   },
-  description: "Pixarrow is a digital growth agency transforming startups into market leaders with premium next.js engineering, UI/UX design, and motion systems.",
-  keywords: ["digital growth agency", "ui ux design", "nextjs development", "motion design agency", "startup growth", "pixarrow", "high performance web", "web engineering agency"],
+  description: "Pixarrow is a custom software development agency in Mohali, India. Full stack web development, mobile app development services and dedicated developers for startups and enterprises in the USA, Africa and worldwide.",
+  keywords: [
+    ...coreKeywords,
+    ...localKeywords,
+    ...nicheKeywords,
+    ...geoKeywords,
+    "pixarrow",
+    "digital growth agency",
+  ],
   authors: [{ name: "Anuj Sharma" }, { name: "Ankit Rajput" }],
   alternates: {
     canonical: 'https://pixarrow.com',
@@ -59,7 +67,6 @@ export const metadata: Metadata = {
 
 import Script from "next/script";
 
-import QuickInquiryDrawer from "@/components/QuickInquiryDrawer";
 import FloatingActions from "@/components/FloatingActions";
 
 export default function RootLayout({
@@ -115,10 +122,18 @@ export default function RootLayout({
                   "priceRange": "$$$",
                   "address": {
                     "@type": "PostalAddress",
+                    "streetAddress": "Phase 8, Industrial Area",
                     "addressLocality": "Mohali",
                     "addressRegion": "Punjab",
                     "addressCountry": "IN"
                   },
+                  "areaServed": [
+                    { "@type": "City", "name": "Mohali" },
+                    { "@type": "City", "name": "Chandigarh" },
+                    { "@type": "Country", "name": "India" },
+                    { "@type": "Country", "name": "United States" },
+                    { "@type": "Continent", "name": "Africa" }
+                  ],
                   "founders": [
                     {
                       "@type": "Person",
@@ -147,6 +162,12 @@ export default function RootLayout({
                     "https://github.com/pixarrow"
                   ],
                   "knowsAbout": [
+                    "Custom Software Development",
+                    "Enterprise Web Application Development",
+                    "Next.js and NestJS Development",
+                    "MVP Development for Startups",
+                    "PostgreSQL Database Optimization",
+                    "Legacy System Migration to Node.js",
                     "Next.js 16 Web Engineering",
                     "Full-Stack Web Architecture",
                     "React Native Mobile Development",
@@ -205,6 +226,7 @@ export default function RootLayout({
                   "@id": "https://pixarrow.com/#website",
                   "url": "https://pixarrow.com",
                   "name": "Pixarrow",
+                  "description": "Pixarrow is an elite digital growth and web engineering agency specializing in Next.js 16 architectures, mobile apps, and agentic AI systems.",
                   "publisher": {
                     "@id": "https://pixarrow.com/#organization"
                   },
@@ -212,7 +234,107 @@ export default function RootLayout({
                     "@type": "SearchAction",
                     "target": "https://pixarrow.com/work?search={search_term_string}",
                     "query-input": "required name=search_term_string"
-                  }
+                  },
+                  "hasPart": [
+                    {
+                      "@type": "WebPage",
+                      "@id": "https://pixarrow.com/work",
+                      "url": "https://pixarrow.com/work",
+                      "name": "Selected Case Studies & Engineering Portfolio"
+                    },
+                    {
+                      "@type": "WebPage",
+                      "@id": "https://pixarrow.com/hire-developers",
+                      "url": "https://pixarrow.com/hire-developers",
+                      "name": "Hire Dedicated Engineering Pods"
+                    },
+                    {
+                      "@type": "WebPage",
+                      "@id": "https://pixarrow.com/services",
+                      "url": "https://pixarrow.com/services",
+                      "name": "Core Capabilities & Solutions"
+                    },
+                    {
+                      "@type": "WebPage",
+                      "@id": "https://pixarrow.com/book",
+                      "url": "https://pixarrow.com/book",
+                      "name": "Book a Strategy Call / Contact"
+                    },
+                    {
+                      "@type": "WebPage",
+                      "@id": "https://pixarrow.com/calculator",
+                      "url": "https://pixarrow.com/calculator",
+                      "name": "Interactive Scope & Budget Calculator"
+                    },
+                    {
+                      "@type": "WebPage",
+                      "@id": "https://pixarrow.com/about",
+                      "url": "https://pixarrow.com/about",
+                      "name": "About Pixarrow Founders & Methodology"
+                    },
+                    {
+                      "@type": "WebPage",
+                      "@id": "https://pixarrow.com/blog",
+                      "url": "https://pixarrow.com/blog",
+                      "name": "Engineering Blueprints & Tech Blog"
+                    }
+                  ]
+                },
+                {
+                  "@type": "ItemList",
+                  "@id": "https://pixarrow.com/#site-navigation",
+                  "name": "Pixarrow Sitelinks & Main Navigation",
+                  "itemListElement": [
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 1,
+                      "name": "Case Studies & Work",
+                      "description": "Explore our flagship engineering case studies across Next.js 16 portals, React Native mobile apps, and headless Shopify Plus storefronts.",
+                      "url": "https://pixarrow.com/work"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 2,
+                      "name": "Hire Dedicated Developers",
+                      "description": "Hire pre-vetted senior Next.js, React Native, Python, and AI engineers with flexible monthly engagement models and 15-day trial.",
+                      "url": "https://pixarrow.com/hire-developers"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 3,
+                      "name": "Engineering Services",
+                      "description": "Full-stack web applications, iOS/Android mobile engineering, autonomous agentic AI workflows, and conversion optimization.",
+                      "url": "https://pixarrow.com/services"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 4,
+                      "name": "Book a Strategy Call",
+                      "description": "Schedule a direct 30-minute architecture consultation and project roadmap session with our Lead Architect.",
+                      "url": "https://pixarrow.com/book"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 5,
+                      "name": "Scope & Budget Calculator",
+                      "description": "Calculate your technical scope, target timeline, and budget estimate in 2 minutes with instant sprint breakdown.",
+                      "url": "https://pixarrow.com/calculator"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 6,
+                      "name": "About Pixarrow",
+                      "description": "Meet the founders and engineering leads behind Pixarrow: Anuj Sharma (CTO) and Ankit Rajput (CSO).",
+                      "url": "https://pixarrow.com/about"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 7,
+                      "name": "Engineering Blog",
+                      "description": "Deep-dive technical blueprints, Next.js 16 best practices, mobile development guides, and agentic AI pipelines.",
+                      "url": "https://pixarrow.com/blog"
+                    }
+                  ]
                 }
               ]
             })
@@ -226,7 +348,6 @@ export default function RootLayout({
           </SmoothScroll>
         </main>
         <Footer />
-        <QuickInquiryDrawer />
         <FloatingActions />
       </body>
     </html>

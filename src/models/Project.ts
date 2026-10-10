@@ -10,6 +10,7 @@ export interface IProject {
   title: string;
   slug: string;
   subtitle?: string;
+  clientName?: string;
   description: string;
   fullDescription?: string;
   category: string;
@@ -26,6 +27,7 @@ export interface IProject {
   status: 'published' | 'draft';
   metaTitle?: string;
   metaDescription?: string;
+  keywords?: string[];
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -34,6 +36,7 @@ const ProjectSchema = new Schema({
   title: { type: String, required: [true, 'Project title is required'] },
   slug: { type: String, required: [true, 'Slug is required'], unique: true, index: true },
   subtitle: { type: String },
+  clientName: { type: String },
   description: { type: String, required: [true, 'Short description is required'] },
   fullDescription: { type: String },
   category: { type: String, required: [true, 'Category is required'] },
@@ -60,6 +63,7 @@ const ProjectSchema = new Schema({
   status: { type: String, enum: ['published', 'draft'], default: 'published' },
   metaTitle: { type: String },
   metaDescription: { type: String },
+  keywords: [{ type: String }],
 }, {
   timestamps: true,
   collection: 'pixarrow_projects'

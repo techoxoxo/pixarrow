@@ -72,24 +72,24 @@ const socials = [
 
 export default function SocialShowcase() {
   return (
-    <section className="py-40 relative isolate">
+    <section className="py-20 sm:py-32 lg:py-40 relative isolate overflow-hidden">
       {/* Background Ambience */}
-      <div className="absolute inset-0 z-[-1]">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-brand-purple/5 blur-[120px] rounded-full" />
+      <div className="absolute inset-0 z-[-1] pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(1000px,95vw)] h-[min(600px,60vw)] bg-brand-purple/5 blur-[120px] rounded-full" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
           <div className="flex-1 text-center lg:text-left">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 mb-8"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 mb-6 sm:mb-8"
             >
               <span className="w-2 h-2 rounded-full bg-brand-purple animate-pulse" />
-              <span className="text-xs font-black tracking-widest text-white/40 uppercase">Beyond Corporate</span>
+              <span className="text-[11px] font-black tracking-widest text-white/50 uppercase">Beyond Corporate</span>
             </motion.div>
             
             <motion.h2 
@@ -97,9 +97,9 @@ export default function SocialShowcase() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-6xl md:text-8xl font-black tracking-tighter mb-8 italic"
+              className="text-4xl sm:text-6xl lg:text-8xl font-black tracking-tighter mb-6 sm:mb-8 italic leading-[1.05]"
             >
-              The <span className="text-gradient">Social</span> <br /> 
+              The <span className="text-gradient">Social</span> <br className="hidden sm:inline" /> 
               Matrix.
             </motion.h2>
             
@@ -108,13 +108,14 @@ export default function SocialShowcase() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-xl text-white/40 max-w-lg font-medium leading-relaxed"
+              className="text-base sm:text-lg lg:text-xl text-white/50 max-w-lg mx-auto lg:mx-0 font-medium leading-relaxed"
             >
               We don&apos;t just build products; we build communities. Slice through the noise and see our process live across the web.
             </motion.p>
           </div>
 
-          <div className="flex-1 relative w-full aspect-square max-w-[500px]">
+          {/* DESKTOP VIEWPORT (>= lg): Floating Orbital Layout */}
+          <div className="hidden lg:block flex-1 relative w-full aspect-square max-w-[500px]">
             {/* Central Brand Orb */}
             <motion.div 
               initial={{ scale: 0, opacity: 0 }}
@@ -176,6 +177,41 @@ export default function SocialShowcase() {
                 </Link>
               </motion.div>
             ))}
+          </div>
+
+          {/* MOBILE VIEWPORT (< lg): Clean, Responsive 2-Column Grid */}
+          <div className="block lg:hidden w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {socials.map((social) => (
+                <Link 
+                  key={social.name}
+                  href={social.link} 
+                  target="_blank"
+                  className="group block bg-[#0e0524]/70 border border-white/10 rounded-2xl p-5 backdrop-blur-xl relative overflow-hidden transition-all active:scale-[0.98] hover:border-[#7C3AED]/40"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${social.color} p-2.5 shadow-md shrink-0`}>
+                        {social.icon}
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-black tracking-widest text-white/40 uppercase">{social.name}</div>
+                        <div className="text-base font-black text-white group-hover:text-brand-purple transition-colors">@{social.handle}</div>
+                      </div>
+                    </div>
+                    <div className="bg-white/5 border border-white/10 px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#00F2FF] animate-pulse" />
+                      <span className="text-[10px] uppercase font-bold text-white/60 tracking-wider">{social.status}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between text-xs text-white/50 border-t border-white/5 pt-3">
+                    <span className="font-medium">{social.detail}</span>
+                    <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
 
         </div>

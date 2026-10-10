@@ -1,203 +1,249 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Rocket } from "lucide-react";
+import { 
+  Rocket, 
+  Sparkles, 
+  CheckCircle2, 
+  ArrowRight, 
+  Layers, 
+  Cpu, 
+  Zap, 
+  ShieldCheck, 
+  Clock, 
+  Code2, 
+  Database,
+  Terminal,
+  Activity
+} from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
-// Social SVG Icons for floating on the right
-const FacebookIcon = () => (
-  <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M9 8H7v3h2v9h3v-9h3.6L16 8h-3V6.3C12 5.5 12.3 5 13 5h2V2h-3C9.8 2 9 3.5 9 5.3V8z"/>
-  </svg>
-);
-
-const InstagramIcon = () => (
-  <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-  </svg>
-);
-
-const LinkedInIcon = () => (
-  <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-  </svg>
-);
-
-const steps = [
+const sprintSteps = [
   {
     num: "01",
-    title: "Discover & Strategy",
-    description: "We learn your business, audience & goals to build a winning strategy.",
+    sprint: "Sprint 01 · Days 1–7",
+    title: "System Architecture & Rapid Blueprint",
+    tag: "Blueprint & UI/UX",
+    desc: "We deconstruct your business model, map high-concurrency database schemas, and deliver ultra-high-fidelity interactive UI/UX Figma prototypes ready for validation.",
+    deliverables: ["Product Requirements Document (PRD)", "Interactive Figma Design System", "Database & API Architecture Blueprint"],
+    sla: "7-Day Milestone Lock",
+    color: "from-[#7C3AED] to-[#FF007A]",
+    accent: "#A855F7"
   },
   {
     num: "02",
-    title: "Build & Launch",
-    description: "We design, develop & launch high-performing websites, apps & ad campaigns.",
+    sprint: "Sprint 02 · Days 8–21",
+    title: "Full-Stack Velocity Engineering",
+    tag: "Next.js & Cloud Edge",
+    desc: "Our senior engineering pod builds your frontend & backend in parallel using React 19, Next.js 16 Server Components, and optimized microservices for lightning performance.",
+    deliverables: ["100% TypeScript & Tailwind v4 Codebase", "Secure REST / GraphQL & Database Integrations", "Live Staging Preview URLs with Instant CI/CD"],
+    sla: "Continuous Daily Demos",
+    color: "from-[#FF007A] to-[#00DFD8]",
+    accent: "#00DFD8"
   },
   {
     num: "03",
-    title: "Grow & Optimize",
-    description: "We optimize, test & scale for maximum growth & ROI.",
+    sprint: "Sprint 03 · Days 22–28",
+    title: "Performance, CRO & E2E Testing",
+    tag: "Optimization & QA",
+    desc: "We subject your application to rigorous automated stress testing, security audits, and mathematical conversion rate optimization (CRO) to maximize every visitor's value.",
+    deliverables: ["Sub-second 0.6s Global LCP Guarantee", "SOC-2 Ready Auth & Payment Security Audit", "Automated End-to-End Cypress/Playwright Tests"],
+    sla: "100/100 Core Web Vitals",
+    color: "from-[#00DFD8] to-[#7C3AED]",
+    accent: "#38BDF8"
   },
   {
     num: "04",
-    title: "Scale & Dominate",
-    description: "We scale your brand to new heights with data, automation & creativity.",
+    sprint: "Sprint 04 · Days 29–35",
+    title: "Global Launch & Full IP Transfer",
+    tag: "Edge Deploy & Handover",
+    desc: "We deploy your platform to global edge networks with 99.98% uptime SLA, configure live analytics, and transfer 100% intellectual property & source code unconditionally.",
+    deliverables: ["Production Edge CDN & Custom Domain Setup", "100% Full IP & Source Code Transfer", "Dedicated Slack Support & Maintenance Retainer"],
+    sla: "Unconditional IP Handover",
+    color: "from-[#F59E0B] to-[#10B981]",
+    accent: "#10B981"
   },
 ];
 
 export default function Process() {
+  const [activeStep, setActiveStep] = useState(0);
+
   return (
     <section className="py-24 px-6 relative z-10 w-full bg-brand-bg overflow-hidden" id="process">
-      {/* Background Soft Glow */}
-      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-purple/5 blur-[120px] rounded-full pointer-events-none" />
+      {/* Background Ambient Glows */}
+      <div className="absolute top-1/3 left-[-10%] w-[500px] h-[500px] bg-[#7C3AED]/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 right-[-10%] w-[500px] h-[500px] bg-[#FF007A]/10 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* Left Column: Title & Rocket Launcher (4 Columns) */}
-        <div className="flex flex-col lg:col-span-4 items-start">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-tight text-white mb-6 text-left">
-            We don't just build. <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FF007A] to-[#7C3AED]">
-              We grow with you.
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#7C3AED]/10 border border-[#7C3AED]/30 text-[#A855F7] text-xs font-black uppercase tracking-widest mb-4">
+            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+            <span>The Pixarrow Sprint Methodology</span>
+          </div>
+
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-6">
+            From Concept to Market Dominance in <br className="hidden sm:inline" />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FF007A] via-[#7C3AED] to-[#00DFD8]">
+              4 Agile Sprints.
             </span>
           </h2>
-          <p className="text-lg text-white/50 mb-12 max-w-sm leading-relaxed text-left">
-            From strategy to scale, we handle everything you need to win online.
+
+          <p className="text-base sm:text-lg text-white/60 leading-relaxed font-sans">
+            We eliminate legacy agency bloat. Every project is executed by senior full-stack architects with weekly demo milestones and guaranteed launch SLAs.
           </p>
-
-          {/* Rocket Launcher Graphic Container */}
-          <div className="relative w-full max-w-[280px] h-[280px] bg-[#0c051a]/40 border border-white/5 rounded-[40px] flex items-center justify-center shadow-lg backdrop-blur-md mt-4 mx-auto lg:mx-0">
-            {/* Rocket Thruster Glow & Flame */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-14 h-24 bg-gradient-to-b from-[#7C3AED] via-[#FF007A]/50 to-transparent blur-xl opacity-80" />
-            
-            {/* Rocket Icon Container */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="relative z-10"
-            >
-              <Rocket 
-                className="w-28 h-28 -rotate-45 text-[#7C3AED] drop-shadow-[0_0_20px_rgba(124,58,237,0.6)]" 
-                strokeWidth={0.8}
-              />
-            </motion.div>
-
-            {/* Sticker Badge */}
-            <div className="absolute bottom-6 right-[-20px] bg-[#110526] border border-[#00DFD8]/30 rounded-2xl px-4 py-2 shadow-lg backdrop-blur-md rotate-[12deg] z-20">
-              <span className="text-xs font-black text-white/90 uppercase tracking-widest">
-                Let's Build Something Epic!
-              </span>
-            </div>
-          </div>
         </div>
 
-        {/* Center Column: 4 Steps (4 Columns) */}
-        <div className="flex flex-col gap-8 lg:col-span-4 justify-center">
-          {steps.map((step, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex gap-4 items-start text-left"
-            >
-              {/* Oval Number Badge */}
-              <div className="px-4 py-1.5 rounded-full bg-[#7C3AED]/10 border border-[#7C3AED]/25 text-[#A855F7] font-black text-sm w-12 h-8 flex items-center justify-center shrink-0">
-                {step.num}
-              </div>
+        {/* 4-Step Interactive Matrix */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+          
+          {/* Left Column: Interactive Step Cards (7 cols) */}
+          <div className="lg:col-span-7 flex flex-col gap-4">
+            {sprintSteps.map((step, idx) => {
+              const isSelected = activeStep === idx;
+              return (
+                <div
+                  key={step.num}
+                  onClick={() => setActiveStep(idx)}
+                  className={`p-6 sm:p-7 rounded-[2rem] border transition-all duration-300 cursor-pointer text-left relative overflow-hidden ${
+                    isSelected
+                      ? "bg-gradient-to-r from-[#170830] to-[#0d031c] border-[#7C3AED] shadow-[0_10px_35px_rgba(124,58,237,0.25)]"
+                      : "bg-[#0c051a]/60 border-white/5 hover:border-white/20 hover:bg-[#0c051a]/90"
+                  }`}
+                >
+                  {/* Glowing active indicator line */}
+                  {isSelected && (
+                    <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-gradient-to-b from-[#FF007A] via-[#7C3AED] to-[#00DFD8]" />
+                  )}
 
-              <div className="flex flex-col gap-1.5">
-                <h3 className="text-lg font-black text-white">
-                  {step.title}
-                </h3>
-                <p className="text-sm text-white/50 leading-relaxed font-sans font-medium">
-                  {step.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                  <div className="flex items-center justify-between gap-4 mb-3">
+                    <div className="flex items-center gap-3">
+                      <span className={`w-9 h-9 rounded-xl flex items-center justify-center font-black text-sm ${
+                        isSelected 
+                          ? "bg-[#7C3AED] text-white shadow-glow-purple" 
+                          : "bg-white/5 text-white/40 border border-white/10"
+                      }`}>
+                        {step.num}
+                      </span>
+                      <span className="text-xs font-black uppercase tracking-wider text-[#00DFD8]">
+                        {step.sprint}
+                      </span>
+                    </div>
 
-        {/* Right Column: Neon Target Board (4 Columns) */}
-        <div className="flex justify-center items-center lg:col-span-4">
-          <div className="relative w-full max-w-[280px] aspect-square bg-[#0c051a]/50 border border-white/5 rounded-[40px] flex items-center justify-center shadow-lg backdrop-blur-md mx-auto">
-            
-            {/* Targets Board SVG */}
-            <div className="relative w-48 h-48 flex items-center justify-center">
-              <svg className="w-full h-full absolute" viewBox="0 0 100 100">
-                {/* Concentric targets */}
-                <circle cx="50" cy="50" r="40" stroke="#1f113a" strokeWidth="1" fill="transparent" />
-                <circle cx="50" cy="50" r="30" stroke="#FF007A" strokeWidth="1.5" strokeDasharray="4 2" fill="transparent" className="opacity-70 animate-[spin_30s_linear_infinite]" />
-                <circle cx="50" cy="50" r="20" stroke="#00DFD8" strokeWidth="2" fill="transparent" className="opacity-80" />
-                <circle cx="50" cy="50" r="10" stroke="#7C3AED" strokeWidth="2.5" fill="transparent" className="drop-shadow-[0_0_8px_rgba(124,58,237,0.5)]" />
-                <circle cx="50" cy="50" r="2" fill="white" className="animate-ping" />
-              </svg>
+                    <span className="text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/60">
+                      {step.sla}
+                    </span>
+                  </div>
 
-              {/* Glowing Dart Arrow SVG overlay */}
-              <motion.div
-                animate={{ rotate: [-2, 2, -2], x: [-1, 1, -1] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute w-24 h-24 flex items-center justify-center z-10 translate-x-3 -translate-y-3"
-              >
-                <svg className="w-full h-full" viewBox="0 0 40 40">
-                  {/* Diagonal Dart line */}
-                  <line x1="5" y1="35" x2="28" y2="12" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" className="drop-shadow-[0_0_5px_rgba(255,255,255,0.8)]" />
-                  {/* Dart feathers */}
-                  <polygon points="5,35 2,38 7,37" fill="#7C3AED" />
-                  <polygon points="5,35 8,32 6,36" fill="#7C3AED" />
-                  {/* Dart head (positioned near center at 30,10) */}
-                  <polygon points="28,12 25,9 31,9" fill="#00DFD8" className="drop-shadow-[0_0_4px_#00DFD8]" />
-                </svg>
-              </motion.div>
-            </div>
+                  <h3 className="text-xl sm:text-2xl font-black text-white mb-2">
+                    {step.title}
+                  </h3>
 
-            {/* Floating Social Media Icons around the target */}
-            
-            {/* Facebook (Top Left) */}
-            <motion.div
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-6 left-6 w-8 h-8 rounded-full bg-blue-600 border border-white/10 flex items-center justify-center shadow-md cursor-pointer hover:scale-110 transition-transform"
-            >
-              <FacebookIcon />
-            </motion.div>
+                  <p className="text-sm text-white/60 leading-relaxed mb-4 font-sans">
+                    {step.desc}
+                  </p>
 
-            {/* Instagram (Bottom Left) */}
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute bottom-10 left-6 w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-500 via-[#FF007A] to-purple-600 border border-white/10 flex items-center justify-center shadow-md cursor-pointer hover:scale-110 transition-transform"
-            >
-              <InstagramIcon />
-            </motion.div>
-
-            {/* LinkedIn (Top Right) */}
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute top-10 right-8 w-8 h-8 rounded-full bg-blue-700 border border-white/10 flex items-center justify-center shadow-md cursor-pointer hover:scale-110 transition-transform"
-            >
-              <LinkedInIcon />
-            </motion.div>
-
-            {/* Small TikTok Icon (Bottom Right) */}
-            <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-              className="absolute bottom-8 right-10 w-8 h-8 rounded-full bg-black border border-white/10 flex items-center justify-center shadow-md cursor-pointer hover:scale-110 transition-transform"
-            >
-              <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-              </svg>
-            </motion.div>
-
+                  {/* Deliverables Checklist */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-3 border-t border-white/5">
+                    {step.deliverables.map((item, dIdx) => (
+                      <div key={dIdx} className="flex items-center gap-2 text-xs text-white/80">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                        <span className="truncate">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
+
+          {/* Right Column: Holographic Engineering HUD Console (5 cols) */}
+          <div className="lg:col-span-5 sticky top-28">
+            <div className="p-8 rounded-[2.5rem] bg-gradient-to-b from-[#120529] via-[#090217] to-[#050011] border border-[#7C3AED]/30 shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-2xl relative overflow-hidden">
+              
+              {/* Terminal Title Bar */}
+              <div className="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-rose-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-amber-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                </div>
+                <div className="flex items-center gap-1.5 text-xs font-mono text-white/40">
+                  <Terminal className="w-3.5 h-3.5 text-[#00DFD8]" />
+                  <span>pixarrow-sprint-engine.v4</span>
+                </div>
+              </div>
+
+              {/* Active Sprint Live HUD Details */}
+              <div className="mb-6">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-mono uppercase tracking-widest text-[#A855F7]">
+                    ACTIVE MONITOR // {sprintSteps[activeStep].sprint.split("·")[0]}
+                  </span>
+                  <span className="flex items-center gap-1 text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">
+                    <Activity className="w-3 h-3 animate-pulse" />
+                    LIVE POD ACTIVE
+                  </span>
+                </div>
+
+                <div className="text-2xl font-black text-white mb-2">
+                  {sprintSteps[activeStep].title}
+                </div>
+                <div className="text-xs font-mono text-[#00DFD8] bg-[#00DFD8]/10 px-3 py-1.5 rounded-xl border border-[#00DFD8]/20 inline-block mb-4">
+                  SLA: {sprintSteps[activeStep].sla}
+                </div>
+              </div>
+
+              {/* Key SLA & Benchmark Grid */}
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/5">
+                  <div className="text-xs font-bold text-white/40 uppercase tracking-wider mb-1">Code Quality</div>
+                  <div className="text-lg font-black text-emerald-400">100% Type-Safe</div>
+                  <div className="text-[10px] text-white/40">Zero Runtime Errors</div>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/5">
+                  <div className="text-xs font-bold text-white/40 uppercase tracking-wider mb-1">Global TTFB</div>
+                  <div className="text-lg font-black text-[#00DFD8]">&lt; 0.4s Edge</div>
+                  <div className="text-[10px] text-white/40">Cloudflare Edge Cache</div>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/5">
+                  <div className="text-xs font-bold text-white/40 uppercase tracking-wider mb-1">Testing SLA</div>
+                  <div className="text-lg font-black text-purple-300">Automated E2E</div>
+                  <div className="text-[10px] text-white/40">CI/CD on every commit</div>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/5">
+                  <div className="text-xs font-bold text-white/40 uppercase tracking-wider mb-1">IP Ownership</div>
+                  <div className="text-lg font-black text-amber-300">100% Client</div>
+                  <div className="text-[10px] text-white/40">Full Git repository push</div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="space-y-3">
+                <Link
+                  href="/book"
+                  className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#7C3AED] to-[#FF007A] hover:opacity-95 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-glow-purple transition-all"
+                >
+                  <span>Start a 4-Week Sprint</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/calculator"
+                  className="w-full py-3 px-6 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white font-bold text-xs flex items-center justify-center gap-2 transition-all"
+                >
+                  <span>Calculate Custom Sprint Timeline</span>
+                </Link>
+              </div>
+
+            </div>
+          </div>
+
         </div>
 
       </div>
     </section>
   );
 }
+

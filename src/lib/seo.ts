@@ -2,51 +2,81 @@ import dbConnect from "./mongodb";
 import SEO from "@/models/SEO";
 import { Metadata } from "next";
 
+export const coreKeywords = [
+  "custom software development agency",
+  "full stack web development company",
+  "mobile app development services",
+  "enterprise web application development",
+  "hire dedicated full stack developers",
+];
+
+export const localKeywords = [
+  "web development company Mohali",
+  "app development agency in Mohali",
+  "IT company in Phase 8 Mohali",
+  "IT company Chandigarh IT Park",
+];
+
+export const nicheKeywords = [
+  "Next.js and NestJS development agency",
+  "outsource MVP development for startups",
+  "React Native mobile app development company India",
+  "custom PostgreSQL database optimization services",
+  "legacy system migration to Node.js",
+];
+
+export const geoKeywords = [
+  "affordable web development agency for US startups",
+  "hire remote full-stack developers from India",
+  "custom software development company for African businesses",
+  "offshore mobile app development partner USA",
+];
+
 const defaultRouteMetadata: Record<string, { title: string; description: string; keywords: string[] }> = {
   "/": {
-    title: "Pixarrow — Premium Digital Growth & Web Engineering Agency",
-    description: "Pixarrow is an elite digital growth and web engineering agency transforming startups into market leaders with Next.js 16 architectures, React Native mobile apps, agentic AI workflows, and conversion-first UI/UX design.",
-    keywords: ["digital growth agency", "nextjs web development", "react native mobile apps", "agentic ai engineering", "ui ux design studio", "shopify plus developers", "high performance web agency"]
+    title: "Custom Software Development Agency in Mohali, India | Pixarrow",
+    description: "Pixarrow is a custom software development agency in Mohali, India. Full stack web development, mobile app development services, and dedicated developers for startups and enterprises in the USA, Africa and worldwide.",
+    keywords: [...coreKeywords, ...localKeywords, "digital growth agency", "agentic ai engineering", "shopify plus developers"]
   },
   "/work": {
-    title: "Selected Case Studies & Web Engineering Portfolio | Pixarrow",
-    description: "Explore our flagship engineering case studies across Next.js 16 portals, React Native apps, high-AOV headless Shopify Plus storefronts, and automated AI systems.",
-    keywords: ["web development portfolio", "nextjs case studies", "react native showcase", "headless ecommerce examples", "software engineering portfolio"]
+    title: "Case Studies & Software Development Portfolio | Pixarrow",
+    description: "Explore case studies of enterprise web applications, React Native mobile apps, Next.js platforms and headless Shopify Plus storefronts built by Pixarrow for startups and global brands.",
+    keywords: ["web development portfolio", "nextjs case studies", "react native showcase", "enterprise web application development", "mobile app development services", "software engineering portfolio"]
   },
   "/services": {
-    title: "Core Engineering Capabilities & Growth Solutions | Pixarrow",
-    description: "Full-stack Next.js web applications, iOS/Android mobile engineering, autonomous agentic AI workflows, Shopify Plus headless commerce, and conversion optimization.",
-    keywords: ["nextjs web development", "mobile app engineering", "agentic ai solutions", "shopify plus development", "conversion rate optimization"]
+    title: "Full Stack Web & Mobile App Development Services | Pixarrow",
+    description: "Custom software development: full stack web development, mobile app development services, enterprise web application development, Next.js and NestJS builds, PostgreSQL optimization and legacy migration to Node.js.",
+    keywords: [...coreKeywords, ...nicheKeywords, "shopify plus development", "agentic ai solutions"]
   },
   "/about": {
-    title: "About Pixarrow — The Growth & Web Engineering Architects",
-    description: "Meet the founders and engineering leads behind Pixarrow: Anuj Sharma (CTO) and Ankit Rajput (CSO). We build scalable digital platforms with startup velocity.",
-    keywords: ["pixarrow founders", "anuj sharma cto", "ankit rajput cso", "about pixarrow", "web engineering agency founders"]
+    title: "About Pixarrow — Software Development Company in Mohali",
+    description: "Meet the founders behind Pixarrow, a Mohali-based software development company: Anuj Sharma (CTO) and Ankit Rajput (CSO). We build scalable web and mobile platforms for clients in India, the USA and Africa.",
+    keywords: ["pixarrow founders", "anuj sharma cto", "ankit rajput cso", "about pixarrow", "web development company Mohali", "IT company in Phase 8 Mohali"]
   },
   "/blog": {
-    title: "Engineering Blueprints, Architecture Insights & Tech Blog | Pixarrow",
-    description: "Deep-dive technical blueprints, Next.js 16 best practices, mobile development guides, agentic AI pipelines, and digital growth strategies from Pixarrow engineers.",
-    keywords: ["nextjs 16 blog", "web architecture blueprints", "react native tutorials", "agentic ai guides", "ecommerce growth insights"]
+    title: "Engineering Blog: Next.js, NestJS, React Native & Offshore Development | Pixarrow",
+    description: "Technical guides on Next.js and NestJS, React Native, PostgreSQL optimization, legacy migration to Node.js, MVP outsourcing and working with an offshore development partner.",
+    keywords: ["nextjs 16 blog", "nestjs tutorials", "react native tutorials", "postgresql optimization", "legacy system migration to Node.js", "outsource MVP development for startups"]
   },
   "/calculator": {
-    title: "Interactive Project Scope & Budget Calculator | Pixarrow",
-    description: "Calculate your technical scope, target timeline, and budget estimate in 2 minutes. Receive a customized architectural blueprint and sprint breakdown.",
-    keywords: ["web development cost calculator", "app development estimate", "project budget calculator", "software development pricing"]
+    title: "Custom Software & App Development Cost Calculator | Pixarrow",
+    description: "Estimate the cost and timeline of your web app, mobile app or MVP in 2 minutes. Transparent pricing from an affordable offshore web development agency for US startups and global founders.",
+    keywords: ["web development cost calculator", "app development cost estimate", "MVP development cost", "affordable web development agency for US startups", "software development pricing"]
   },
   "/book": {
-    title: "Book a 30-Minute Architecture & Growth Strategy Call | Pixarrow",
-    description: "Schedule a direct strategy call with our Lead Architect and Partners. Get a comprehensive technical review, ERD blueprint, and project roadmap.",
-    keywords: ["schedule strategy session", "hire web developers", "book architecture call", "pixarrow discovery session"]
+    title: "Book a Free Strategy Call | Custom Software Development Agency | Pixarrow",
+    description: "Schedule a free 30-minute call with our lead architect. Get a technical review, scope and roadmap for your web app, mobile app or MVP from a custom software development agency.",
+    keywords: ["schedule strategy session", "hire dedicated full stack developers", "custom software development agency", "offshore mobile app development partner USA", "pixarrow discovery session"]
   },
   "/hire-developers": {
-    title: "Hire Dedicated Next.js & Full-Stack Engineering Pods | Pixarrow",
-    description: "Hire pre-vetted senior Next.js, React Native, Python, and AI engineers with flexible monthly engagement models, 15-day risk-free trial, and direct Slack access.",
-    keywords: ["hire nextjs developers", "dedicated engineering pod", "hire react native developers", "hire full stack engineers", "staff augmentation"]
+    title: "Hire Dedicated Full Stack Developers from India | Pixarrow",
+    description: "Hire remote full-stack developers from India: pre-vetted Next.js, NestJS, Node.js, React Native and PostgreSQL engineers on flexible monthly plans with a 15-day risk-free trial. Trusted by US and African startups.",
+    keywords: ["hire dedicated full stack developers", "hire remote full-stack developers from India", "hire nextjs developers", "hire react native developers", "staff augmentation", "offshore mobile app development partner USA"]
   },
   "/process": {
-    title: "Engineering Process, Sprint Methodology & SLA Guarantees | Pixarrow",
-    description: "Discover our battle-tested 4-phase agile engineering methodology: Architecture Blueprint, Milestone Sprints, Automated QA Stress-Testing, and Global Edge SLA.",
-    keywords: ["software development process", "agile sprint methodology", "quality assurance standards", "web engineering lifecycle"]
+    title: "Our Software Development Process & Agile Sprint Methodology | Pixarrow",
+    description: "A 4-phase agile methodology for custom software development: architecture blueprint, milestone sprints, automated QA and SLA-backed deployment. Built for offshore and remote client collaboration.",
+    keywords: ["software development process", "agile sprint methodology", "offshore development process", "quality assurance standards", "web engineering lifecycle"]
   },
   "/legal/privacy-policy": {
     title: "Privacy Policy | Pixarrow",
@@ -128,6 +158,67 @@ export async function generateDynamicMetadata(path: string): Promise<Metadata> {
       description: fallback.description,
       images: ['/og-image.png'],
     },
+  };
+}
+
+export function generateBreadcrumbJsonLd(items: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": items.map((item, idx) => ({
+      "@type": "ListItem",
+      "position": idx + 1,
+      "name": item.name,
+      "item": item.url.startsWith("http") ? item.url : `https://pixarrow.com${item.url.startsWith("/") ? item.url : `/${item.url}`}`
+    }))
+  };
+}
+
+export function generatePageJsonLd({
+  title,
+  description,
+  url,
+  breadcrumbs,
+  type = "WebPage"
+}: {
+  title: string;
+  description: string;
+  url: string;
+  breadcrumbs?: { name: string; url: string }[];
+  type?: string;
+}) {
+  const fullUrl = url.startsWith("http") ? url : `https://pixarrow.com${url.startsWith("/") ? url : `/${url}`}`;
+  
+  const graph: any[] = [
+    {
+      "@type": type,
+      "@id": `${fullUrl}#webpage`,
+      "url": fullUrl,
+      "name": title,
+      "description": description,
+      "isPartOf": {
+        "@id": "https://pixarrow.com/#website"
+      },
+      "inLanguage": "en-US"
+    }
+  ];
+
+  if (breadcrumbs && breadcrumbs.length > 0) {
+    graph.push({
+      "@type": "BreadcrumbList",
+      "@id": `${fullUrl}#breadcrumb`,
+      "itemListElement": breadcrumbs.map((b, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": b.name,
+        "item": b.url.startsWith("http") ? b.url : `https://pixarrow.com${b.url.startsWith("/") ? b.url : `/${b.url}`}`
+      }))
+    });
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": graph
   };
 }
 

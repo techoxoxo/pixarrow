@@ -31,8 +31,11 @@ export async function POST(request: Request) {
       storage: result.storage,
       key: result.key,
       isR2Configured,
+      warning: result.error || null,
       message: result.storage === 'r2' 
         ? 'Uploaded directly to Cloudflare R2 bucket!' 
+        : result.error
+        ? `Warning: ${result.error} (Saved locally)`
         : 'Saved to local uploads (Configure R2 in .env for production CDN)',
     });
   } catch (error: any) {

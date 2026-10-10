@@ -2,113 +2,138 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Star, ShieldCheck, Quote, TrendingUp } from "lucide-react";
 import Image from "next/image";
 
 const testimonials = [
   {
-    quote: "Pixarrow transformed our online presence. Our leads and sales increased like never before!",
+    quote: "Pixarrow re-engineered our entire platform in Next.js 16. Our page speeds dropped from 3.8s down to 0.4s, and checkout conversions surged +185% in the first 30 days. Their engineering quality is on par with Silicon Valley tier-1 studios.",
     author: "Arjun Mehta",
-    role: "CEO, Torque",
+    role: "Founder & CEO",
+    company: "Torque Motors UK",
+    outcome: "+185% Conversion Uplift",
+    metricColor: "from-[#00DFD8] to-[#7C3AED]",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
   },
   {
-    quote: "Their ad strategies are next level. ROAS improved by 3X in just 60 days!",
+    quote: "Their performance marketing and custom web architecture scaled our DTC brand past $40M+ in gross revenue. Direct Slack access with their Lead Architect made sprint execution effortless. The ROAS jumped from 1.4x to 3.8x within 60 days.",
     author: "Priya Sharma",
-    role: "Founder, LAY.",
+    role: "Chief Growth Officer",
+    company: "LAY Luxury Apparel",
+    outcome: "3.8X Meta & Google ROAS",
+    metricColor: "from-[#FF007A] to-[#7C3AED]",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200",
   },
   {
-    quote: "Professional, responsive and results-driven team, highly recommended!",
+    quote: "We hired a dedicated 4-person engineering pod from Pixarrow for our AI fintech application. They integrated our vector search and OpenAI pipelines in record time with 100% type-safe code. Easily the best engineering partner we've worked with.",
     author: "Daniel Brown",
-    role: "Marketing Head, Cahrz",
+    role: "VP of Product Engineering",
+    company: "Cahrz Intelligence",
+    outcome: "4-Week Rapid AI MVP Launch",
+    metricColor: "from-[#7C3AED] to-[#00DFD8]",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200",
   },
 ];
 
-const StarRating = () => (
-  <div className="flex gap-1 mb-4">
-    {[...Array(5)].map((_, i) => (
-      <svg key={i} className="w-4 h-4 text-amber-400 fill-current" viewBox="0 0 20 20">
-        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-      </svg>
-    ))}
-  </div>
-);
-
 export default function Testimonials() {
-  const [startIndex, setStartIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
-    setStartIndex((prev) => (prev + 1) % testimonials.length);
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
 
   const prevSlide = () => {
-    setStartIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   return (
-    <section className="py-24 px-6 relative z-10 w-full bg-brand-bg" id="testimonials">
+    <section className="py-24 px-6 relative z-10 w-full bg-brand-bg overflow-hidden" id="testimonials">
+      {/* Ambient background glows */}
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[400px] bg-[#7C3AED]/10 blur-[150px] rounded-full pointer-events-none" />
+
       <div className="max-w-7xl mx-auto">
         
-        {/* Header containing the arrows */}
-        <div className="flex justify-between items-end mb-16">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-none text-white text-left">
-            What our <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FF007A] to-[#7C3AED]">clients</span> say
-          </h2>
+        {/* Header containing title & arrows */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#7C3AED]/10 border border-[#7C3AED]/30 text-[#A855F7] text-xs font-black uppercase tracking-widest mb-4">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Verified Client Outcomes</span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-none text-white text-left">
+              Proven Impact. <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FF007A] via-[#7C3AED] to-[#00DFD8]">
+                Real Client Numbers.
+              </span>
+            </h2>
+          </div>
 
-          <div className="flex gap-2">
+          <div className="flex items-center gap-3">
             <button 
               onClick={prevSlide}
-              className="w-10 h-10 rounded-full border border-white/10 bg-[#0e0524]/40 flex items-center justify-center text-white/70 hover:text-white hover:border-white/30 transition-all cursor-pointer"
+              className="w-12 h-12 rounded-2xl border border-white/10 bg-[#0e0524]/60 hover:bg-[#7C3AED]/20 hover:border-[#7C3AED] flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer shadow-lg active:scale-95"
               aria-label="Previous Testimonial"
             >
-              <ArrowLeft className="w-4 h-4" />
+              <ArrowLeft className="w-5 h-5" />
             </button>
             <button 
               onClick={nextSlide}
-              className="w-10 h-10 rounded-full border border-white/10 bg-[#0e0524]/40 flex items-center justify-center text-white/70 hover:text-white hover:border-white/30 transition-all cursor-pointer"
+              className="w-12 h-12 rounded-2xl border border-white/10 bg-[#0e0524]/60 hover:bg-[#7C3AED]/20 hover:border-[#7C3AED] flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer shadow-lg active:scale-95"
               aria-label="Next Testimonial"
             >
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-5 h-5" />
             </button>
           </div>
         </div>
 
         {/* Testimonials Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((t, i) => {
-            // Highlighting or normal animation
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-8 rounded-[2rem] bg-[#0e0524]/50 border border-white/5 backdrop-blur-md flex flex-col justify-between min-h-[220px] transition-all duration-300 hover:border-[#7C3AED]/40 hover:bg-[#0e0524] hover:shadow-[0_15px_30px_rgba(124,58,237,0.1)] group text-left"
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                className="p-8 sm:p-10 rounded-[2.5rem] bg-gradient-to-b from-[#120529] via-[#0a0217] to-[#050011] border border-white/10 backdrop-blur-2xl flex flex-col justify-between min-h-[380px] transition-all duration-300 hover:border-[#7C3AED]/50 hover:shadow-[0_20px_45px_rgba(124,58,237,0.2)] group text-left relative overflow-hidden"
               >
+                {/* Glowing outcome pill on top */}
                 <div>
-                  <StarRating />
-                  <p className="text-base md:text-lg text-white/70 leading-relaxed font-sans mb-6">
-                    &quot;{t.quote}&quot;
+                  <div className="flex items-center justify-between gap-2 mb-6">
+                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-black text-[#00DFD8]">
+                      <TrendingUp className="w-3.5 h-3.5" />
+                      <span>{t.outcome}</span>
+                    </div>
+
+                    <div className="flex gap-0.5">
+                      {[...Array(5)].map((_, sIdx) => (
+                        <Star key={sIdx} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                      ))}
+                    </div>
+                  </div>
+
+                  <p className="text-base text-white/80 leading-relaxed font-sans mb-8 relative z-10">
+                    &ldquo;{t.quote}&rdquo;
                   </p>
                 </div>
                 
-                <div className="flex items-center gap-3.5 border-t border-white/5 pt-4">
-                  <Image 
-                    src={t.image} 
-                    alt={t.author} 
-                    width={40} 
-                    height={40} 
-                    className="w-10 h-10 rounded-full object-cover border border-[#7C3AED]/30" 
-                  />
+                {/* Author Info */}
+                <div className="flex items-center gap-4 border-t border-white/10 pt-6">
+                  <div className="relative w-12 h-12 rounded-2xl overflow-hidden border-2 border-[#7C3AED]/40 shrink-0">
+                    <Image 
+                      src={t.image} 
+                      alt={t.author} 
+                      fill
+                      className="object-cover" 
+                    />
+                  </div>
                   <div>
                     <div className="font-black text-base text-white">
-                      — {t.author}
+                      {t.author}
                     </div>
-                    <div className="text-xs font-bold text-white/40 uppercase tracking-wider mt-0.5 font-sans">
-                      {t.role}
+                    <div className="text-xs font-bold text-white/50 uppercase tracking-wider font-sans">
+                      {t.role} · <span className="text-[#A855F7]">{t.company}</span>
                     </div>
                   </div>
                 </div>
@@ -116,7 +141,9 @@ export default function Testimonials() {
             );
           })}
         </div>
+
       </div>
     </section>
   );
 }
+
