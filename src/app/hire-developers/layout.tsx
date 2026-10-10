@@ -12,7 +12,7 @@ export default function HireDevelopersLayout({
 }) {
   const jsonLd = generatePageJsonLd({
     title: "Hire Dedicated Next.js & Full-Stack Engineering Pods | Pixarrow",
-    description: "Hire pre-vetted senior Next.js, React Native, Python, and AI engineers with flexible monthly engagement models, 15-day risk-free trial, and direct Slack access.",
+    description: "Hire pre-vetted senior Next.js, React Native, Python, and AI engineers with flexible monthly engagement models, 15-day risk-free trial, and daily standups.",
     url: "https://pixarrow.com/hire-developers",
     type: "Service",
     breadcrumbs: [

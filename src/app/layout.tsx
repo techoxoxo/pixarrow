@@ -341,7 +341,7 @@ export default function RootLayout({
             })
           }}
         />
-        <div className="fixed inset-0 pointer-events-none z-[-1] bg-grid-pattern w-full max-w-7xl mx-auto opacity-50" />
+        <div className="fixed inset-0 pointer-events-none z-[-1] bg-grid-pattern w-full opacity-50" />
         <Navigation />
         <main className="relative z-10 w-full">
           <SmoothScroll>

@@ -113,7 +113,7 @@ export default function Navigation() {
     <>
       <header className="fixed top-0 inset-x-0 z-[1000] px-3 py-2.5 sm:px-6 sm:py-5 pointer-events-none">
         <nav
-          className={`max-w-7xl mx-auto flex items-center justify-between px-3 sm:px-6 md:px-8 h-12 sm:h-14 md:h-16 rounded-full border pointer-events-auto transition-all duration-300 relative ${
+          className={`w-full max-w-[1440px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 h-12 sm:h-14 md:h-16 rounded-full border pointer-events-auto transition-all duration-300 relative ${
             scrolled || mobileMenuOpen
               ? "bg-[#080214]/95 backdrop-blur-2xl border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
               : "bg-[#080214]/75 backdrop-blur-md border-white/10"

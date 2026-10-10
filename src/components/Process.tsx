@@ -56,11 +56,11 @@ const sprintSteps = [
   {
     num: "04",
     sprint: "Sprint 04 · Days 29–35",
-    title: "Global Launch & Full IP Transfer",
+    title: "Global Launch & Handover",
     tag: "Edge Deploy & Handover",
-    desc: "We deploy your platform to global edge networks with 99.98% uptime SLA, configure live analytics, and transfer 100% intellectual property & source code unconditionally.",
-    deliverables: ["Production Edge CDN & Custom Domain Setup", "100% Full IP & Source Code Transfer", "Dedicated Slack Support & Maintenance Retainer"],
-    sla: "Unconditional IP Handover",
+    desc: "We deploy your platform to global edge networks with 99.98% uptime SLA, configure live analytics, and hand over documentation and deployment runbooks.",
+    deliverables: ["Production Edge CDN & Custom Domain Setup", "Documentation & Deployment Runbooks", "Dedicated Slack Support & Maintenance Retainer"],
+    sla: "Complete Handover",
     color: "from-[#F59E0B] to-[#10B981]",
     accent: "#10B981"
   },
@@ -70,12 +70,12 @@ export default function Process() {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section className="py-24 px-6 relative z-10 w-full bg-brand-bg overflow-hidden" id="process">
+    <section className="py-24 px-5 sm:px-8 md:px-10 lg:px-12 relative z-10 w-full bg-brand-bg overflow-hidden" id="process">
       {/* Background Ambient Glows */}
       <div className="absolute top-1/3 left-[-10%] w-[500px] h-[500px] bg-[#7C3AED]/10 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute bottom-10 right-[-10%] w-[500px] h-[500px] bg-[#FF007A]/10 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-[1440px] mx-auto relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -214,9 +214,9 @@ export default function Process() {
                   <div className="text-[10px] text-white/40">CI/CD on every commit</div>
                 </div>
                 <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/5">
-                  <div className="text-xs font-bold text-white/40 uppercase tracking-wider mb-1">IP Ownership</div>
-                  <div className="text-lg font-black text-amber-300">100% Client</div>
-                  <div className="text-[10px] text-white/40">Full Git repository push</div>
+                  <div className="text-xs font-bold text-white/40 uppercase tracking-wider mb-1">Uptime SLA</div>
+                  <div className="text-lg font-black text-amber-300">99.98%</div>
+                  <div className="text-[10px] text-white/40">Monitored 24/7</div>
                 </div>
               </div>
 

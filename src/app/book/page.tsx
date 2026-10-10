@@ -32,7 +32,7 @@ export default function BookPage() {
       {/* Cyber Grid Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-grid-pattern z-0" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="max-w-[1300px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 relative z-10">
         <BookForm />
       </div>
     </div>

@@ -12,12 +12,6 @@ const comparisonMatrix = [
     pixarrowWin: true
   },
   {
-    feature: "Code & Intellectual Property",
-    traditional: "Vendor lock-in & proprietary restrictions",
-    pixarrow: "100% Full IP Transfer & Unlocked Repo",
-    pixarrowWin: true
-  },
-  {
     feature: "Development Velocity",
     traditional: "6 to 9 months slow waterfall cycles",
     pixarrow: "3 to 6 weeks agile sprint launches",
@@ -28,22 +22,16 @@ const comparisonMatrix = [
     traditional: "Generic chatbots with high hallucination",
     pixarrow: "Custom RAG pipelines & autonomous agents",
     pixarrowWin: true
-  },
-  {
-    feature: "Direct Communication",
-    traditional: "Junior account managers as middlemen",
-    pixarrow: "Direct Slack channel with Lead Architect",
-    pixarrowWin: true
   }
 ];
 
 export default function StopScaling() {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 relative z-10 w-full bg-[#050011] overflow-hidden">
+    <section className="py-16 sm:py-24 px-5 sm:px-8 md:px-10 lg:px-12 relative z-10 w-full bg-[#050011] overflow-hidden">
       {/* Background Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[700px] h-[350px] sm:h-[700px] bg-gradient-to-tr from-[#7C3AED]/15 via-[#FF007A]/10 to-[#00DFD8]/10 blur-[160px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1440px] mx-auto">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
@@ -158,7 +146,7 @@ export default function StopScaling() {
                 <Lock className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div>
-                <div className="text-xs font-black text-white">100% IP Ownership</div>
+                <div className="text-xs font-black text-white">Signed NDA Protection</div>
                 <div className="text-[10px] text-white/50">Full code &amp; copyright transfer</div>
               </div>
             </div>

@@ -125,7 +125,7 @@ const capabilitiesList = [
 export default function DetailedCapabilities() {
   return (
     <section className="py-12 relative z-10 w-full">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1440px] mx-auto">
         
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto mb-16">

@@ -51,9 +51,9 @@ const philosophyPillars = [
   },
   {
     icon: ShieldCheck,
-    title: "Radical Transparency & IP Transfer",
-    desc: "Direct Slack collaboration with your Lead Architect. 100% full source code and intellectual property transferred unconditionally upon milestone completion.",
-    badge: "Client Sovereignty",
+    title: "Radical Transparency & Clear Communication",
+    desc: "Daily standups, weekly sprint demos and clear progress reports keep you informed at every step, with every engagement covered by a signed NDA.",
+    badge: "Full Transparency",
     color: "from-emerald-500/20 to-teal-500/20 border-emerald-500/30 text-emerald-400"
   }
 ];
@@ -91,7 +91,7 @@ const operatingValues = [
   { label: "50+ Products", sub: "Delivered on Time", color: "text-cyan-400" },
   { label: "$45M+ Volume", sub: "Processed for Clients", color: "text-purple-300" },
   { label: "99.98% SLA", sub: "Edge Uptime Guarantee", color: "text-pink-400" },
-  { label: "100% IP", sub: "Full Source Code Transfer", color: "text-emerald-400" },
+  { label: "24h NDA", sub: "Signed Before Kickoff", color: "text-emerald-400" },
 ];
 
 export default function AboutPage() {
@@ -107,7 +107,7 @@ export default function AboutPage() {
   });
 
   return (
-    <div className="min-h-screen bg-[#070114] text-white pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[#070114] text-white pt-24 sm:pt-32 pb-16 sm:pb-24 px-5 sm:px-8 md:px-10 lg:px-12 relative overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -120,7 +120,7 @@ export default function AboutPage() {
       {/* Cyber Grid Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-grid-pattern z-0" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-[1440px] mx-auto relative z-10">
         
         {/* HERO SECTION: 2-COLUMN STUDIO ARCHITECTURE */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16 sm:mb-24 pt-4 sm:pt-8">
@@ -174,7 +174,7 @@ export default function AboutPage() {
               <span className="text-white/20">•</span>
               <span className="flex items-center gap-1.5 text-purple-300 font-semibold">
                 <Check className="w-3.5 h-3.5" />
-                100% IP Sovereignty
+                Signed NDA Protection
               </span>
               <span className="text-white/20">•</span>
               <span className="flex items-center gap-1.5 text-cyan-300 font-semibold">
@@ -285,7 +285,7 @@ export default function AboutPage() {
                   </div>
                   <div className="flex items-center gap-2 text-[11px] text-white/80 font-medium">
                     <ShieldCheck className="w-3.5 h-3.5 text-purple-300 shrink-0" />
-                    <span>100% Unconditional IP &amp; Code Sovereignty</span>
+                    <span>Signed NDA Before Kickoff</span>
                   </div>
                   <div className="flex items-center gap-2 text-[11px] text-white/80 font-medium">
                     <TrendingUp className="w-3.5 h-3.5 text-pink-300 shrink-0" />
@@ -443,7 +443,7 @@ export default function AboutPage() {
                   <div className="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
                     <div className="flex items-center gap-2 text-xs text-white/50">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <span>Direct Slack &amp; Architecture Access</span>
+                      <span>Free 30-Min Strategy Call</span>
                     </div>
 
                     <Link

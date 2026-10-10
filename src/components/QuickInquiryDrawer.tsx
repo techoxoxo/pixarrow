@@ -140,7 +140,7 @@ export default function QuickInquiryDrawer() {
                         <Lock className="w-4 h-4 text-[#7C3AED]" />
                         <span>100% Confidentiality & 24h NDA</span>
                       </div>
-                      <p className="text-[10px] sm:text-[11px] text-white/50">Your idea, IP, and code remain 100% protected under our non-disclosure framework.</p>
+                      <p className="text-[10px] sm:text-[11px] text-white/50">Your idea and project details stay confidential under our non-disclosure framework.</p>
                     </div>
                     <button
                       onClick={() => {
@@ -285,7 +285,7 @@ export default function QuickInquiryDrawer() {
                       </div>
                       <div className="flex items-center justify-center gap-1">
                         <Lock className="w-3.5 h-3.5 text-purple-400" />
-                        <span>100% IP Ownership</span>
+                        <span>Signed NDA Protection</span>
                       </div>
                     </div>
                   </form>

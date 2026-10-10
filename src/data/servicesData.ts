@@ -62,11 +62,11 @@ export const servicesData: Record<string, ServiceDetail> = {
       },
       {
         question: "How do you guarantee project delivery timelines?",
-        answer: "Every project operates with fixed sprint deliverables, signed milestone SLAs, and dedicated Slack channels with our Lead Architect. We offer a 100% on-time delivery guarantee."
+        answer: "Every project operates with fixed sprint deliverables, signed milestone SLAs, and a dedicated project channel. We offer a 100% on-time delivery guarantee."
       },
       {
-        question: "Do we get full ownership of the source code and IP?",
-        answer: "Yes, 100%. Upon completion and milestone approval, full source code repositories, documentation, architecture diagrams, and intellectual property rights are transferred to your organization."
+        question: "Is our project kept confidential?",
+        answer: "Yes. We sign an NDA within 24 hours of kickoff, and all project details, designs and data are kept strictly confidential. Delivery terms are set out in your project agreement."
       }
     ]
   },

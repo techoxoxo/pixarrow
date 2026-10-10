@@ -45,7 +45,7 @@ export default async function BlogPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#070114] text-white pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[#070114] text-white pt-24 sm:pt-32 pb-16 sm:pb-24 px-5 sm:px-8 md:px-10 lg:px-12 relative overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -58,7 +58,7 @@ export default async function BlogPage() {
       {/* Cyber Grid Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-grid-pattern z-0" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-[1440px] mx-auto relative z-10">
         
         {/* Header Hero */}
         <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 pt-4 sm:pt-8">

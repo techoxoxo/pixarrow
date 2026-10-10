@@ -146,7 +146,7 @@ export default function CalculatorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070114] text-white pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[#070114] text-white pt-24 sm:pt-32 pb-16 sm:pb-24 px-5 sm:px-8 md:px-10 lg:px-12 relative overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(calculatorJsonLd) }}
@@ -159,7 +159,7 @@ export default function CalculatorPage() {
       {/* Cyber Grid Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-grid-pattern z-0" />
 
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="max-w-[1300px] mx-auto relative z-10">
         
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12 pt-2 sm:pt-6">
@@ -451,7 +451,7 @@ export default function CalculatorPage() {
                           </li>
                           <li className="flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-                            <span>Signed 24-hour mutual NDA is attached for IP protection.</span>
+                            <span>Signed 24-hour mutual NDA is attached for confidentiality.</span>
                           </li>
                           <li className="flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
@@ -574,7 +574,7 @@ export default function CalculatorPage() {
                           </span>
                           <span className="flex items-center gap-1.5">
                             <Lock className="w-4 h-4 text-purple-400" />
-                            100% IP Ownership
+                            Signed NDA Protection
                           </span>
                           <span className="flex items-center gap-1.5">
                             <Clock className="w-4 h-4 text-cyan-400" />
@@ -626,7 +626,7 @@ export default function CalculatorPage() {
                   <span>Pixarrow Guarantee</span>
                 </div>
                 <p className="text-[11px] text-white/60 leading-relaxed">
-                  Fixed milestone deliverables, 15-day risk-free trial on dedicated engineering pods, and 100% full IP source code transfer upon completion.
+                  Fixed milestone deliverables, 15-day risk-free trial on dedicated engineering pods, and a signed NDA before kickoff.
                 </p>
               </div>
             </div>

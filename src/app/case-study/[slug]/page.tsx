@@ -199,7 +199,7 @@ export default async function CaseStudyPage({ params }: Props) {
   };
 
   return (
-    <div className="pt-24 sm:pt-32 pb-16 sm:pb-24 min-h-screen bg-[#070114] text-white relative overflow-hidden">
+    <div className="pt-24 sm:pt-32 pb-16 sm:pb-24 min-h-screen bg-[#070114] text-white px-5 sm:px-8 md:px-10 lg:px-12 relative overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(richSchemaGraph) }}
@@ -212,7 +212,7 @@ export default async function CaseStudyPage({ params }: Props) {
       {/* Cyber Grid Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-grid-pattern z-0" />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="max-w-[1440px] mx-auto relative z-10">
         
         {/* Breadcrumb Navigation */}
         <div className="flex items-center gap-2 text-xs font-semibold text-white/50 mb-6 sm:mb-8 overflow-x-auto whitespace-nowrap pb-1">
@@ -318,7 +318,7 @@ export default async function CaseStudyPage({ params }: Props) {
                 </div>
 
                 <div className="pt-2 text-[11px] text-white/50 leading-relaxed font-mono">
-                  Delivered with 100% full IP transfer, sub-second LCP optimization, and dedicated architecture support.
+                  Delivered with sub-second LCP optimization and dedicated architecture support.
                 </div>
               </div>
             )}

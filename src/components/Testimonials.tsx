@@ -47,11 +47,11 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-24 px-6 relative z-10 w-full bg-brand-bg overflow-hidden" id="testimonials">
+    <section className="py-24 px-5 sm:px-8 md:px-10 lg:px-12 relative z-10 w-full bg-brand-bg overflow-hidden" id="testimonials">
       {/* Ambient background glows */}
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[400px] bg-[#7C3AED]/10 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1440px] mx-auto">
         
         {/* Header containing title & arrows */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">

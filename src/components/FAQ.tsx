@@ -20,8 +20,8 @@ const faqs = [
   },
   {
     category: "Pricing & Retainer",
-    question: "How does your pricing and IP ownership structure work?",
-    answer: "We offer fixed-scope milestone sprints and dedicated monthly engineering pods ($3,500 – $4,500/mo per senior developer). 100% intellectual property, design source files, and Git repositories are transferred to you unconditionally.",
+    question: "How does your pricing and engagement structure work?",
+    answer: "We offer fixed-scope milestone sprints and dedicated monthly engineering pods ($3,500 – $4,500/mo per senior developer). Every engagement starts with a signed NDA and a clear written agreement.",
   },
   {
     category: "Architecture & Tech",
@@ -31,7 +31,7 @@ const faqs = [
   {
     category: "Sprints & Delivery",
     question: "What kind of communication and project transparency do you provide?",
-    answer: "You get a dedicated private Slack/Discord channel with direct access to your Lead Architect and developers. We provide weekly sprint demos, async Loom recordings, and clear milestone progress dashboards.",
+    answer: "You get a dedicated project channel (Slack or Discord) with our team. We provide weekly sprint demos, async Loom recordings, and clear milestone progress dashboards.",
   },
   {
     category: "Pricing & Retainer",
@@ -62,7 +62,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="py-24 px-6 relative z-10 w-full bg-brand-bg overflow-hidden" id="faq">
+    <section className="py-24 px-5 sm:px-8 md:px-10 lg:px-12 relative z-10 w-full bg-brand-bg overflow-hidden" id="faq">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -70,7 +70,7 @@ export default function FAQ() {
       {/* Background Soft Glow */}
       <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#7C3AED]/10 blur-[160px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1440px] mx-auto">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

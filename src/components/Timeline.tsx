@@ -41,17 +41,17 @@ const weeks = [
   },
   { 
     week: "06", 
-    title: "Production Launch & 100% IP", 
+    title: "Production Launch & Handover", 
     tag: "Days 36–42",
-    items: ["Global Edge CDN & DNS Cutover", "100% Full IP & Source Transfer", "Live Monitoring & SLA Retainer"],
+    items: ["Global Edge CDN & DNS Cutover", "Documentation & Deployment Handover", "Live Monitoring & SLA Retainer"],
     color: "from-[#F59E0B] to-[#10B981]"
   },
 ];
 
 export default function Timeline() {
   return (
-    <section className="py-20 px-6 relative z-10 w-full overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-20 px-5 sm:px-8 md:px-10 lg:px-12 relative z-10 w-full overflow-hidden">
+      <div className="max-w-[1440px] mx-auto">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

@@ -85,8 +85,8 @@ const defaultRouteMetadata: Record<string, { title: string; description: string;
   },
   "/legal/terms": {
     title: "Terms of Service | Pixarrow",
-    description: "Pixarrow's client engagement terms, 100% intellectual property ownership agreements, and service level assurances.",
-    keywords: ["terms of service", "ip ownership", "service level agreement"]
+    description: "Pixarrow's client engagement terms, confidentiality commitments, and service level assurances.",
+    keywords: ["terms of service", "confidentiality", "service level agreement"]
   }
 };
 

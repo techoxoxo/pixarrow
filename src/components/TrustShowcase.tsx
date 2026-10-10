@@ -19,19 +19,19 @@ import Link from "next/link";
 const partnershipGuarantees = [
   {
     icon: Users,
-    title: "Direct Senior Architect Access",
-    badge: "Zero Middlemen",
+    title: "Senior Engineers on Your Project",
+    badge: "Hands-On Leadership",
     badgeColor: "text-cyan-400 bg-cyan-950/40 border-cyan-500/30",
-    desc: "Collaborate directly with our Lead Architect (Anuj) and senior engineers inside your private Slack or Discord. No account manager telephone games.",
-    metric: "Direct Slack Access",
+    desc: "Work with the senior engineers who build your product, backed by daily standups and weekly sprint demos.",
+    metric: "Daily Standups",
   },
   {
     icon: FileCode2,
-    title: "100% Complete IP & Source Sovereignty",
-    badge: "Unconditional Transfer",
+    title: "Confidential by Default",
+    badge: "Signed NDA in 24h",
     badgeColor: "text-purple-300 bg-purple-950/40 border-purple-500/30",
-    desc: "Every line of TypeScript, React Server Component, and Figma design belongs entirely to you upon milestone delivery. Zero vendor lock-in.",
-    metric: "Full GitHub Handoff",
+    desc: "Your ideas, designs and data stay protected under a signed NDA before any work begins.",
+    metric: "24h NDA Turnaround",
   },
   {
     icon: Zap,
@@ -62,12 +62,12 @@ const techPartners = [
 
 export default function TrustShowcase() {
   return (
-    <section className="relative py-16 sm:py-24 px-4 sm:px-6 bg-[#070114] border-y border-white/5 overflow-hidden">
+    <section className="relative py-16 sm:py-24 px-5 sm:px-8 md:px-10 lg:px-12 bg-[#070114] border-y border-white/5 overflow-hidden">
       {/* Ambient background glows */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-brand-purple/10 blur-[140px] rounded-full pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-brand-magenta/10 blur-[140px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-[1440px] mx-auto relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">

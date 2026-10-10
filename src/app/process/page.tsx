@@ -42,7 +42,7 @@ export default function ProcessPage() {
       {/* Cyber Grid Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-grid-pattern z-0" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 relative z-10">
         
         {/* HERO SECTION: 2-COLUMN SPRINT RADAR LAYOUT */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16 sm:mb-24 pt-4 sm:pt-8">
@@ -96,7 +96,7 @@ export default function ProcessPage() {
               <span className="text-white/20">•</span>
               <span className="flex items-center gap-1.5 text-purple-300 font-semibold">
                 <Check className="w-3.5 h-3.5" />
-                100% IP Handover
+                Signed NDA Protection
               </span>
               <span className="text-white/20">•</span>
               <span className="flex items-center gap-1.5 text-cyan-300 font-semibold">
@@ -120,8 +120,8 @@ export default function ProcessPage() {
                 <div className="text-[9px] sm:text-[10px] font-bold text-purple-300 uppercase tracking-wider mt-0.5">Unapproved Creep</div>
               </div>
               <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md">
-                <div className="text-lg sm:text-2xl font-black text-white">100%</div>
-                <div className="text-[9px] sm:text-[10px] font-bold text-emerald-400 uppercase tracking-wider mt-0.5">Code Ownership</div>
+                <div className="text-lg sm:text-2xl font-black text-white">24h</div>
+                <div className="text-[9px] sm:text-[10px] font-bold text-emerald-400 uppercase tracking-wider mt-0.5">Signed NDA</div>
               </div>
             </div>
 
@@ -212,7 +212,7 @@ export default function ProcessPage() {
                         <span className="text-[9px] font-mono text-emerald-300">Week 6</span>
                       </div>
                       <p className="text-[11px] text-white/60 mt-0.5">
-                        CDN edge deployment, 100% IP code transfer &amp; 30-day post-launch warranty.
+                        CDN edge deployment, documentation handover &amp; 30-day post-launch warranty.
                       </p>
                     </div>
                   </div>
@@ -225,7 +225,7 @@ export default function ProcessPage() {
                     <Zap className="w-3.5 h-3.5" />
                     <span>Edge Deployment: Instant</span>
                   </span>
-                  <span className="text-emerald-400 font-bold">100% IP TRANSFERRED</span>
+                  <span className="text-emerald-400 font-bold">NDA PROTECTED</span>
                 </div>
 
               </div>

@@ -9,7 +9,7 @@ Pixarrow is an elite digital growth and web engineering studio founded by Anuj S
 - **Global Reach**: Serving clients across US, Australia, UK, Europe, UAE, and India
 - **Contact**: hello@pixarrow.com | +917973060924 | https://pixarrow.com/book
 - **Primary Stack**: Next.js 16 (App Router), React 19, TypeScript, NestJS, Fastify, PostgreSQL, MongoDB, Redis, AWS CloudFront, Cloudflare R2, React Native, Shopify Plus Hydrogen.
-- **Key Guarantee**: 100% Code & IP Ownership, Signed NDA in 24h, 15-Day Quality Guarantee.
+- **Key Guarantee**: Signed NDA in 24h, 15-Day Quality Guarantee.
 
 ## Founders & Executive Bios
 - **Anuj Sharma** (Co-Founder & Chief Technology Officer):

@@ -40,18 +40,18 @@ const stats = [
 
 const trustBadges = [
   { icon: ShieldCheck, text: "SOC-2 & GDPR Compliance Architecture" },
-  { icon: Lock, text: "Strict 24-Hour NDA & Full IP Transfer" },
+  { icon: Lock, text: "Strict 24-Hour NDA & Confidentiality" },
   { icon: Award, text: "Next.js 16 & React 19 Production Standard" },
   { icon: Sparkles, text: "15-Day Zero-Risk Trial Guarantee" },
 ];
 
 export default function StatsBanner() {
   return (
-    <section className="py-16 px-6 bg-brand-bg relative z-10 w-full overflow-hidden">
+    <section className="py-16 px-5 sm:px-8 md:px-10 lg:px-12 bg-brand-bg relative z-10 w-full overflow-hidden">
       {/* Background Soft Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-[#7C3AED]/10 blur-[140px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1440px] mx-auto">
         <div className="relative rounded-[3rem] p-8 sm:p-12 md:p-16 bg-gradient-to-b from-[#14062c]/90 via-[#0a0217]/95 to-[#04000b] border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.8)] backdrop-blur-2xl overflow-hidden">
           
           {/* Ambient Grid overlay */}

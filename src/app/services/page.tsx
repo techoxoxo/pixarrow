@@ -40,7 +40,7 @@ export default function ServicesPage() {
       {/* Cyber Grid Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-grid-pattern z-0" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 relative z-10">
         
         {/* HERO SECTION: 2-COLUMN DYNAMIC STUDIO LAYOUT */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16 sm:mb-24 pt-4 sm:pt-8">
@@ -97,7 +97,7 @@ export default function ServicesPage() {
               <span className="text-white/20">•</span>
               <span className="flex items-center gap-1.5 text-purple-300 font-semibold">
                 <Check className="w-3.5 h-3.5" />
-                100% IP Ownership
+                Signed NDA Protection
               </span>
               <span className="text-white/20">•</span>
               <span className="flex items-center gap-1.5 text-cyan-300 font-semibold">
@@ -113,8 +113,8 @@ export default function ServicesPage() {
                 <div className="text-[9px] sm:text-[10px] font-bold text-[#00DFD8] uppercase tracking-wider mt-0.5">LCP Speed</div>
               </div>
               <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md">
-                <div className="text-lg sm:text-2xl font-black text-white">100% IP</div>
-                <div className="text-[9px] sm:text-[10px] font-bold text-purple-300 uppercase tracking-wider mt-0.5">Code Sovereignty</div>
+                <div className="text-lg sm:text-2xl font-black text-white">24h</div>
+                <div className="text-[9px] sm:text-[10px] font-bold text-purple-300 uppercase tracking-wider mt-0.5">Signed NDA</div>
               </div>
               <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md">
                 <div className="text-lg sm:text-2xl font-black text-white">4-6 Wks</div>

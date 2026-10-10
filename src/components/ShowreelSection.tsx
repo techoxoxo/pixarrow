@@ -26,13 +26,13 @@ export default function ShowreelSection() {
   };
 
   return (
-    <section className="py-14 sm:py-24 px-2 sm:px-6 relative overflow-hidden bg-[#070114] text-white">
+    <section className="py-14 sm:py-24 px-5 sm:px-8 md:px-10 lg:px-12 relative overflow-hidden bg-[#070114] text-white">
       {/* Ambient Lighting Rays */}
       <div className="absolute top-[10%] left-[10%] w-[320px] sm:w-[600px] h-[320px] sm:h-[600px] bg-[#7C3AED]/15 blur-[120px] sm:blur-[180px] rounded-full pointer-events-none" />
       <div className="absolute bottom-[10%] right-[10%] w-[320px] sm:w-[600px] h-[320px] sm:h-[600px] bg-[#FF007A]/15 blur-[120px] sm:blur-[180px] rounded-full pointer-events-none" />
       <div className="absolute top-[40%] right-[30%] w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-[#00DFD8]/10 blur-[100px] sm:blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-[1440px] mx-auto relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-14">
@@ -86,7 +86,7 @@ export default function ShowreelSection() {
         </div>
 
         {/* ULTRA-WIDE CINEMA THEATRE CANVAS */}
-        <div className="relative max-w-6xl lg:max-w-7xl mx-auto">
+        <div className="relative max-w-[1280px] mx-auto">
           {/* Reactive Ambilight Glow Aura */}
           <div className="absolute -inset-3 sm:-inset-6 bg-gradient-to-r from-[#7C3AED]/30 via-[#FF007A]/25 to-[#00DFD8]/20 blur-[50px] sm:blur-[90px] rounded-3xl opacity-80 pointer-events-none" />
 

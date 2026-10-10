@@ -123,7 +123,7 @@ export default async function ServiceSubPage({ params }: Props) {
   };
 
   return (
-    <div className="min-h-screen bg-brand-bg text-white pt-28 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-brand-bg text-white pt-28 sm:pt-32 pb-16 sm:pb-24 px-5 sm:px-8 md:px-10 lg:px-12 relative overflow-hidden">
       {/* Schema Injection */}
       <Script
         id="faq-schema"
@@ -143,7 +143,7 @@ export default async function ServiceSubPage({ params }: Props) {
       {/* Cyber Grid Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-grid-pattern z-0" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-[1440px] mx-auto relative z-10">
         
         {/* Breadcrumb Navigation */}
         <div className="flex items-center gap-2 text-xs font-semibold text-white/50 mb-6 sm:mb-8 overflow-x-auto whitespace-nowrap pb-1">
@@ -203,7 +203,7 @@ export default async function ServiceSubPage({ params }: Props) {
               <span className="text-white/20">•</span>
               <span className="flex items-center gap-1.5 text-purple-300 font-semibold">
                 <Lock className="w-3.5 h-3.5" />
-                100% IP &amp; Code Ownership
+                Signed NDA Protection
               </span>
               <span className="text-white/20">•</span>
               <span className="flex items-center gap-1.5 text-cyan-300 font-semibold">

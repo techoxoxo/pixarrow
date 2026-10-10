@@ -98,7 +98,7 @@ export default async function BlogPost({ params }: Props) {
   };
 
   return (
-    <article className="min-h-screen bg-[#070114] text-white pt-28 sm:pt-36 pb-24 px-4 sm:px-6 relative overflow-hidden">
+    <article className="min-h-screen bg-[#070114] text-white pt-28 sm:pt-36 pb-24 px-4 sm:px-8 lg:px-12 2xl:px-16 relative overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}

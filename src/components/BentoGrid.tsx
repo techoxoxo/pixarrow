@@ -5,8 +5,8 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function BentoGrid() {
   return (
-    <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative z-10" id="work">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-16 sm:py-24 lg:py-32 px-5 sm:px-8 md:px-10 lg:px-12 relative z-10" id="work">
+      <div className="max-w-[1440px] mx-auto">
         <div className="mb-12 sm:mb-20 text-center lg:text-left">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 sm:mb-6 leading-tight">
             Featured <span className="text-gradient">Work</span>

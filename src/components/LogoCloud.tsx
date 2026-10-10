@@ -47,7 +47,7 @@ export default function LogoCloud({ initialPartners }: LogoCloudProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(partnersJsonLd) }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12">
         <div className="text-center mb-8 sm:mb-12">
           <p className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-black tracking-[0.25em] text-white/40 uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-purple animate-pulse" />

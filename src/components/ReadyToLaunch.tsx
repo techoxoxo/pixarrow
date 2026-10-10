@@ -56,7 +56,7 @@ export default function ReadyToLaunch() {
             </span>
             <span className="flex items-center gap-1.5 text-purple-300">
               <Lock className="w-4 h-4" />
-              100% Client IP Transfer
+              Signed NDA Protection
             </span>
             <span className="flex items-center gap-1.5 text-cyan-300">
               <Clock className="w-4 h-4" />

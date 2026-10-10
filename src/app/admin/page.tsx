@@ -144,12 +144,12 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#070114] text-white pt-28 pb-20 px-4 sm:px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[#070114] text-white pt-28 pb-20 px-5 sm:px-8 md:px-10 lg:px-12 relative overflow-hidden">
       {/* Background ambient glows */}
       <div className="absolute top-20 right-[-10%] w-[600px] h-[600px] bg-[#7C3AED]/10 blur-[180px] rounded-full pointer-events-none" />
       <div className="absolute bottom-20 left-[-10%] w-[600px] h-[600px] bg-[#00DFD8]/5 blur-[180px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-[1440px] mx-auto relative z-10">
         
         {/* Top Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6 bg-white/[0.02] border border-white/10 p-6 sm:p-8 rounded-[2.5rem] backdrop-blur-xl shadow-2xl">

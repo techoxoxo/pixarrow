@@ -10,8 +10,8 @@ export default function Stats() {
   ];
 
   return (
-    <section className="py-24 px-6 relative z-10">
-       <div className="max-w-7xl mx-auto">
+    <section className="py-24 px-5 sm:px-8 md:px-10 lg:px-12 relative z-10">
+       <div className="max-w-[1440px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
              {stats.map((stat, i) => (
                 <motion.div

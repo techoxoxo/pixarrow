@@ -44,8 +44,8 @@ export default function PricingSection() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="py-16 sm:py-20 px-4 sm:px-6 bg-brand-bg relative z-10 overflow-hidden w-full" id="pricing">
-      <div className="max-w-6xl mx-auto">
+    <section ref={containerRef} className="py-16 sm:py-20 px-5 sm:px-8 md:px-10 lg:px-12 bg-brand-bg relative z-10 overflow-hidden w-full" id="pricing">
+      <div className="max-w-[1440px] mx-auto">
          <div className="text-center mb-12 sm:mb-20 px-2 sm:px-6">
             <h2 className="text-4xl sm:text-6xl lg:text-[7rem] font-black text-white italic tracking-tighter mb-4 sm:mb-8 leading-tight sm:leading-none">
               Global <br className="hidden sm:inline"/> <span className="text-gradient underline decoration-brand-purple/20">Solutions.</span>

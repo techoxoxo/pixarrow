@@ -63,7 +63,7 @@ const engagementModels = [
     desc: "A dedicated senior engineer working exclusively for your team (160 hrs/mo).",
     features: [
       "100% Dedicated to your codebase",
-      "Direct Slack & GitHub integration",
+      "GitHub & project tool integration",
       "4-8 hours daily timezone overlap",
       "Daily standups & sprint reviews",
       "15-Day Risk-Free Trial period",
@@ -161,7 +161,7 @@ export default function HireDevelopersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070114] text-white pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[#070114] text-white pt-24 sm:pt-32 pb-16 sm:pb-24 px-5 sm:px-8 md:px-10 lg:px-12 relative overflow-hidden">
       {/* Ambient Glows */}
       <div className="absolute top-[10%] left-[-10%] w-[50vw] h-[50vw] bg-[#7C3AED]/15 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute bottom-[20%] right-[-10%] w-[50vw] h-[50vw] bg-[#FF007A]/15 blur-[150px] rounded-full pointer-events-none" />
@@ -170,7 +170,7 @@ export default function HireDevelopersPage() {
       {/* Cyber Grid Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-grid-pattern z-0" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-[1440px] mx-auto relative z-10">
         
         {/* HERO SECTION: 2-COLUMN TALENT DISPATCH CONSOLE */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16 sm:mb-24 pt-4 sm:pt-8">
@@ -229,7 +229,7 @@ export default function HireDevelopersPage() {
               <span className="text-white/20">•</span>
               <span className="flex items-center gap-1.5 text-cyan-300 font-semibold">
                 <Check className="w-3.5 h-3.5" />
-                100% IP Sovereignty
+                Signed NDA Protection
               </span>
             </div>
 

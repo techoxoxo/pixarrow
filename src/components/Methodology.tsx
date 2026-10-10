@@ -36,11 +36,11 @@ const blocks = [
   },
   { 
     step: "04", 
-    title: "Global Edge Launch & 100% IP Handover", 
+    title: "Global Edge Launch & Handover", 
     tag: "Days 29–35",
     icon: ShieldCheck,
-    desc: "We launch your platform globally across distributed edge CDN nodes with 99.98% uptime SLA, configure live observability telemetry, and unconditionally transfer full Git repositories.",
-    points: ["Cloudflare & Vercel Edge CDN Setup", "100% Full IP & Source Handover", "Post-Launch Telemetry & SLA"],
+    desc: "We launch your platform globally across distributed edge CDN nodes with 99.98% uptime SLA, configure live observability telemetry, and hand over documentation and deployment runbooks.",
+    points: ["Cloudflare & Vercel Edge CDN Setup", "Documentation & Deployment Handover", "Post-Launch Telemetry & SLA"],
     color: "from-[#F59E0B] to-[#10B981]",
     accent: "#10B981"
   },
@@ -48,8 +48,8 @@ const blocks = [
 
 export default function Methodology() {
   return (
-    <section className="py-16 px-6 relative z-10 w-full overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-16 px-5 sm:px-8 md:px-10 lg:px-12 relative z-10 w-full overflow-hidden">
+      <div className="max-w-[1440px] mx-auto">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

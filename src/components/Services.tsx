@@ -127,12 +127,12 @@ export default function Services() {
   const activeService = serviceCategories[activeTab];
 
   return (
-    <section className="py-14 sm:py-24 px-3 sm:px-6 relative z-10 w-full bg-[#050011] overflow-hidden" id="services">
+    <section className="py-14 sm:py-24 px-5 sm:px-8 md:px-10 lg:px-12 relative z-10 w-full bg-[#050011] overflow-hidden" id="services">
       {/* Dynamic Background Glows */}
       <div className="absolute top-1/3 left-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-[#7C3AED]/10 blur-[130px] sm:blur-[160px] rounded-full pointer-events-none" />
       <div className="absolute bottom-1/4 right-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-[#00DFD8]/10 blur-[130px] sm:blur-[160px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1440px] mx-auto">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-14 gap-5">
@@ -286,7 +286,7 @@ export default function Services() {
                   <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#7C3AED]/10 border border-[#7C3AED]/30 flex items-center gap-2.5 sm:gap-3">
                     <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-400 shrink-0" />
                     <div className="text-[11px] sm:text-xs text-white/80 leading-relaxed font-medium">
-                      Backed by our <span className="text-white font-bold">100% IP Transfer</span> &amp; <span className="text-emerald-400 font-bold">Signed 24h NDA</span> SLA guarantee.
+                      Backed by our <span className="text-white font-bold">15-Day Risk-Free Trial</span> &amp; <span className="text-emerald-400 font-bold">Signed 24h NDA</span> guarantee.
                     </div>
                   </div>
                 </div>

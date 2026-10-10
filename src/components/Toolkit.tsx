@@ -82,11 +82,11 @@ export default function Toolkit() {
   const filteredTech = activeTab === "all" ? allTech : allTech.filter((t) => t.category === activeTab);
 
   return (
-    <section className="pixarrow-stack-section py-16 sm:py-24 px-4 sm:px-6 relative bg-transparent overflow-hidden">
+    <section className="pixarrow-stack-section py-16 sm:py-24 px-5 sm:px-8 md:px-10 lg:px-12 relative bg-transparent overflow-hidden">
       {/* Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-gradient-to-tr from-[#7C3AED]/20 via-[#FF007A]/15 to-[#00DFD8]/10 blur-[140px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-[1440px] mx-auto relative z-10">
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">

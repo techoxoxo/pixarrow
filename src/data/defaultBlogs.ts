@@ -136,7 +136,7 @@ Running paid traffic to a generic landing page is the fastest way to burn capita
 ### The 4 Pillars of High-Converting Funnels
 1. **Zero-Friction Hero Fold**: Immediate value proposition clarity, quantifiable social proof, and a 24-hour response guarantee.
 2. **Interactive Scope Estimators**: Replacing intimidating static contact forms with engaging multi-step quizzes.
-3. **Explicit Risk Reversal**: Displaying signed NDA guarantees, money-back trials, and full IP ownership badges.
+3. **Explicit Risk Reversal**: Displaying signed NDA guarantees, money-back trials, and trust badges.
     `
   }
 ];

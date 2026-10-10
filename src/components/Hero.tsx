@@ -19,7 +19,7 @@ export default function Hero() {
   const studioTitleSrc = "/video/We Are Pixarrow - Pixarrow (1080p, h264).mp4";
 
   return (
-    <section className="relative pt-24 sm:pt-36 md:pt-40 pb-12 sm:pb-24 px-3.5 sm:px-6 min-h-[90vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#070114]">
+    <section className="relative pt-24 sm:pt-36 md:pt-40 pb-12 sm:pb-24 px-5 sm:px-8 md:px-10 lg:px-12 min-h-[90vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#070114]">
       
       {/* 1. CRISP, CLEARLY VISIBLE FULL-BLEED BACKGROUND VIDEO */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -47,7 +47,7 @@ export default function Hero() {
       <div className="absolute inset-0 pointer-events-none opacity-[0.02] bg-grid-pattern z-[1]" />
 
       {/* 2. DYNAMIC 2-COLUMN HERO LAYOUT */}
-      <div className="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+      <div className="max-w-[1440px] mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
         
         {/* Left Column: Vision, Pitch & CTAs */}
         <div className="flex flex-col items-start lg:col-span-7">
@@ -112,7 +112,7 @@ export default function Hero() {
             <span className="text-white/20">•</span>
             <span className="flex items-center gap-1.5 text-purple-300 font-semibold">
               <Check className="w-3.5 h-3.5" />
-              100% IP Ownership
+              Signed NDA Protection
             </span>
             <span className="text-white/20">•</span>
             <span className="flex items-center gap-1.5 text-cyan-300 font-semibold">
@@ -205,9 +205,9 @@ export default function Hero() {
               <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-white/[0.05] border border-white/10 text-center backdrop-blur-md">
                 <div className="text-[11px] sm:text-xs font-bold text-white flex items-center justify-center gap-1">
                   <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-purple-400 shrink-0" />
-                  <span className="truncate">100% IP</span>
+                  <span className="truncate">24h NDA</span>
                 </div>
-                <div className="text-[8px] sm:text-[9px] text-white/50 uppercase mt-0.5 font-medium truncate">Ownership</div>
+                <div className="text-[8px] sm:text-[9px] text-white/50 uppercase mt-0.5 font-medium truncate">Confidential</div>
               </div>
 
               <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-white/[0.05] border border-white/10 text-center backdrop-blur-md">

@@ -6,17 +6,17 @@ import { X, Check, Sparkles, ShieldCheck } from "lucide-react";
 const rows = [
   { f: "Sprint Velocity SLA", p: "4–6 Weeks Production Launch", t: "4–9 Months of Bloat & Delays", sub: "Milestone Guaranteed" },
   { f: "Technology Standard", p: "Next.js 16 (RSC) + React 19 + TypeScript", t: "Legacy PHP / WordPress / Monoliths", sub: "100% Modern Architecture" },
-  { f: "Communication Model", p: "Direct Private Slack with Lead Architect", t: "Layers of Junior Account Managers", sub: "Zero Middlemen" },
-  { f: "Code & IP Transfer", p: "100% Unconditional Git & IP Handover", t: "Proprietary Lock-in & Licensing Fees", sub: "Client Sovereignty" },
+  { f: "Communication Model", p: "Daily Standups & Weekly Sprint Demos", t: "Opaque Status Reports & Delays", sub: "Full Visibility" },
+  { f: "Confidentiality", p: "Signed NDA Within 24 Hours", t: "Unclear Confidentiality Terms", sub: "Data Protected" },
   { f: "Core Web Vitals", p: "Sub-0.4s Global LCP & 100/100 Lighthouse", t: "3–6s Sluggish Heavy Load Times", sub: "Edge CDN Cached" },
   { f: "Pricing Structure", p: "Fixed-Scope Sprints & $3.5k/mo Pods", t: "Opaque Hourly Overages & Retainers", sub: "Predictable ROI" },
-  { f: "Satisfaction Guarantee", p: "15-Day Risk-Free Trial Period", t: "Zero Recourse Lock-in Contracts", sub: "Zero Risk" },
+  { f: "Satisfaction Guarantee", p: "15-Day Risk-Free Trial Period", t: "Rigid Long-Term Contracts", sub: "Zero Risk" },
 ];
 
 export default function Comparison() {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 relative z-10 w-full overflow-hidden">
-      <div className="max-w-5xl mx-auto">
+    <section className="py-16 sm:py-24 px-5 sm:px-8 md:px-10 lg:px-12 relative z-10 w-full overflow-hidden">
+      <div className="max-w-[1300px] mx-auto">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
